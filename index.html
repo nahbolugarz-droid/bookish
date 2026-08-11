@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BOOKISH 📚✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --fondo: #fff8f7;
+  --tarjeta: #ffffff;
+  --texto: #34272d;
+  --suave: #806b73;
+  --principal: #c98698;
+  --secundario: #f1d5dc;
+  --dorado: #b99558;
+  --borde: #eadde0;
+  --sombra: 0 10px 30px rgba(70, 35, 48, .08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+}
+
+.app {
+  max-width: 1200px;
+  margin: auto;
+  padding-bottom: 90px;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 18px 10px;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.header-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra);
+  font-size: 20px;
+}
+
+.header-center {
+  text-align: center;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  padding: 20px 18px 10px;
+}
+
+.hello {
+  color: var(--principal);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.hero h1 {
+  font-size: 30px;
+  line-height: 1.15;
+  max-width: 350px;
+}
+
+/* ================= SECCIONES ================= */
+
+.section {
+  padding: 22px 18px 0;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.section-title h2 {
+  font-size: 22px;
+}
+
+.see-more {
+  color: var(--principal);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ================= LIBRO ACTUAL ================= */
+
+.current-book {
+  background: linear-gradient(135deg, #f1d5dc, #fff4f2);
+  border-radius: 24px;
+  padding: 18px;
+  display: flex;
+  gap: 17px;
+  box-shadow: var(--sombra);
+}
+
+.cover {
+  width: 105px;
+  min-width: 105px;
+  height: 150px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+}
+
+.cover-rose {
+  background: linear-gradient(145deg, #6e3348, #d99bab);
+}
+
+.cover-blue {
+  background: linear-gradient(145deg, #174c69, #78c4d5);
+}
+
+.cover-purple {
+  background: linear-gradient(145deg, #46306e, #aa8bd2);
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-info h3 {
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.author {
+  color: var(--suave);
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+
+.progress-text {
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.progress {
+  height: 7px;
+  background: rgba(255,255,255,.7);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 44%;
+  background: var(--principal);
+  border-radius: 10px;
+}
+
+.primary-btn {
+  background: var(--texto);
+  color: white;
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ================= DESCUBRE ================= */
+
+.horizontal-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 7px;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.feeling {
+  min-width: 145px;
+  padding: 16px 14px;
+  border-radius: 18px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.feeling span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+/* ================= LIBROS ================= */
+
+.books {
+  display: flex;
+  gap: 13px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.books::-webkit-scrollbar {
+  display: none;
+}
+
+.book-card {
+  min-width: 125px;
+  width: 125px;
+}
+
+.book-card .cover {
+  width: 125px;
+  height: 178px;
+  margin-bottom: 8px;
+}
+
+.book-title {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.book-author {
+  color: var(--suave);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ================= SAGAS ================= */
+
+.genre {
+  min-width: 150px;
+  min-height: 105px;
+  padding: 17px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--sombra);
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+}
+
+.genre-emoji {
+  font-size: 27px;
+}
+
+.genre-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(15px);
+  border-top: 1px solid var(--borde);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  background: none;
+  color: var(--suave);
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-item span {
+  font-size: 22px;
+}
+
+.nav-item.active {
+  color: var(--principal);
+  font-weight: 700;
+}
+
+.add-btn {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  background: var(--texto);
+  color: white;
+  font-size: 25px;
+  margin-top: -22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (min-width: 700px) {
+  .app {
+    padding-bottom: 40px;
+  }
+
+  .header,
+  .hero,
+  .section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .bottom-nav {
+    width: 600px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    border-radius: 25px 25px 0 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <button class="header-btn">☰</button>
+
+    <div class="header-center">
+      <div class="logo">BOOKISH</div>
+    </div>
+
+    <button class="header-btn">👤</button>
+  </header>
+
+
+  <!-- SALUDO -->
+  <section class="hero">
+    <p class="hello">¡Hola! ✨</p>
+    <h1>¿En qué historia vas a perderte hoy?</h1>
+  </section>
+
+
+  <!-- LEYENDO AHORA -->
+  <section class="section">
+
+    <div class="section-title">
+      <h2>📖 Leyendo ahora</h2>
+      <span class="see-more">Ver todo</span>
+    </div>
+
+    <div class="current-book">
+
+      <div class="cover cover-rose">
+        🌹
+      </div>
+
+      <div class="book-info">
+
+        <h3>Un libro de demostración</h3>
+
+        <p class="author">Autora de demostración</p>
+
+        <p class="progress-text">
+          Página 183 / 420
+        </p>
+
+        <div class="progress">
+          <div class="progress-fill"></div>
+        </div>
+
+        <button class="primary-btn">
+          📖 Continuar leyendo
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DESCUBRE -->
+  <section class="section">
+
+    <div class="section-title">
+      <h2>✨ Descubre</h2>
+    </div>
+
+    <div class="horizontal-scroll">
+
+      <button class="feeling">
+        <span>💕</span>
+        Quiero enamorarme
+      </button>
+
+      <button class="feeling">
+        <span>😭</span>
+        Quiero llorar
+      </button>
+
+      <button class="feeling">
+        <span>🌶️</span>
+        Quiero algo spicy
+      </button>
+
+      <button class="feeling">
+        <span>🧚🏻</span>
+        Quiero escapar
+      </button>
+
+      <button class="feeling">
+        <span>🖤</span>
+        Quiero algo oscuro
+      </button>
+
+      <button class="feeling">
+        <span>🔪</span>
+        Quiero tensión
+      </button>
+
+      <button class="feeling">
+        <span>🌊</span>
+        Quiero mar
+      </button>
+
+      <button class="feeling">
+        <span>😂</span>
+        Quiero reírme
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- TENDENCIAS -->
+  <section class="section">
+
+    <div class="section-title">
+      <h2>🔥 Tendencias</h2>
+      <span class="see-more">Ver más</span>
+    </div>
+
+    <div class="books">
+
+      <div class="book-card">
+        <div class="cover cover-purple">🌙</div>
+        <div class="book-title">Libro popular</div>
+        <div class="book-author">Autora</div>
+      </div>
+
+      <div class="book-card">
+        <div class="cover cover-blue">🌊</div>
+        <div class="book-title">Historia del mar</div>
+        <div class="book-author">Autor</div>
+      </div>
+
+      <div class="book-card">
+        <div class="cover cover-rose">🌹</div>
+        <div class="book-title">Una historia de amor</div>
+        <div class="book-author">Autora</div>
+      </div>
+
+      <div class="book-card">
+        <div class="cover cover-purple">🐉</div>
+        <div class="book-title">El reino perdido</div>
+        <div class="book-author">Autora</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SAGAS -->
+  <section class="section">
+
+    <div class="section-title">
+      <h2>📚 Sagas destacadas</h2>
+      <span class="see-more">Explorar</span>
+    </div>
+
+    <div class="horizontal-scroll">
+
+      <div class="genre">
+        <span class="genre-emoji">💕</span>
+        <span class="genre-name">Romance</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🧚🏻</span>
+        <span class="genre-name">Fantasy</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🌙</span>
+        <span class="genre-name">Romantasy</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🔪</span>
+        <span class="genre-name">Thriller</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">👻</span>
+        <span class="genre-name">Terror</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🖤</span>
+        <span class="genre-name">Dark Romance</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🚀</span>
+        <span class="genre-name">Ciencia ficción</span>
+      </div>
+
+      <div class="genre">
+        <span class="genre-emoji">🏛️</span>
+        <span class="genre-name">Histórico</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRÓXIMAMENTE -->
+  <section class="section">
+
+    <div class="section-title">
+      <h2>📅 Próximamente</h2>
+    </div>
+
+    <div class="current-book">
+
+      <div class="cover cover-blue">
+        ✨
+      </div>
+
+      <div class="book-info">
+
+        <h3>Nuevos libros. Nuevas obsesiones.</h3>
+
+        <p class="author">
+          Nuevas historias están llegando... 😭📚
+        </p>
+
+        <button class="primary-btn">
+          🔮 Guardar
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- NAVEGACIÓN -->
+<nav class="bottom-nav">
+
+  <button class="nav-item active">
+    <span>🏠</span>
+    Inicio
+  </button>
+
+  <button class="nav-item">
+    <span>🔎</span>
+    Buscar
+  </button>
+
+  <button class="nav-item">
+    <span class="add-btn">＋</span>
+    Añadir
+  </button>
+
+  <button class="nav-item">
+    <span>📚</span>
+    Biblioteca
+  </button>
+
+  <button class="nav-item">
+    <span>👯</span>
+    Amigos
+  </button>
+
+</nav>
+
+</body>
+        </html>
