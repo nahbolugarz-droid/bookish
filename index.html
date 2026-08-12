@@ -3,640 +3,1536 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BOOKISH 📚✨</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-:root {
-  --fondo: #fff8f7;
-  --tarjeta: #ffffff;
-  --texto: #34272d;
-  --suave: #806b73;
-  --principal: #c98698;
-  --secundario: #f1d5dc;
-  --dorado: #b99558;
-  --borde: #eadde0;
-  --sombra: 0 10px 30px rgba(70, 35, 48, .08);
+:root{
+  --bg:#fff8f7;
+  --card:#ffffff;
+  --text:#33282d;
+  --muted:#88777e;
+  --accent:#bd7d91;
+  --accent2:#e8c1cc;
+  --button:#33282d;
+  --shadow:rgba(80,45,55,.12);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  transition:.35s;
+  padding-bottom:90px;
 }
 
-body {
-  font-family: "DM Sans", sans-serif;
-  background: var(--fondo);
-  color: var(--texto);
-  min-height: 100vh;
+h1,h2,h3,.logo{
+  font-family:Georgia,"Times New Roman",serif;
 }
 
-button {
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
+button,input,select,textarea{font:inherit}
+
+button{cursor:pointer}
+
+.header{
+  height:75px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  background:var(--bg);
+  border-bottom:1px solid var(--accent2);
 }
 
-h1, h2, h3 {
-  font-family: "Playfair Display", serif;
+.logo{
+  font-size:30px;
+  letter-spacing:2px;
+  font-weight:bold;
 }
 
-.app {
-  max-width: 1200px;
-  margin: auto;
-  padding-bottom: 90px;
+.icon{
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  background:var(--card);
+  color:var(--text);
+  box-shadow:0 4px 15px var(--shadow);
+  font-size:22px;
 }
 
-/* ================= HEADER ================= */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 18px 10px;
+main{
+  max-width:950px;
+  margin:auto;
+  padding:20px;
 }
 
-.logo {
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 2px;
+.page{display:none}
+.page.active{display:block}
+
+.hello{
+  color:var(--accent);
+  font-size:20px;
+  margin:15px 0;
 }
 
-.header-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--tarjeta);
-  box-shadow: var(--sombra);
-  font-size: 20px;
+.hero{
+  font-size:38px;
+  line-height:1.08;
+  margin-bottom:28px;
 }
 
-.header-center {
-  text-align: center;
+.section{
+  margin:32px 0;
 }
 
-/* ================= HERO ================= */
-
-.hero {
-  padding: 20px 18px 10px;
+.section h2{
+  font-size:27px;
+  margin-bottom:15px;
 }
 
-.hello {
-  color: var(--principal);
-  font-weight: 700;
-  margin-bottom: 5px;
+.card{
+  background:var(--card);
+  border-radius:25px;
+  padding:20px;
+  box-shadow:0 5px 20px var(--shadow);
 }
 
-.hero h1 {
-  font-size: 30px;
-  line-height: 1.15;
-  max-width: 350px;
+.reading{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  background:var(--accent2);
 }
 
-/* ================= SECCIONES ================= */
-
-.section {
-  padding: 22px 18px 0;
+.cover{
+  width:125px;
+  height:185px;
+  border-radius:16px;
+  background:linear-gradient(145deg,var(--accent),var(--accent2));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:55px;
+  flex-shrink:0;
 }
 
-.section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
+.reading h3{
+  font-family:Georgia,serif;
+  font-size:23px;
+  margin-bottom:7px;
 }
 
-.section-title h2 {
-  font-size: 22px;
+.muted{color:var(--muted)}
+
+.progress{
+  height:8px;
+  border-radius:10px;
+  background:var(--card);
+  margin:10px 0 16px;
+  overflow:hidden;
 }
 
-.see-more {
-  color: var(--principal);
-  font-size: 13px;
-  font-weight: 700;
+.progress span{
+  display:block;
+  width:44%;
+  height:100%;
+  background:var(--accent);
 }
 
-/* ================= LIBRO ACTUAL ================= */
-
-.current-book {
-  background: linear-gradient(135deg, #f1d5dc, #fff4f2);
-  border-radius: 24px;
-  padding: 18px;
-  display: flex;
-  gap: 17px;
-  box-shadow: var(--sombra);
+.btn{
+  border:0;
+  border-radius:25px;
+  padding:13px 18px;
+  background:var(--button);
+  color:white;
+  font-weight:bold;
 }
 
-.cover {
-  width: 105px;
-  min-width: 105px;
-  height: 150px;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+.btn.light{
+  background:var(--accent2);
+  color:var(--text);
 }
 
-.cover-rose {
-  background: linear-gradient(145deg, #6e3348, #d99bab);
+.horizontal{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  padding-bottom:5px;
 }
 
-.cover-blue {
-  background: linear-gradient(145deg, #174c69, #78c4d5);
+.horizontal::-webkit-scrollbar{display:none}
+
+.feeling{
+  min-width:190px;
+  padding:20px;
+  border-radius:23px;
+  background:var(--card);
+  box-shadow:0 4px 15px var(--shadow);
 }
 
-.cover-purple {
-  background: linear-gradient(145deg, #46306e, #aa8bd2);
+.feeling .emoji{font-size:40px;margin-bottom:12px}
+
+.book-row{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-.book-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.book{
+  background:var(--card);
+  border-radius:20px;
+  padding:12px;
+  box-shadow:0 4px 15px var(--shadow);
 }
 
-.book-info h3 {
-  font-size: 19px;
-  margin-bottom: 5px;
+.book-cover{
+  height:210px;
+  border-radius:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+  background:linear-gradient(145deg,var(--accent),var(--accent2));
+  margin-bottom:10px;
 }
 
-.author {
-  color: var(--suave);
-  font-size: 13px;
-  margin-bottom: 13px;
+.book h3{
+  font-size:19px;
+  margin-bottom:5px;
 }
 
-.progress-text {
-  font-size: 12px;
-  margin-bottom: 7px;
+.nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:78px;
+  background:var(--card);
+  box-shadow:0 -5px 20px var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:40;
 }
 
-.progress {
-  height: 7px;
-  background: rgba(255,255,255,.7);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 12px;
+.nav button{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:12px;
 }
 
-.progress-fill {
-  height: 100%;
-  width: 44%;
-  background: var(--principal);
-  border-radius: 10px;
+.nav button span{
+  display:block;
+  font-size:25px;
 }
 
-.primary-btn {
-  background: var(--texto);
-  color: white;
-  border-radius: 14px;
-  padding: 10px 14px;
-  font-size: 12px;
-  font-weight: 700;
+.nav button.active{color:var(--accent)}
+
+.add{
+  width:58px!important;
+  height:58px;
+  border-radius:50%!important;
+  background:var(--button)!important;
+  color:white!important;
+  font-size:30px!important;
+  margin-top:-28px;
 }
 
-/* ================= DESCUBRE ================= */
-
-.horizontal-scroll {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 7px;
-  scrollbar-width: none;
+.search{
+  width:100%;
+  padding:17px;
+  border:0;
+  border-radius:20px;
+  background:var(--card);
+  color:var(--text);
+  box-shadow:0 4px 15px var(--shadow);
+  outline:none;
+  margin:15px 0 20px;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-  display: none;
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:20px;
 }
 
-.feeling {
-  min-width: 145px;
-  padding: 16px 14px;
-  border-radius: 18px;
-  background: var(--tarjeta);
-  border: 1px solid var(--borde);
-  box-shadow: var(--sombra);
-  font-size: 13px;
-  font-weight: 600;
+.tab{
+  white-space:nowrap;
+  border:0;
+  padding:11px 15px;
+  border-radius:20px;
+  background:var(--card);
+  color:var(--text);
 }
 
-.feeling span {
-  display: block;
-  font-size: 25px;
-  margin-bottom: 8px;
+.tab.active{
+  background:var(--button);
+  color:white;
 }
 
-/* ================= LIBROS ================= */
+.profile{text-align:center}
 
-.books {
-  display: flex;
-  gap: 13px;
-  overflow-x: auto;
-  scrollbar-width: none;
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:var(--card);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  margin:20px auto;
+  box-shadow:0 5px 20px var(--shadow);
 }
 
-.books::-webkit-scrollbar {
-  display: none;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:25px 0;
 }
 
-.book-card {
-  min-width: 125px;
-  width: 125px;
+.stat{
+  background:var(--card);
+  padding:17px 8px;
+  border-radius:18px;
+  box-shadow:0 3px 12px var(--shadow);
 }
 
-.book-card .cover {
-  width: 125px;
-  height: 178px;
-  margin-bottom: 8px;
+.stat strong{display:block;font-size:23px}
+.stat small{color:var(--muted)}
+
+.list-card{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:18px;
+  background:var(--card);
+  border-radius:20px;
+  margin-bottom:12px;
+  box-shadow:0 3px 12px var(--shadow);
 }
 
-.book-title {
-  font-family: "Playfair Display", serif;
-  font-size: 15px;
-  line-height: 1.2;
+.list-card .bigemoji{font-size:35px}
+
+.setting{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--card);
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:10px;
 }
 
-.book-author {
-  color: var(--suave);
-  font-size: 11px;
-  margin-top: 4px;
+.theme-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:15px 0;
 }
 
-/* ================= SAGAS ================= */
-
-.genre {
-  min-width: 150px;
-  min-height: 105px;
-  padding: 17px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: var(--sombra);
-  background: var(--tarjeta);
-  border: 1px solid var(--borde);
+.theme{
+  border:2px solid transparent;
+  border-radius:20px;
+  padding:18px 10px;
+  text-align:center;
+  background:var(--card);
+  color:var(--text);
 }
 
-.genre-emoji {
-  font-size: 27px;
+.theme.selected{
+  border-color:var(--accent);
 }
 
-.genre-name {
-  font-weight: 700;
-  font-size: 14px;
+.theme div{
+  font-size:35px;
+  margin-bottom:8px;
 }
 
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav {
-  position: fixed;
-  z-index: 20;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 72px;
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(15px);
-  border-top: 1px solid var(--borde);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:100;
+  align-items:flex-end;
 }
 
-.nav-item {
-  background: none;
-  color: var(--suave);
-  font-size: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+.modal.show{display:flex}
+
+.modal-box{
+  background:var(--bg);
+  color:var(--text);
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  border-radius:30px 30px 0 0;
+  padding:25px;
 }
 
-.nav-item span {
-  font-size: 22px;
+.close{
+  float:right;
+  border:0;
+  background:none;
+  font-size:30px;
+  color:var(--text);
 }
 
-.nav-item.active {
-  color: var(--principal);
-  font-weight: 700;
+.rating{
+  font-size:27px;
+  letter-spacing:2px;
+  margin:10px 0;
 }
 
-.add-btn {
-  width: 49px;
-  height: 49px;
-  border-radius: 50%;
-  background: var(--texto);
-  color: white;
-  font-size: 25px;
-  margin-top: -22px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+.option-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin:15px 0;
 }
 
-/* ================= RESPONSIVE ================= */
+.option{
+  border:0;
+  border-radius:17px;
+  background:var(--card);
+  color:var(--text);
+  padding:13px;
+  text-align:left;
+}
 
-@media (min-width: 700px) {
-  .app {
-    padding-bottom: 40px;
-  }
+textarea,.input,.select{
+  width:100%;
+  border:0;
+  background:var(--card);
+  color:var(--text);
+  padding:15px;
+  border-radius:15px;
+  margin:7px 0;
+  outline:none;
+}
 
-  .header,
-  .hero,
-  .section {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+.menu-items{
+  display:grid;
+  gap:10px;
+}
 
-  .bottom-nav {
-    width: 600px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    border-radius: 25px 25px 0 0;
-  }
+.menu-items button{
+  border:0;
+  padding:17px;
+  border-radius:18px;
+  text-align:left;
+  background:var(--card);
+  color:var(--text);
+}
+
+.spoiler{
+  background:var(--button);
+  color:white;
+  padding:13px;
+  border-radius:15px;
+  margin-top:10px;
+}
+
+@media(min-width:700px){
+  .book-row{grid-template-columns:repeat(4,1fr)}
+  .theme-grid{grid-template-columns:repeat(5,1fr)}
+  .nav{left:50%;transform:translateX(-50%);max-width:900px}
+}
+
+/* 🎀 COQUETTE */
+body.coquette{
+  --bg:#fff7f5;
+  --card:#fff;
+  --text:#3b2930;
+  --muted:#927a82;
+  --accent:#c78398;
+  --accent2:#f1d5dc;
+  --button:#473038;
+}
+
+/* 🖤 DARK */
+body.dark{
+  --bg:#171214;
+  --card:#251b1f;
+  --text:#f5e9df;
+  --muted:#b99da3;
+  --accent:#b86b7c;
+  --accent2:#4a2932;
+  --button:#9a5366;
+}
+
+/* 🧚 FANTASY */
+body.fantasy{
+  --bg:#151728;
+  --card:#22243b;
+  --text:#f4efe3;
+  --muted:#bcb9d2;
+  --accent:#9a7bc8;
+  --accent2:#39415e;
+  --button:#7355a7;
+}
+
+/* 🌊 OCEANO */
+body.oceano{
+  --bg:#eef9f8;
+  --card:#ffffff;
+  --text:#183c46;
+  --muted:#66838a;
+  --accent:#238ca0;
+  --accent2:#c8e9e9;
+  --button:#176878;
+}
+
+/* 🤍 ELEGANTE */
+body.elegante{
+  --bg:#f5f0e7;
+  --card:#fffdf8;
+  --text:#292725;
+  --muted:#80796e;
+  --accent:#a88755;
+  --accent2:#e2d6bd;
+  --button:#332f29;
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<header class="header">
+  <button class="icon" onclick="openMenu()">☰</button>
+  <div class="logo">BOOKISH</div>
+  <button class="icon" onclick="showPage('perfil')">👤</button>
+</header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <button class="header-btn">☰</button>
+<main>
 
-    <div class="header-center">
-      <div class="logo">BOOKISH</div>
-    </div>
+<!-- 🏠 INICIO -->
+<section id="inicio" class="page active">
 
-    <button class="header-btn">👤</button>
-  </header>
+  <p class="hello">¡Hola! ✨</p>
+  <h1 class="hero">¿En qué historia vas a perderte hoy?</h1>
 
+  <div class="section">
+    <h2>📖 Leyendo ahora</h2>
 
-  <!-- SALUDO -->
-  <section class="hero">
-    <p class="hello">¡Hola! ✨</p>
-    <h1>¿En qué historia vas a perderte hoy?</h1>
-  </section>
-
-
-  <!-- LEYENDO AHORA -->
-  <section class="section">
-
-    <div class="section-title">
-      <h2>📖 Leyendo ahora</h2>
-      <span class="see-more">Ver todo</span>
-    </div>
-
-    <div class="current-book">
-
-      <div class="cover cover-rose">
-        🌹
-      </div>
-
-      <div class="book-info">
-
+    <div class="card reading" onclick="openBook('Un libro de demostración')">
+      <div class="cover">🌹</div>
+      <div>
         <h3>Un libro de demostración</h3>
+        <p class="muted">Autora de demostración</p>
+        <p class="muted">Página 183 / 420</p>
+        <div class="progress"><span></span></div>
+        <button class="btn">📖 Continuar leyendo</button>
+      </div>
+    </div>
+  </div>
 
-        <p class="author">Autora de demostración</p>
+  <div class="section">
+    <h2>✨ Descubre</h2>
 
-        <p class="progress-text">
-          Página 183 / 420
-        </p>
+    <div class="horizontal">
+      <div class="feeling" onclick="discover('Romance')">
+        <div class="emoji">💕</div>
+        <h3>Quiero enamorarme</h3>
+        <p class="muted">Enamórate. Es ficticio, tranquila. 💕</p>
+      </div>
 
-        <div class="progress">
-          <div class="progress-fill"></div>
-        </div>
+      <div class="feeling" onclick="discover('Drama')">
+        <div class="emoji">😭</div>
+        <h3>Quiero llorar</h3>
+        <p class="muted">Has pedido daño emocional. ☠️</p>
+      </div>
 
-        <button class="primary-btn">
-          📖 Continuar leyendo
-        </button>
+      <div class="feeling" onclick="discover('Fantasy')">
+        <div class="emoji">🧚🏻</div>
+        <h3>Quiero escapar</h3>
+        <p class="muted">La realidad está sobrevalorada. ✨</p>
+      </div>
 
+      <div class="feeling" onclick="discover('Dark')">
+        <div class="emoji">🖤</div>
+        <h3>Quiero algo oscuro</h3>
+        <p class="muted">¿Banderas rojas? Desarrollo de personaje. 🚩</p>
       </div>
 
     </div>
+  </div>
 
-  </section>
+  <div class="section">
+    <h2>🔥 Tendencias</h2>
 
+    <div class="book-row">
 
-  <!-- DESCUBRE -->
-  <section class="section">
+      <div class="book" onclick="openBook('Historia del mar')">
+        <div class="book-cover">🌊</div>
+        <h3>Historia del mar</h3>
+        <p class="muted">Fantasy · Autor</p>
+      </div>
 
-    <div class="section-title">
-      <h2>✨ Descubre</h2>
+      <div class="book" onclick="openBook('Una historia de amor')">
+        <div class="book-cover">🌹</div>
+        <h3>Una historia de amor</h3>
+        <p class="muted">Romance · Autora</p>
+      </div>
+
+      <div class="book" onclick="openBook('La noche de las estrellas')">
+        <div class="book-cover">🌙</div>
+        <h3>La noche de las estrellas</h3>
+        <p class="muted">Fantasy · Autora</p>
+      </div>
+
+      <div class="book" onclick="openBook('El misterio')">
+        <div class="book-cover">🔪</div>
+        <h3>El misterio</h3>
+        <p class="muted">Thriller · Autor</p>
+      </div>
+
     </div>
+  </div>
 
-    <div class="horizontal-scroll">
+  <div class="section">
+    <h2>📚 Sagas destacadas</h2>
 
-      <button class="feeling">
-        <span>💕</span>
-        Quiero enamorarme
+    <div class="horizontal">
+
+      <div class="feeling" onclick="discover('Romance')">
+        <div class="emoji">💕</div>
+        <h3>Romance</h3>
+      </div>
+
+      <div class="feeling" onclick="discover('Fantasy')">
+        <div class="emoji">🧚🏻</div>
+        <h3>Fantasy</h3>
+      </div>
+
+      <div class="feeling" onclick="discover('Thriller')">
+        <div class="emoji">🔪</div>
+        <h3>Thriller</h3>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📅 Próximamente</h2>
+
+    <div class="card">
+      <h2>Nuevos libros. Nuevas obsesiones. 😭📚</h2>
+      <p class="muted">Próximamente conectaremos un catálogo real de libros.</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- 🔎 BUSCAR -->
+<section id="buscar" class="page">
+
+  <p class="hello">🔎 Explora</p>
+  <h1 class="hero">Encuentra tu próxima historia.</h1>
+
+  <input id="search" class="search"
+    placeholder="Título, autor, saga, género o sensación..."
+    oninput="searchBooks()">
+
+  <div id="searchResults" class="book-row"></div>
+
+</section>
+
+
+<!-- ➕ AÑADIR -->
+<section id="anadir" class="page">
+
+  <p class="hello">➕ Añadir</p>
+  <h1 class="hero">Añade una historia.</h1>
+
+  <div class="card">
+
+    <input id="newTitle" class="input" placeholder="📕 Título">
+
+    <input id="newAuthor" class="input" placeholder="✍🏻 Autor/a">
+
+    <select id="newGenre" class="select">
+      <option>Romance</option>
+      <option>Fantasy</option>
+      <option>Romantasy</option>
+      <option>Thriller</option>
+      <option>Dark Romance</option>
+      <option>Terror</option>
+      <option>Drama</option>
+      <option>Histórico</option>
+      <option>Ciencia ficción</option>
+      <option>Young Adult</option>
+      <option>New Adult</option>
+    </select>
+
+    <button class="btn" onclick="addBook()">
+      📚 Añadir a mi biblioteca
+    </button>
+
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h3>😢 ¿No encontramos tu libro?</h3>
+      <br>
+      <button class="btn light" onclick="alert('📸 Próximamente podrás añadirlo mediante una captura.')">
+        📸 Añadir mediante captura
       </button>
-
-      <button class="feeling">
-        <span>😭</span>
-        Quiero llorar
+      <br><br>
+      <button class="btn light" onclick="alert('🔗 Próximamente podrás añadirlo mediante un enlace.')">
+        🔗 Añadir mediante enlace
       </button>
+    </div>
+  </div>
 
-      <button class="feeling">
-        <span>🌶️</span>
-        Quiero algo spicy
-      </button>
+</section>
 
-      <button class="feeling">
-        <span>🧚🏻</span>
-        Quiero escapar
-      </button>
 
-      <button class="feeling">
-        <span>🖤</span>
-        Quiero algo oscuro
-      </button>
+<!-- 📚 BIBLIOTECA -->
+<section id="biblioteca" class="page">
 
-      <button class="feeling">
-        <span>🔪</span>
-        Quiero tensión
-      </button>
+  <p class="hello">📚 Mi biblioteca</p>
+  <h1 class="hero">Tu pequeño caos literario. 💗</h1>
 
-      <button class="feeling">
-        <span>🌊</span>
-        Quiero mar
-      </button>
+  <div class="tabs">
+    <button class="tab active" onclick="libraryFilter('Todos',this)">Todos</button>
+    <button class="tab" onclick="libraryFilter('Leyendo',this)">📖 Leyendo</button>
+    <button class="tab" onclick="libraryFilter('Quiero leer',this)">🔮 Quiero leer</button>
+    <button class="tab" onclick="libraryFilter('Leído',this)">✅ Leídos</button>
+    <button class="tab" onclick="libraryFilter('Favorito',this)">💕 Favoritos</button>
+  </div>
 
-      <button class="feeling">
-        <span>😂</span>
-        Quiero reírme
-      </button>
+  <div id="library" class="book-row"></div>
 
+</section>
+
+
+<!-- 👯 AMIGOS -->
+<section id="amigos" class="page">
+
+  <p class="hello">👯 Comunidad</p>
+  <h1 class="hero">Tu gente lectora.</h1>
+
+  <div class="list-card">
+    <div class="bigemoji">👩🏻</div>
+    <div>
+      <h3>Amiga de demostración</h3>
+      <p class="muted">Está leyendo una historia de romance. 💕</p>
+    </div>
+  </div>
+
+  <div class="list-card">
+    <div class="bigemoji">👩🏼</div>
+    <div>
+      <h3>Lectora misteriosa</h3>
+      <p class="muted">Terminó un libro hace 2 horas. 📖</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💬 Clubs de lectura</h2>
+    <br>
+    <p class="muted">Aquí podremos crear clubs, debates y chats de lectura.</p>
+    <br>
+    <button class="btn" onclick="alert('💬 Los clubs de lectura llegarán próximamente.')">
+      ➕ Crear club
+    </button>
+  </div>
+
+</section>
+
+
+<!-- 👤 PERFIL -->
+<section id="perfil" class="page profile">
+
+  <div class="avatar">👤</div>
+
+  <h1>Nahia</h1>
+  <p class="muted">@bookishreader</p>
+
+  <p style="margin:15px">
+    “Perdiéndome voluntariamente en historias.” 📚✨
+  </p>
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong id="statBooks">0</strong>
+      <small>📚 Libros</small>
     </div>
 
-  </section>
-
-
-  <!-- TENDENCIAS -->
-  <section class="section">
-
-    <div class="section-title">
-      <h2>🔥 Tendencias</h2>
-      <span class="see-more">Ver más</span>
+    <div class="stat">
+      <strong>5</strong>
+      <small>👯 Amigos</small>
     </div>
 
-    <div class="books">
-
-      <div class="book-card">
-        <div class="cover cover-purple">🌙</div>
-        <div class="book-title">Libro popular</div>
-        <div class="book-author">Autora</div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover cover-blue">🌊</div>
-        <div class="book-title">Historia del mar</div>
-        <div class="book-author">Autor</div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover cover-rose">🌹</div>
-        <div class="book-title">Una historia de amor</div>
-        <div class="book-author">Autora</div>
-      </div>
-
-      <div class="book-card">
-        <div class="cover cover-purple">🐉</div>
-        <div class="book-title">El reino perdido</div>
-        <div class="book-author">Autora</div>
-      </div>
-
+    <div class="stat">
+      <strong>4.6</strong>
+      <small>⭐ Media</small>
     </div>
 
-  </section>
+  </div>
 
+  <div class="section">
 
-  <!-- SAGAS -->
-  <section class="section">
-
-    <div class="section-title">
-      <h2>📚 Sagas destacadas</h2>
-      <span class="see-more">Explorar</span>
+    <div class="list-card" onclick="showPage('estadisticas')">
+      <div class="bigemoji">📊</div>
+      <div>
+        <h3>Estadísticas</h3>
+        <p class="muted">Veamos qué tan descontrolados son tus hábitos. ☠️📊</p>
+      </div>
     </div>
 
-    <div class="horizontal-scroll">
-
-      <div class="genre">
-        <span class="genre-emoji">💕</span>
-        <span class="genre-name">Romance</span>
+    <div class="list-card" onclick="showPage('logros')">
+      <div class="bigemoji">🏆</div>
+      <div>
+        <h3>Logros</h3>
+        <p class="muted">Porque leer también merece premios. 👑</p>
       </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🧚🏻</span>
-        <span class="genre-name">Fantasy</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🌙</span>
-        <span class="genre-name">Romantasy</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🔪</span>
-        <span class="genre-name">Thriller</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">👻</span>
-        <span class="genre-name">Terror</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🖤</span>
-        <span class="genre-name">Dark Romance</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🚀</span>
-        <span class="genre-name">Ciencia ficción</span>
-      </div>
-
-      <div class="genre">
-        <span class="genre-emoji">🏛️</span>
-        <span class="genre-name">Histórico</span>
-      </div>
-
     </div>
 
-  </section>
-
-
-  <!-- PRÓXIMAMENTE -->
-  <section class="section">
-
-    <div class="section-title">
-      <h2>📅 Próximamente</h2>
+    <div class="list-card" onclick="showPage('retos')">
+      <div class="bigemoji">🎯</div>
+      <div>
+        <h3>Retos</h3>
+        <p class="muted">12 / 20 libros este verano. 🔥</p>
+      </div>
     </div>
 
-    <div class="current-book">
-
-      <div class="cover cover-blue">
-        ✨
+    <div class="list-card" onclick="showPage('apariencia')">
+      <div class="bigemoji">🎨</div>
+      <div>
+        <h3>Apariencia</h3>
+        <p class="muted">Elige tu universo BOOKISH.</p>
       </div>
-
-      <div class="book-info">
-
-        <h3>Nuevos libros. Nuevas obsesiones.</h3>
-
-        <p class="author">
-          Nuevas historias están llegando... 😭📚
-        </p>
-
-        <button class="primary-btn">
-          🔮 Guardar
-        </button>
-
-      </div>
-
     </div>
 
-  </section>
+    <div class="list-card" onclick="showPage('configuracion')">
+      <div class="bigemoji">⚙️</div>
+      <div>
+        <h3>Configuración</h3>
+        <p class="muted">Privacidad, sonido y más.</p>
+      </div>
+    </div>
 
-</div>
+  </div>
+
+</section>
 
 
-<!-- NAVEGACIÓN -->
-<nav class="bottom-nav">
+<!-- 📊 ESTADÍSTICAS -->
+<section id="estadisticas" class="page">
 
-  <button class="nav-item active">
-    <span>🏠</span>
-    Inicio
+  <p class="hello">📊 Estadísticas</p>
+  <h1 class="hero">Tus hábitos lectores.</h1>
+
+  <div class="stats">
+
+    <div class="stat"><strong id="sBooks">0</strong><small>📚 Libros</small></div>
+    <div class="stat"><strong>0</strong><small>📄 Páginas</small></div>
+    <div class="stat"><strong>24h</strong><small>⏱️ Tiempo</small></div>
+    <div class="stat"><strong>4.6</strong><small>⭐ Valoración</small></div>
+    <div class="stat"><strong>🔥 7</strong><small>Racha</small></div>
+    <div class="stat"><strong>💕</strong><small>Romance</small></div>
+
+  </div>
+
+  <div class="card">
+    <h2>📅 Libros por mes</h2>
+    <br>
+    <p>ENERO ▓▓▓▓</p>
+    <p>FEBRERO ▓▓▓▓▓▓</p>
+    <p>MARZO ▓▓▓</p>
+    <p>ABRIL ▓▓▓▓▓</p>
+  </div>
+
+</section>
+
+
+<!-- 🏆 LOGROS -->
+<section id="logros" class="page">
+
+  <p class="hello">🏆 Logros</p>
+  <h1 class="hero">Tus victorias lectoras.</h1>
+
+  <div class="list-card">
+    <div class="bigemoji">📖</div>
+    <div><h3>Primera página</h3><p class="muted">Has comenzado tu aventura.</p></div>
+  </div>
+
+  <div class="list-card">
+    <div class="bigemoji">📚</div>
+    <div><h3>Comepáginas</h3><p class="muted">50 libros leídos.</p></div>
+  </div>
+
+  <div class="list-card">
+    <div class="bigemoji">🔥</div>
+    <div><h3>No sé parar</h3><p class="muted">Una racha de 7 días.</p></div>
+  </div>
+
+  <div class="list-card">
+    <div class="bigemoji">😭</div>
+    <div><h3>¿Por qué me haces esto?</h3><p class="muted">Has sobrevivido a un libro emocional.</p></div>
+  </div>
+
+  <div class="list-card">
+    <div class="bigemoji">👑</div>
+    <div><h3>Reina lectora</h3><p class="muted">Desbloquea todos los logros.</p></div>
+  </div>
+
+</section>
+
+
+<!-- 🎯 RETOS -->
+<section id="retos" class="page">
+
+  <p class="hello">🎯 Retos</p>
+  <h1 class="hero">Vamos a leer. O al menos a intentarlo. ☠️</h1>
+
+  <div class="card">
+    <h2>📚 Leer 20 libros este verano</h2>
+    <br>
+    <h3>12 / 20</h3>
+    <div class="progress"><span style="width:60%"></span></div>
+    <p class="muted">60% completado 🔥</p>
+  </div>
+
+  <br>
+
+  <button class="btn" onclick="alert('🎯 Próximamente podrás crear tus propios retos.')">
+    ➕ Crear reto
   </button>
 
-  <button class="nav-item">
-    <span>🔎</span>
-    Buscar
+</section>
+
+
+<!-- 🎨 APARIENCIA -->
+<section id="apariencia" class="page">
+
+  <p class="hello">🎨 Apariencia</p>
+  <h1 class="hero">Elige tu universo BOOKISH.</h1>
+
+  <div class="theme-grid">
+
+    <button class="theme" data-theme="coquette" onclick="setTheme('coquette')">
+      <div>🎀</div>
+      <b>Coquette</b>
+      <small>Rosa · crema · dorado</small>
+    </button>
+
+    <button class="theme" data-theme="dark" onclick="setTheme('dark')">
+      <div>🖤</div>
+      <b>Dark</b>
+      <small>Burdeos · negro · dorado</small>
+    </button>
+
+    <button class="theme" data-theme="fantasy" onclick="setTheme('fantasy')">
+      <div>🧚🏻</div>
+      <b>Fantasy</b>
+      <small>Bosque · magia · estrellas</small>
+    </button>
+
+    <button class="theme" data-theme="oceano" onclick="setTheme('oceano')">
+      <div>🌊</div>
+      <b>Océano</b>
+      <small>Mar · arena · turquesa</small>
+    </button>
+
+    <button class="theme" data-theme="elegante" onclick="setTheme('elegante')">
+      <div>🤍</div>
+      <b>Elegante</b>
+      <small>Marfil · beige · dorado</small>
+    </button>
+
+  </div>
+
+  <div class="card">
+    <h2>✨ Tu tema cambia toda BOOKISH</h2>
+    <p class="muted">Y quedará guardado aunque cierres la aplicación.</p>
+  </div>
+
+</section>
+
+
+<!-- ⚙️ CONFIGURACIÓN -->
+<section id="configuracion" class="page">
+
+  <p class="hello">⚙️ Configuración</p>
+  <h1 class="hero">Tu BOOKISH, tus reglas.</h1>
+
+  <div class="setting">
+    <span>🔐 Perfil privado</span>
+    <button class="btn light" onclick="toggleSetting(this)">No</button>
+  </div>
+
+  <div class="setting">
+    <span>🔔 Notificaciones</span>
+    <button class="btn light" onclick="toggleSetting(this)">Sí</button>
+  </div>
+
+  <div class="setting">
+    <span>🔊 Sonidos</span>
+    <button class="btn light" onclick="toggleSetting(this)">Sí</button>
+  </div>
+
+  <div class="setting">
+    <span>🌐 Idioma</span>
+    <strong>🇪🇸 Español</strong>
+  </div>
+
+  <div class="setting">
+    <span>🔑 Contraseña</span>
+    <button class="btn light" onclick="alert('🔑 Esta función estará conectada cuando tengamos cuentas reales.')">Cambiar</button>
+  </div>
+
+  <div class="setting">
+    <span>🗑️ Eliminar cuenta</span>
+    <button class="btn light" onclick="alert('🗑️ No hay una cuenta real todavía.')">Gestionar</button>
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- 📱 NAVEGACIÓN -->
+<nav class="nav">
+
+  <button class="active" onclick="showPage('inicio',this)">
+    <span>🏠</span>Inicio
   </button>
 
-  <button class="nav-item">
-    <span class="add-btn">＋</span>
-    Añadir
+  <button onclick="showPage('buscar',this)">
+    <span>🔎</span>Buscar
   </button>
 
-  <button class="nav-item">
-    <span>📚</span>
-    Biblioteca
+  <button class="add" onclick="showPage('anadir')">+</button>
+
+  <button onclick="showPage('biblioteca',this)">
+    <span>📚</span>Biblioteca
   </button>
 
-  <button class="nav-item">
-    <span>👯</span>
-    Amigos
+  <button onclick="showPage('amigos',this)">
+    <span>👯</span>Amigos
   </button>
 
 </nav>
 
+
+<!-- 📕 FICHA DEL LIBRO -->
+<div id="bookModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeBook()">×</button>
+
+    <div class="cover" style="margin:15px auto">📖</div>
+
+    <h1 id="bookTitle">Libro</h1>
+
+    <p class="muted">Autor/a de demostración</p>
+
+    <br>
+
+    <div class="tabs">
+      <button class="tab active">📖 Información</button>
+      <button class="tab">⭐ Tu valoración</button>
+      <button class="tab">🎨 Fanart</button>
+      <button class="tab">💭 Reseñas</button>
+      <button class="tab">📚 Saga</button>
+    </div>
+
+    <div class="card">
+
+      <h2>📖 Sinopsis</h2>
+
+      <br>
+
+      <p class="muted">
+        Esta es una ficha de demostración de BOOKISH.
+        Aquí aparecerán posteriormente los datos reales del libro,
+        su sinopsis, autor, género, páginas y fecha de publicación.
+      </p>
+
+      <br>
+
+      <h3>⭐ Tu valoración</h3>
+
+      <div class="rating" onclick="rateBook()">⭐⭐⭐⭐⭐</div>
+
+      <div class="option-grid">
+
+        <button class="option">💕 Romance ⭐⭐⭐⭐⭐</button>
+        <button class="option">🌶️ Spicy ⭐⭐⭐</button>
+        <button class="option">🔥 Química ⭐⭐⭐⭐</button>
+        <button class="option">🐌 Slow burn ⭐⭐⭐⭐</button>
+        <button class="option">😭 Daño emocional ⭐⭐⭐⭐⭐</button>
+        <button class="option">🧚🏻 Fantasía ⭐⭐⭐⭐</button>
+
+      </div>
+
+      <button class="btn" onclick="addCurrentBook()">
+        🔮 Quiero leer
+      </button>
+
+      <br><br>
+
+      <h3>💭 Reseñas</h3>
+
+      <br>
+
+      <div class="card">
+        <p>“Necesito hablar de este libro inmediatamente.” 😭📚</p>
+        <br>
+        <p class="muted">@lectora_demo · ⭐⭐⭐⭐⭐</p>
+      </div>
+
+      <br>
+
+      <div class="spoiler">
+        🔒 SPOILER — pulsa para revelar
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ☰ MENÚ -->
+<div id="menuModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeMenu()">×</button>
+
+    <h1>☰ BOOKISH</h1>
+
+    <br>
+
+    <div class="menu-items">
+
+      <button onclick="go('perfil')">👤 Mi perfil</button>
+
+      <button onclick="go('biblioteca')">📚 Biblioteca</button>
+
+      <button onclick="go('estadisticas')">📊 Estadísticas</button>
+
+      <button onclick="go('logros')">🏆 Logros</button>
+
+      <button onclick="go('retos')">🎯 Retos</button>
+
+      <button onclick="go('apariencia')">🎨 Apariencia</button>
+
+      <button onclick="go('configuracion')">⚙️ Configuración</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   BOOKISH
+   FUNCIONES PRINCIPALES
+========================= */
+
+const defaultBooks=[
+  {
+    title:"Un libro de demostración",
+    author:"Autora de demostración",
+    genre:"Romance",
+    status:"Leyendo",
+    emoji:"🌹"
+  },
+  {
+    title:"Historia del mar",
+    author:"Autor",
+    genre:"Fantasy",
+    status:"Quiero leer",
+    emoji:"🌊"
+  },
+  {
+    title:"Una historia de amor",
+    author:"Autora",
+    genre:"Romance",
+    status:"Favorito",
+    emoji:"💕"
+  }
+];
+
+let books=JSON.parse(localStorage.getItem("bookishBooks")) || defaultBooks;
+
+
+/* CAMBIO DE PÁGINA */
+
+function showPage(id,button){
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  const page=document.getElementById(id);
+
+  if(page) page.classList.add("active");
+
+  document.querySelectorAll(".nav button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  if(button) button.classList.add("active");
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  renderLibrary();
+  updateStats();
+}
+
+
+/* NAVEGACIÓN DESDE MENÚ */
+
+function go(id){
+
+  closeMenu();
+  showPage(id);
+
+}
+
+
+/* MENÚ */
+
+function openMenu(){
+
+  document.getElementById("menuModal").classList.add("show");
+
+}
+
+function closeMenu(){
+
+  document.getElementById("menuModal").classList.remove("show");
+
+}
+
+
+/* LIBROS */
+
+function openBook(title){
+
+  document.getElementById("bookTitle").textContent=title;
+
+  document.getElementById("bookModal").classList.add("show");
+
+}
+
+function closeBook(){
+
+  document.getElementById("bookModal").classList.remove("show");
+
+}
+
+function rateBook(){
+
+  alert("⭐ ¡Valoración guardada! En la siguiente versión podremos guardar estrellas individualmente.");
+
+}
+
+
+/* AÑADIR LIBRO */
+
+function addBook(){
+
+  const title=document.getElementById("newTitle").value.trim();
+  const author=document.getElementById("newAuthor").value.trim();
+  const genre=document.getElementById("newGenre").value;
+
+  if(!title){
+
+    alert("📚 Escribe el título del libro primero.");
+
+    return;
+
+  }
+
+  books.push({
+    title:title,
+    author:author || "Autor/a",
+    genre:genre,
+    status:"Quiero leer",
+    emoji:"📖"
+  });
+
+  saveBooks();
+
+  document.getElementById("newTitle").value="";
+  document.getElementById("newAuthor").value="";
+
+  alert("✨ ¡Libro añadido a BOOKISH!");
+
+  showPage("biblioteca");
+
+}
+
+
+/* GUARDAR LIBROS */
+
+function saveBooks(){
+
+  localStorage.setItem("bookishBooks",JSON.stringify(books));
+
+}
+
+
+/* BIBLIOTECA */
+
+function renderLibrary(filter="Todos"){
+
+  const container=document.getElementById("library");
+
+  if(!container)return;
+
+  container.innerHTML="";
+
+  const filtered=filter==="Todos"
+    ? books
+    : books.filter(book=>book.status===filter);
+
+  if(filtered.length===0){
+
+    container.innerHTML=`
+      <div class="card" style="grid-column:1/-1;text-align:center">
+        <h2>📚 Estantería vacía</h2>
+        <br>
+        <p class="muted">Todavía no hay libros aquí.</p>
+      </div>
+    `;
+
+    return;
+
+  }
+
+  filtered.forEach(book=>{
+
+    const element=document.createElement("div");
+
+    element.className="book";
+
+    element.innerHTML=`
+      <div class="book-cover">${book.emoji}</div>
+      <h3>${escapeHTML(book.title)}</h3>
+      <p class="muted">${escapeHTML(book.author)}</p>
+      <small>${book.status} · ${book.genre}</small>
+      <br><br>
+      <button class="btn light" onclick="openBook('${escapeJS(book.title)}')">
+        📖 Ver ficha
+      </button>
+    `;
+
+    container.appendChild(element);
+
+  });
+
+}
+
+
+/* FILTRO BIBLIOTECA */
+
+function libraryFilter(filter,button){
+
+  document.querySelectorAll(".tab").forEach(t=>{
+    t.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  renderLibrary(filter);
+
+}
+
+
+/* BUSCADOR */
+
+function searchBooks(){
+
+  const query=document.getElementById("search").value.toLowerCase();
+
+  const results=document.getElementById("searchResults");
+
+  results.innerHTML="";
+
+  const found=books.filter(book=>
+
+    book.title.toLowerCase().includes(query) ||
+    book.author.toLowerCase().includes(query) ||
+    book.genre.toLowerCase().includes(query)
+
+  );
+
+  if(found.length===0){
+
+    results.innerHTML=`
+      <div class="card" style="grid-column:1/-1">
+        <h2>😢 No encontramos este libro.</h2>
+        <br>
+        <p class="muted">Puedes añadirlo desde ➕ Añadir.</p>
+      </div>
+    `;
+
+    return;
+
+  }
+
+  found.forEach(book=>{
+
+    results.innerHTML+=`
+      <div class="book" onclick="openBook('${escapeJS(book.title)}')">
+        <div class="book-cover">${book.emoji}</div>
+        <h3>${escapeHTML(book.title)}</h3>
+        <p class="muted">${escapeHTML(book.author)}</p>
+        <small>${book.genre}</small>
+      </div>
+    `;
+
+  });
+
+}
+
+
+/* DESCUBRIR */
+
+function discover(genre){
+
+  showPage("buscar");
+
+  document.getElementById("search").value=genre;
+
+  searchBooks();
+
+}
+
+
+/* TEMAS */
+
+function setTheme(theme){
+
+  document.body.className=theme;
+
+  localStorage.setItem("bookishTheme",theme);
+
+  document.querySelectorAll(".theme").forEach(button=>{
+    button.classList.remove("selected");
+  });
+
+  const selected=document.querySelector(
+    `.theme[data-theme="${theme}"]`
+  );
+
+  if(selected) selected.classList.add("selected");
+
+}
+
+
+/* CARGAR TEMA */
+
+function loadTheme(){
+
+  const saved=localStorage.getItem("bookishTheme") || "coquette";
+
+  setTheme(saved);
+
+}
+
+
+/* CONFIGURACIÓN */
+
+function toggleSetting(button){
+
+  if(button.textContent==="Sí"){
+    button.textContent="No";
+  }else{
+    button.textContent="Sí";
+  }
+
+}
+
+
+/* ESTADÍSTICAS */
+
+function updateStats(){
+
+  const count=books.length;
+
+  const elements=[
+    document.getElementById("statBooks"),
+    document.getElementById("sBooks")
+  ];
+
+  elements.forEach(e=>{
+    if(e)e.textContent=count;
+  });
+
+}
+
+
+/* SEGURIDAD BÁSICA PARA TEXTO AÑADIDO */
+
+function escapeHTML(text){
+
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+function escapeJS(text){
+
+  return text
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+/* CERRAR MODALES TOCANDO FUERA */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+  modal.addEventListener("click",function(e){
+
+    if(e.target===modal){
+      modal.classList.remove("show");
+    }
+
+  });
+
+});
+
+
+/* INICIO */
+
+renderLibrary();
+updateStats();
+loadTheme();
+searchBooks();
+
+</script>
+
 </body>
         </html>
+        
