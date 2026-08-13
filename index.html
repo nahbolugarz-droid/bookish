@@ -1108,25 +1108,638 @@ body.dark .decor-elegante{
 
 <script>
 
-const books=[
+const books = [];
 
-{
- title:"Luna de cristal",
- author:"A. Valentina",
- genre:"Fantasía",
- emoji:"🌙",
- bg:"#7354a8",
- rating:4.8
-},
+/* =========================================
+   BOOKISH — BIBLIOTECA REAL
+   Open Library API
+   ========================================= */
 
-{
- title:"Historia del mar",
- author:"Clara Azul",
- genre:"Mar",
- emoji:"🌊",
- bg:"#398ca1",
- rating:4.5
-},
+const BOOKISH_API = "https://openlibrary.org/search.json";
+const BOOKISH_COVERS = "https://covers.openlibrary.org/b/id/";
+
+/* Convertimos los datos de Open Library
+   al formato que ya utiliza BOOKISH */
+function convertBook(b) {
+
+    const subjects = (b.subject || []).slice(0, 20);
+
+    let genre = "Otros";
+
+    const text = (
+        (b.title || "") + " " +
+        subjects.join(" ")
+    ).toLowerCase();
+
+    if (
+        text.includes("romance") ||
+        text.includes("love") ||
+        text.includes("romantic")
+    ) {
+        genre = "Romance";
+    }
+
+    else if (
+        text.includes("fantasy") ||
+        text.includes("fantasía") ||
+        text.includes("magic") ||
+        text.includes("fairy")
+    ) {
+        genre = "Fantasía";
+    }
+
+    else if (
+        text.includes("mystery") ||
+        text.includes("misterio") ||
+        text.includes("detective") ||
+        text.includes("crime") ||
+        text.includes("thriller")
+    ) {
+        genre = "Misterio";
+    }
+
+    else if (
+        text.includes("horror") ||
+        text.includes("dark") ||
+        text.includes("gothic")
+    ) {
+        genre = "Dark";
+    }
+
+    else if (
+        text.includes("history") ||
+        text.includes("historia")
+    ) {
+        genre = "Historia";
+    }
+
+    else if (
+        text.includes("science fiction") ||
+        text.includes("sci-fi") ||
+        text.includes("science fiction")
+    ) {
+        genre = "Ciencia ficción";
+    }
+
+    else if (
+        text.includes("young adult") ||
+        text.includes("juvenile")
+    ) {
+        genre = "Juvenil";
+    }
+
+    else if (
+        text.includes("adventure") ||
+        text.includes("aventura")
+    ) {
+        genre = "Aventura";
+    }
+
+    else if (
+        text.includes("poetry") ||
+        text.includes("poesía")
+    ) {
+        genre = "Poesía";
+    }
+
+    let emoji = "📖";
+
+    const emojis = {
+        "Romance": "💕",
+        "Fantasía": "🧚",
+        "Misterio": "🔎",
+        "Dark": "🌑",
+        "Historia": "🏛️",
+        "Ciencia ficción": "🚀",
+        "Juvenil": "✨",
+        "Aventura": "🗺️",
+        "Poesía": "🌹"
+    };
+
+    if (emojis[genre]) {
+        emoji = emojis[genre];
+    }
+
+    return {
+
+        title: b.title || "Sin título",
+
+        author:
+            b.author_name &&
+            b.author_name.length
+                ? b.author_name[0]
+                : "Autor desconocido",
+
+        genre: genre,
+
+        emoji: emoji,
+
+        bg: "#e9dce1",
+
+        rating:
+            b.ratings_average
+                ? Number(b.ratings_average.toFixed(1))
+                : 0,
+
+        year:
+            b.first_publish_year || "",
+
+        cover:
+            b.cover_i
+                ? BOOKISH_COVERS + b.cover_i + "-M.jpg"
+                : "",
+
+        id:
+            b.key || "",
+
+        subjects: subjects,
+
+        editions:
+            b.edition_count || 0,
+
+        language:
+            b.language && b.language.length
+                ? b.language[0]
+                : "",
+
+        isbn:
+            b.isbn && b.isbn.length
+                ? b.isbn[0]
+                : "",
+
+        openLibrary:
+            b.key
+                ? "https://openlibrary.org" + b.key
+                : "#"
+
+    };
+}
+
+
+/* =========================================
+   BUSCAR LIBROS
+   ========================================= */
+
+async function searchBookishBooks(
+    query = "",
+    page = 1,
+    limit = 24,
+    sort = ""
+) {
+
+    try {
+
+        const params = new URLSearchParams();
+
+        params.set(
+            "q",
+            query || "*"
+        );
+
+        params.set(
+            "page",
+            page
+        );
+
+        params.set(
+            "limit",
+            limit
+        );
+
+        params.set(
+            "fields",
+            "key,title,author_name,first_publish_year,cover_i,ratings_average,subject,edition_count,isbn,language"
+        );
+
+        if (sort) {
+            params.set(
+                "sort",
+                sort
+            );
+        }
+
+        const response =
+            await fetch(
+                BOOKISH_API +
+                "?" +
+                params.toString()
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "No se pudo conectar con Open Library"
+            );
+        }
+
+        const data =
+            await response.json();
+
+        const results =
+            (data.docs || [])
+                .map(convertBook)
+                .filter(
+                    book =>
+                        book.title &&
+                        book.author
+                );
+
+        return {
+
+            books: results,
+
+            total:
+                data.numFound || 0,
+
+            page: page
+
+        };
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "BOOKISH API:",
+            error
+        );
+
+        return {
+
+            books: [],
+
+            total: 0,
+
+            page: page
+
+        };
+    }
+}
+
+
+/* =========================================
+   CARGAR MUCHOS LIBROS AL INICIAR BOOKISH
+   ========================================= */
+
+async function loadBookishLibrary() {
+
+    const result =
+        await searchBookishBooks(
+            "",
+            1,
+            30
+        );
+
+    books.length = 0;
+
+    result.books.forEach(
+        book => books.push(book)
+    );
+
+    /* Intentamos actualizar las partes
+       existentes de BOOKISH */
+
+    if (typeof renderBooks === "function") {
+        renderBooks(books);
+    }
+
+    if (typeof renderLibrary === "function") {
+        renderLibrary(books);
+    }
+
+    if (typeof renderHome === "function") {
+        renderHome();
+    }
+
+    if (typeof renderAllBooks === "function") {
+        renderAllBooks(books);
+    }
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "bookish:books-loaded",
+            {
+                detail: {
+                    books: books
+                }
+            }
+        )
+    );
+
+}
+
+
+/* =========================================
+   BUSCAR DESDE BOOKISH
+   ========================================= */
+
+window.bookishSearch =
+    async function(query, page = 1) {
+
+        const result =
+            await searchBookishBooks(
+                query,
+                page,
+                24
+            );
+
+        books.length = 0;
+
+        result.books.forEach(
+            book => books.push(book)
+        );
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookish:search-results",
+                {
+                    detail: {
+                        books: result.books,
+
+                        total:
+                            result.total,
+
+                        page:
+                            result.page,
+
+                        query:
+                            query
+                    }
+                }
+            )
+        );
+
+        return result;
+    };
+
+
+/* =========================================
+   GÉNEROS
+   ========================================= */
+
+window.bookishGenre =
+    async function(genre, page = 1) {
+
+        const subjects = {
+
+            "Romance":
+                "romance",
+
+            "Fantasía":
+                "fantasy",
+
+            "Misterio":
+                "mystery",
+
+            "Dark":
+                "gothic horror",
+
+            "Ciencia ficción":
+                "science fiction",
+
+            "Aventura":
+                "adventure",
+
+            "Historia":
+                "history",
+
+            "Poesía":
+                "poetry",
+
+            "Juvenil":
+                "young adult"
+
+        };
+
+        const query =
+            subjects[genre] ||
+            genre;
+
+        return await window.bookishSearch(
+            "subject:" + query,
+            page
+        );
+    };
+
+
+/* =========================================
+   LIBROS NUEVOS
+   ========================================= */
+
+window.bookishNewBooks =
+    async function(page = 1) {
+
+        const result =
+            await searchBookishBooks(
+                "",
+                page,
+                24,
+                "new"
+            );
+
+        books.length = 0;
+
+        result.books.forEach(
+            book => books.push(book)
+        );
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookish:new-books",
+                {
+                    detail: result
+                }
+            )
+        );
+
+        return result;
+    };
+
+
+/* =========================================
+   LIBROS ANTIGUOS / CLÁSICOS
+   ========================================= */
+
+window.bookishOldBooks =
+    async function(page = 1) {
+
+        const result =
+            await searchBookishBooks(
+                "",
+                page,
+                24,
+                "old"
+            );
+
+        books.length = 0;
+
+        result.books.forEach(
+            book => books.push(book)
+        );
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookish:old-books",
+                {
+                    detail: result
+                }
+            )
+        );
+
+        return result;
+    };
+
+
+/* =========================================
+   ALEATORIO
+   ========================================= */
+
+window.bookishRandomBooks =
+    async function(page = 1) {
+
+        const result =
+            await searchBookishBooks(
+                "",
+                page,
+                24,
+                "random"
+            );
+
+        books.length = 0;
+
+        result.books.forEach(
+            book => books.push(book)
+        );
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookish:random-books",
+                {
+                    detail: result
+                }
+            )
+        );
+
+        return result;
+    };
+
+
+/* =========================================
+   TENDENCIAS
+   ========================================= */
+
+/*
+   Open Library tiene una sección de tendencias
+   que cambia según los libros que la comunidad
+   está añadiendo a sus estanterías.
+
+   Usamos búsquedas actuales para que la sección
+   no sea siempre exactamente igual.
+*/
+
+window.bookishTrending =
+    async function() {
+
+        const queries = [
+
+            "romance",
+
+            "fantasy",
+
+            "mystery",
+
+            "young adult",
+
+            "thriller",
+
+            "fiction",
+
+            "romantic"
+
+        ];
+
+        const selected =
+            queries[
+                Math.floor(
+                    Math.random() *
+                    queries.length
+                )
+            ];
+
+        const result =
+            await searchBookishBooks(
+                selected,
+                1,
+                12,
+                "new"
+            );
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookish:trending",
+                {
+                    detail: {
+                        books:
+                            result.books,
+
+                        category:
+                            selected
+                    }
+                }
+            )
+        );
+
+        return result;
+    };
+
+
+/* =========================================
+   ABRIR LIBRO
+   ========================================= */
+
+window.bookishOpenBook =
+    function(book) {
+
+        if (
+            book &&
+            book.openLibrary
+        ) {
+
+            window.open(
+                book.openLibrary,
+                "_blank"
+            );
+
+        }
+
+    };
+
+
+/* =========================================
+   INICIO
+   ========================================= */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadBookishLibrary();
+
+        }
+    );
+
+}
+
+else {
+
+    loadBookishLibrary();
+
+}
+ 
 
 {
  title:"Una historia de amor",
@@ -1134,37 +1747,7 @@ const books=[
  genre:"Romance",
  emoji:"🌹",
  bg:"#a04d68",
- rating:4.7
-},
-
-{
- title:"El reino perdido",
- author:"Irene Moon",
- genre:"Fantasía",
- emoji:"🏰",
- bg:"#584477",
- rating:4.9
-},
-
-{
- title:"Bajo la luna negra",
- author:"L. Night",
- genre:"Dark",
- emoji:"🌑",
- bg:"#351824",
- rating:4.6
-},
-
-{
- title:"El secreto",
- author:"Nora Vale",
- genre:"Misterio",
- emoji:"🔐",
- bg:"#53667d",
- rating:4.3
-}
-
-];
+ 
 
 
 let library=
