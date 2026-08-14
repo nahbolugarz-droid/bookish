@@ -2,71 +2,198 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOKISH 📚</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BOOKISH 📚✨</title>
 
 <style>
 :root{
-  --fondo:#fff8fa;
-  --tarjeta:#ffffff;
-  --texto:#382a30;
-  --suave:#927982;
-  --principal:#b86f8c;
-  --secundario:#efd3dd;
-  --boton:#49343d;
-  --sombra:0 10px 30px rgba(60,30,45,.10);
+  --bg:#f8f3f6;
+  --card:#ffffff;
+  --text:#302832;
+  --muted:#817783;
+  --accent:#b76e92;
+  --accent2:#e6bfd1;
+  --shadow:0 10px 30px rgba(70,40,60,.12);
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  background:var(--fondo);
-  color:var(--texto);
-  font-family:Georgia,serif;
-  transition:.3s;
+  font-family:Georgia,"Times New Roman",serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  transition:.4s;
 }
 
 button,input,textarea,select{
-  font-family:Arial,sans-serif;
+  font:inherit;
 }
 
 button{
   cursor:pointer;
-  border:0;
 }
+
+.app{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+/* =========================
+   TEMAS
+========================= */
+
+body.theme-coquette{
+  --bg:#fff1f7;
+  --card:#fffafd;
+  --text:#4b3040;
+  --muted:#977183;
+  --accent:#d986ad;
+  --accent2:#f2c6da;
+}
+
+body.theme-fantasy{
+  --bg:#eeeafa;
+  --card:#faf8ff;
+  --text:#332c4d;
+  --muted:#77708e;
+  --accent:#7662b8;
+  --accent2:#cfc3ef;
+}
+
+body.theme-dark{
+  --bg:#100c10;
+  --card:#1b1219;
+  --text:#f3e9ef;
+  --muted:#a9919f;
+  --accent:#9e304e;
+  --accent2:#4c1628;
+}
+
+body.theme-ocean{
+  --bg:#eaf8fa;
+  --card:#ffffff;
+  --text:#23434b;
+  --muted:#68848b;
+  --accent:#328fa2;
+  --accent2:#b8e5eb;
+}
+
+body.theme-elegant{
+  --bg:#f4f0e9;
+  --card:#fffdf8;
+  --text:#38342e;
+  --muted:#837b70;
+  --accent:#a48655;
+  --accent2:#ded0b3;
+}
+
+/* ELEMENTOS DEL TEMA
+   quedan DETRÁS de los libros */
+
+.theme-decoration{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.theme-decoration span{
+  position:absolute;
+  opacity:.20;
+  font-size:55px;
+  animation:float 7s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-18px) rotate(5deg)}
+}
+
+.coquette-decoration span:nth-child(1){content:"🎀"}
+.coquette-decoration span:nth-child(2){content:"🎀"}
+.coquette-decoration span:nth-child(3){content:"🌸"}
+
+.fantasy-decoration span:nth-child(1){content:"✨"}
+.fantasy-decoration span:nth-child(2){content:"🦋"}
+.fantasy-decoration span:nth-child(3){content:"🏰"}
+.fantasy-decoration span:nth-child(4){content:"🌙"}
+
+.dark-decoration span:nth-child(1){content:"🌹"}
+.dark-decoration span:nth-child(2){content:"🕯️"}
+.dark-decoration span:nth-child(3){content:"🌑"}
+.dark-decoration span:nth-child(4){content:"🥀"}
+
+.ocean-decoration span:nth-child(1){content:"🐚"}
+.ocean-decoration span:nth-child(2){content:"🪸"}
+.ocean-decoration span:nth-child(3){content:"🐚"}
+.ocean-decoration span:nth-child(4){content:"🌊"}
+
+.elegant-decoration span:nth-child(1){content:"✦"}
+.elegant-decoration span:nth-child(2){content:"❦"}
+.elegant-decoration span:nth-child(3){content:"✧"}
+
+.theme-decoration span:nth-child(1){top:12%;left:5%}
+.theme-decoration span:nth-child(2){top:32%;right:5%}
+.theme-decoration span:nth-child(3){bottom:20%;left:8%}
+.theme-decoration span:nth-child(4){bottom:8%;right:12%}
+
+/* =========================
+   ESTRUCTURA
+========================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:50;
-  height:65px;
+  z-index:20;
+  backdrop-filter:blur(15px);
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  border-bottom:1px solid var(--accent2);
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:15px 18px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:0 18px;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px);
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
+  justify-content:space-between;
+  gap:12px;
 }
 
 .logo{
   font-size:25px;
   font-weight:bold;
-  letter-spacing:2px;
+  cursor:pointer;
 }
 
-.icon{
+nav{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+nav button{
+  border:0;
   background:transparent;
-  font-size:23px;
+  color:var(--text);
+  padding:9px 11px;
+  border-radius:12px;
+}
+
+nav button:hover{
+  background:var(--accent2);
 }
 
 main{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 80px;
   position:relative;
   z-index:2;
-  max-width:1100px;
-  margin:auto;
-  padding:20px 16px 100px;
 }
 
 .page{
@@ -75,706 +202,554 @@ main{
 
 .page.active{
   display:block;
+  animation:appear .3s ease;
 }
 
-h1{
-  font-size:32px;
-}
-
-h2{
-  font-size:25px;
-}
-
-.small{
-  color:var(--suave);
-  font-family:Arial,sans-serif;
-  font-size:14px;
-}
-
-.card{
-  background:var(--tarjeta);
-  border-radius:22px;
-  padding:20px;
-  margin:18px 0;
-  box-shadow:var(--sombra);
-}
-
-.btn{
-  background:var(--boton);
-  color:white;
-  padding:11px 16px;
-  border-radius:14px;
-  font-weight:bold;
-}
-
-.btn.light{
-  background:var(--secundario);
-  color:var(--texto);
+@keyframes appear{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
 }
 
 .hero{
-  padding:15px 0;
+  text-align:center;
+  padding:40px 15px;
 }
 
-.reading{
-  background:linear-gradient(135deg,#f0d5df,#fff);
-  padding:20px;
-  border-radius:25px;
-  box-shadow:var(--sombra);
-}
-
-.reading-flex{
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
-
-.cover{
-  width:115px;
-  height:165px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-size:48px;
-  flex-shrink:0;
-  box-shadow:0 8px 18px rgba(0,0,0,.18);
-}
-
-.progress{
-  height:9px;
-  background:#eadde1;
-  border-radius:20px;
-  overflow:hidden;
+.hero h1{
+  font-size:clamp(38px,8vw,70px);
   margin:10px 0;
 }
 
-.progress span{
-  display:block;
-  height:100%;
-  background:var(--principal);
+.hero p{
+  color:var(--muted);
+  font-size:18px;
 }
 
-.horizontal{
+/* =========================
+   BUSCADOR
+========================= */
+
+.search-box{
   display:flex;
-  gap:12px;
-  overflow-x:auto;
-  padding-bottom:8px;
+  max-width:700px;
+  margin:25px auto;
+  background:var(--card);
+  border:1px solid var(--accent2);
+  border-radius:20px;
+  padding:6px;
+  box-shadow:var(--shadow);
 }
 
-.mood{
-  min-width:145px;
-  background:var(--tarjeta);
-  padding:17px;
-  border-radius:20px;
-  box-shadow:var(--sombra);
-  font-size:16px;
+.search-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  padding:13px;
+  min-width:0;
+}
+
+.primary{
+  background:var(--accent);
+  color:white;
+  border:0;
+  border-radius:14px;
+  padding:12px 18px;
+  font-weight:bold;
+}
+
+.secondary{
+  background:var(--accent2);
+  color:var(--text);
+  border:0;
+  border-radius:12px;
+  padding:10px 14px;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:35px 0 15px;
+}
+
+.section-title h2{
+  margin:0;
 }
 
 .book-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:18px;
 }
 
-.book{
-  background:var(--tarjeta);
-  border-radius:18px;
-  padding:11px;
-  box-shadow:var(--sombra);
+.book-card{
+  position:relative;
+  z-index:3;
+  background:var(--card);
+  border:1px solid var(--accent2);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.25s;
   cursor:pointer;
-  transition:.2s;
 }
 
-.book:hover{
-  transform:translateY(-4px);
+.book-card:hover{
+  transform:translateY(-5px);
 }
 
-.book-cover{
+.cover{
   width:100%;
-  height:205px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-size:50px;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  background:var(--accent2);
 }
 
-.book h3{
-  margin:9px 0 3px;
-  font-size:17px;
+.cover-placeholder{
+  width:100%;
+  aspect-ratio:2/3;
+  display:grid;
+  place-items:center;
+  padding:15px;
+  text-align:center;
+  background:linear-gradient(145deg,var(--accent),var(--accent2));
+  color:white;
+  font-size:18px;
+}
+
+.book-info{
+  padding:12px;
+}
+
+.book-info h3{
+  margin:0 0 5px;
+  font-size:16px;
+}
+
+.book-info p{
+  margin:4px 0;
+  color:var(--muted);
+  font-size:13px;
 }
 
 .stars{
-  color:#dda629;
+  color:#d69b31;
   letter-spacing:1px;
 }
 
-.search{
-  display:flex;
-  gap:8px;
+/* =========================
+   GENEROS
+========================= */
+
+.genre-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
 }
 
-input,textarea,select{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--secundario);
-  background:var(--tarjeta);
-  color:var(--texto);
-  border-radius:13px;
-  margin:5px 0 12px;
-}
-
-textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.category{
-  background:var(--tarjeta);
+.genre{
+  padding:25px 15px;
+  border:1px solid var(--accent2);
+  background:var(--card);
   border-radius:18px;
-  padding:16px;
-  margin:10px 0;
-  box-shadow:var(--sombra);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:.2s;
 }
 
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:50;
-  display:flex;
-  justify-content:space-around;
-  padding:9px 5px;
-  background:rgba(255,255,255,.97);
-  backdrop-filter:blur(12px);
-  box-shadow:0 -5px 20px rgba(0,0,0,.08);
+.genre:hover{
+  transform:translateY(-3px);
 }
 
-.bottom button{
-  background:transparent;
-  color:var(--texto);
-  font-size:11px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-}
+/* =========================
+   FICHAS
+========================= */
 
-.bottom span{
-  font-size:20px;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(20,10,15,.7);
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(700px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:var(--tarjeta);
+.detail{
+  background:var(--card);
+  border:1px solid var(--accent2);
   border-radius:25px;
-  padding:22px;
-  position:relative;
+  padding:25px;
+  box-shadow:var(--shadow);
 }
 
-.close{
-  position:absolute;
-  right:14px;
-  top:12px;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:var(--secundario);
+.detail-top{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:25px;
 }
 
-.tabs{
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  margin:18px 0;
+.detail-cover{
+  width:100%;
+  max-width:220px;
+  border-radius:15px;
 }
 
-.tab{
-  white-space:nowrap;
-  padding:10px 13px;
-  border-radius:14px;
-  background:var(--secundario);
-  color:var(--texto);
+.detail h1{
+  margin-top:0;
 }
 
-.tab.active{
-  background:var(--boton);
-  color:white;
+.tag{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:var(--accent2);
+  margin:4px;
+  font-size:13px;
 }
 
-.panel{
-  display:none;
-}
-
-.panel.active{
-  display:block;
+.rating-box{
+  margin-top:20px;
+  padding:18px;
+  border:1px solid var(--accent2);
+  border-radius:18px;
 }
 
 .rating-row{
+  margin:15px 0;
+}
+
+.rating-row input{
+  width:100%;
+}
+
+textarea{
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  border:1px solid var(--accent2);
+  border-radius:14px;
+  padding:12px;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* =========================
+   PERFIL
+========================= */
+
+.profile-card{
+  max-width:700px;
+  margin:auto;
+  background:var(--card);
+  border:1px solid var(--accent2);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.profile-avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
   display:grid;
-  grid-template-columns:145px 1fr 35px;
-  gap:8px;
-  align-items:center;
-  margin:9px 0;
-  font-family:Arial,sans-serif;
+  place-items:center;
+  font-size:45px;
+  background:var(--accent2);
+  margin:auto;
 }
 
-.star-picker{
-  display:flex;
-  gap:3px;
+.profile-name{
+  text-align:center;
+  font-size:25px;
+  margin:12px;
 }
 
-.star-picker button{
-  background:transparent;
-  color:#c8a15a;
-  font-size:34px;
-  padding:0;
-}
-
-.star-picker button.active{
-  color:#e2a629;
-}
-
-.status{
+.theme-options{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+  margin-top:15px;
 }
 
-.status button{
-  padding:10px;
-  border-radius:13px;
-  background:var(--tarjeta);
-  border:1px solid var(--secundario);
-  color:var(--texto);
+.theme-btn{
+  padding:16px;
+  border-radius:15px;
+  border:2px solid transparent;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.status button.active{
-  background:var(--principal);
-  color:white;
+.theme-btn.selected{
+  border-color:var(--accent);
 }
 
-.quote{
-  background:var(--fondo);
-  border-left:4px solid var(--principal);
-  border-radius:10px;
-  padding:14px;
-  margin:10px 0;
+/* =========================
+   COMUNIDAD / FORO
+========================= */
+
+.community-box{
+  background:var(--card);
+  border:1px solid var(--accent2);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:var(--shadow);
 }
 
-.user-item{
-  padding:15px;
-  background:var(--fondo);
-  border-radius:17px;
-  margin:10px 0;
+.forum-post{
+  border-bottom:1px solid var(--accent2);
+  padding:15px 0;
 }
 
-.user-name{
-  font-weight:bold;
+.forum-post:last-child{
+  border-bottom:0;
 }
 
-.like{
-  background:var(--secundario);
-  color:var(--texto);
+.small{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.link-box{
+  background:var(--bg);
   border-radius:12px;
-  padding:7px 11px;
+  padding:12px;
+  word-break:break-all;
+}
+
+/* =========================
+   PAGINACION
+========================= */
+
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:30px 0;
+}
+
+.loading{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
 }
 
 .empty{
   text-align:center;
-  padding:30px;
-  background:var(--tarjeta);
-  border-radius:20px;
-  color:var(--suave);
+  padding:40px;
+  color:var(--muted);
 }
 
-/* DECORACIÓN: SIEMPRE DETRÁS DEL CONTENIDO */
+/* =========================
+   RESPONSIVE
+========================= */
 
-.decor{
-  position:fixed;
-  inset:65px 0 65px;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.decor span{
-  position:absolute;
-  font-size:34px;
-  opacity:.65;
-  animation:flotar 7s ease-in-out infinite;
-}
-
-.decor span:nth-child(1){left:5%;top:10%}
-.decor span:nth-child(2){right:8%;top:18%}
-.decor span:nth-child(3){left:13%;bottom:22%}
-.decor span:nth-child(4){right:15%;bottom:15%}
-.decor span:nth-child(5){left:48%;top:8%}
-.decor span:nth-child(6){right:42%;bottom:28%}
-
-@keyframes flotar{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-/* ELEGANTE */
-
-.decor-elegante{display:block}
-
-/* COQUETTE */
-
-.decor-coquette,
-.decor-fantasia,
-.decor-mar,
-.decor-dark{
-  display:none;
-}
-
-body.coquette{
-  --fondo:#fff2f7;
-  --tarjeta:#fffafd;
-  --texto:#4b2837;
-  --suave:#9b7180;
-  --principal:#d383a2;
-  --secundario:#f3cfdd;
-  --boton:#63364b;
-}
-
-body.coquette .decor-coquette{
-  display:block;
-}
-
-body.coquette .decor-elegante{
-  display:none;
-}
-
-/* FANTASÍA */
-
-body.fantasia{
-  --fondo:#f3effa;
-  --tarjeta:#fff;
-  --texto:#352d48;
-  --suave:#7c718f;
-  --principal:#8161a8;
-  --secundario:#ded2ed;
-  --boton:#3c2c50;
-}
-
-body.fantasia .decor-fantasia{
-  display:block;
-}
-
-body.fantasia .decor-elegante{
-  display:none;
-}
-
-/* MAR */
-
-body.mar{
-  --fondo:#eafaff;
-  --tarjeta:#fff;
-  --texto:#174252;
-  --suave:#668995;
-  --principal:#299bb8;
-  --secundario:#c7edf5;
-  --boton:#124d60;
-}
-
-body.mar .decor-mar{
-  display:block;
-}
-
-body.mar .decor-elegante{
-  display:none;
-}
-
-/* DARK */
-
-body.dark{
-  --fondo:#170f13;
-  --tarjeta:#25171d;
-  --texto:#f4e8e9;
-  --suave:#b99fa5;
-  --principal:#8d3047;
-  --secundario:#4c202d;
-  --boton:#64182e;
-}
-
-body.dark header,
-body.dark .bottom{
-  background:rgba(23,15,19,.97);
-}
-
-body.dark .decor-dark{
-  display:block;
-}
-
-body.dark .decor-elegante{
-  display:none;
-}
-
-@media(max-width:600px){
-
-  .reading-flex{
+@media(max-width:650px){
+  .header-inner{
     align-items:flex-start;
   }
 
-  .reading-flex .cover{
-    width:90px;
-    height:135px;
+  nav{
+    max-width:220px;
+    justify-content:flex-end;
+  }
+
+  nav button{
+    font-size:12px;
+    padding:7px;
+  }
+
+  .detail-top{
+    grid-template-columns:1fr;
+  }
+
+  .detail-cover{
+    margin:auto;
   }
 
   .book-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
-  .rating-row{
-    grid-template-columns:110px 1fr 32px;
-    font-size:13px;
+  .search-box{
+    border-radius:16px;
   }
-
 }
 </style>
 </head>
 
-<body>
+<body class="theme-coquette">
 
-<!-- DECORACIONES -->
-<div class="decor">
+<div class="app">
 
-  <div class="decor-elegante">
-    <span>🕯️</span>
-    <span>🪶</span>
-    <span>🤍</span>
-    <span>🌷</span>
-    <span>✨</span>
-    <span>📜</span>
-  </div>
-
-  <div class="decor-coquette">
-    <span>🎀</span>
-    <span>🌸</span>
-    <span>🦢</span>
-    <span>💗</span>
-    <span>🎀</span>
-    <span>🌷</span>
-  </div>
-
-  <div class="decor-fantasia">
-    <span>🧚🏻</span>
-    <span>🌙</span>
-    <span>🐉</span>
-    <span>✨</span>
-    <span>🏰</span>
-    <span>🦋</span>
-  </div>
-
-  <div class="decor-mar">
-    <span>🐚</span>
-    <span>🪼</span>
-    <span>🐠</span>
-    <span>🪸</span>
-    <span>🫧</span>
-    <span>🌊</span>
-  </div>
-
-  <div class="decor-dark">
-    <span>🥀</span>
-    <span>🕯️</span>
-    <span>🌑</span>
-    <span>🦇</span>
-    <span>🔑</span>
-    <span>🖤</span>
-  </div>
-
+<div class="theme-decoration coquette-decoration" id="decor">
+  <span>🎀</span>
+  <span>🎀</span>
+  <span>🌸</span>
+  <span>✨</span>
 </div>
 
-
 <header>
+  <div class="header-inner">
 
-  <button class="icon" onclick="go('menu')">☰</button>
+    <div class="logo" onclick="go('home')">
+      BOOKISH 📚✨
+    </div>
 
-  <div class="logo">BOOKISH 📚</div>
+    <nav>
+      <button onclick="go('home')">Inicio</button>
+      <button onclick="go('search')">Buscar</button>
+      <button onclick="go('library')">Biblioteca</button>
+      <button onclick="go('community')">Comunidad</button>
+      <button onclick="go('forum')">Foro</button>
+      <button onclick="go('profile')">Perfil</button>
+    </nav>
 
-  <button class="icon" onclick="go('profile')">👤</button>
-
+  </div>
 </header>
-
 
 <main>
 
-<!-- INICIO -->
+<!-- ================= HOME ================= -->
 
 <section id="home" class="page active">
 
   <div class="hero">
+    <div style="font-size:45px">📚✨</div>
 
-    <h1>Hola, lectora ✨</h1>
+    <h1>BOOKISH</h1>
 
-    <p class="small">
-      ¿En qué historia vas a perderte hoy?
+    <p>
+      Una casa digital para personas que aman los libros.
     </p>
 
-  </div>
-
-
-  <div class="reading">
-
-    <h2>📖 Leyendo ahora</h2>
-
-    <div class="reading-flex">
-
-      <div
-        class="cover"
-        style="background:#7354a8"
+    <div class="search-box">
+      <input
+        id="homeSearch"
+        placeholder="Busca un libro, autor, saga..."
+        onkeydown="if(event.key==='Enter')searchBooks()"
       >
-        🌙
-      </div>
-
-      <div>
-
-        <h2>Luna de cristal</h2>
-
-        <p class="small">
-          A. Valentina
-        </p>
-
-        <p class="small">
-          Página 183 / 420
-        </p>
-
-        <div class="progress">
-          <span style="width:44%"></span>
-        </div>
-
-        <button
-          class="btn"
-          onclick="openBook('Luna de cristal')"
-        >
-          Continuar 📖
-        </button>
-
-      </div>
-
+      <button class="primary" onclick="searchBooks()">
+        Buscar
+      </button>
     </div>
-
   </div>
 
-
-  <div class="card">
-
-    <h2>✨ ¿Qué te apetece?</h2>
-
-    <div class="horizontal">
-
-      <button class="mood"
-      onclick="searchGenre('Romance')">
-        💕<br>Enamorarme
-      </button>
-
-      <button class="mood"
-      onclick="searchGenre('Drama')">
-        😭<br>Llorar
-      </button>
-
-      <button class="mood"
-      onclick="searchGenre('Spicy')">
-        🌶️<br>Algo spicy
-      </button>
-
-      <button class="mood"
-      onclick="searchGenre('Fantasía')">
-        🧚🏻<br>Escapar
-      </button>
-
-      <button class="mood"
-      onclick="searchGenre('Dark')">
-        🖤<br>Algo oscuro
-      </button>
-
-      <button class="mood"
-      onclick="searchGenre('Mar')">
-        🌊<br>Mar
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
+  <div class="section-title">
     <h2>🔥 Tendencias</h2>
+    <button class="secondary" onclick="loadTrending()">
+      Actualizar
+    </button>
+  </div>
 
-    <div id="trending" class="book-grid"></div>
+  <div id="trending" class="book-grid">
+    <div class="loading">Cargando novedades...</div>
+  </div>
+
+  <div class="section-title">
+    <h2>🌸 Explora por género</h2>
+  </div>
+
+  <div class="genre-grid">
+
+    <div class="genre" onclick="genreSearch('romance')">
+      💕<br>Romance
+    </div>
+
+    <div class="genre" onclick="genreSearch('fantasy')">
+      🏰<br>Fantasía
+    </div>
+
+    <div class="genre" onclick="genreSearch('mystery')">
+      🔎<br>Misterio
+    </div>
+
+    <div class="genre" onclick="genreSearch('thriller')">
+      🖤<br>Thriller
+    </div>
+
+    <div class="genre" onclick="genreSearch('science fiction')">
+      🚀<br>Ciencia ficción
+    </div>
+
+    <div class="genre" onclick="genreSearch('historical fiction')">
+      🕯️<br>Histórica
+    </div>
+
+    <div class="genre" onclick="genreSearch('young adult')">
+      🌙<br>Young Adult
+    </div>
+
+    <div class="genre" onclick="genreSearch('horror')">
+      🥀<br>Terror
+    </div>
+
+    <div class="genre" onclick="genreSearch('poetry')">
+      🪶<br>Poesía
+    </div>
+
+    <div class="genre" onclick="genreSearch('adventure')">
+      🗺️<br>Aventura
+    </div>
+
+    <div class="genre" onclick="genreSearch('biography')">
+      📜<br>Biografía
+    </div>
+
+    <div class="genre" onclick="genreSearch('classics')">
+      📖<br>Clásicos
+    </div>
+
+    <div class="genre" onclick="genreSearch('maritime')">
+      🌊<br>Mar
+    </div>
+
+    <div class="genre" onclick="genreSearch('crime')">
+      🕵️<br>Crimen
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- BUSCAR -->
+<!-- ================= SEARCH ================= -->
 
 <section id="search" class="page">
 
-  <h1>🔎 Buscar</h1>
+  <div class="hero" style="padding-bottom:20px">
 
-  <div class="search">
+    <h1 style="font-size:42px">🔎 Buscar libros</h1>
 
-    <input
-      id="searchInput"
-      placeholder="Título, autor, género..."
-      oninput="renderBooks()"
-    >
+    <div class="search-box">
 
-    <button
-      class="btn"
-      onclick="renderBooks()"
-    >
-      🔎
-    </button>
+      <input
+        id="searchInput"
+        placeholder="Título, autor, ISBN, género..."
+        onkeydown="if(event.key==='Enter')searchBooks()"
+      >
+
+      <button class="primary" onclick="searchBooks()">
+        Buscar
+      </button>
+
+    </div>
 
   </div>
 
-  <div id="searchResults"></div>
+  <div id="searchTitle"></div>
 
-  <div class="card">
+  <div id="results" class="book-grid"></div>
 
-    <h2>➕ ¿No está tu libro?</h2>
+  <div class="pagination">
 
-    <p class="small">
-      Puedes añadirlo manualmente ahora.
-    </p>
+    <button class="secondary" onclick="previousPage()">
+      ← Anterior
+    </button>
 
-    <button
-      class="btn"
-      onclick="newBookForm()"
-    >
-      Añadir libro
+    <span id="pageNumber" style="padding:10px"></span>
+
+    <button class="secondary" onclick="nextPage()">
+      Siguiente →
     </button>
 
   </div>
@@ -782,2275 +757,1418 @@ body.dark .decor-elegante{
 </section>
 
 
-<!-- BIBLIOTECA -->
+<!-- ================= LIBRARY ================= -->
 
 <section id="library" class="page">
 
-  <h1>📚 Mi biblioteca</h1>
-
-  <div class="category">
-    <b>📖 Leyendo</b>
-    <span>→</span>
+  <div class="hero">
+    <h1 style="font-size:42px">📚 Mi biblioteca</h1>
+    <p>Tu pequeño rincón de BOOKISH.</p>
   </div>
 
-  <div class="category">
-    <b>🔮 Quiero leer</b>
-    <span>→</span>
+  <div class="genre-grid">
+
+    <div class="genre" onclick="libraryFilter('quiero')">
+      💭<br>Quiero leer
+    </div>
+
+    <div class="genre" onclick="libraryFilter('leyendo')">
+      📖<br>Leyendo
+    </div>
+
+    <div class="genre" onclick="libraryFilter('favoritos')">
+      ❤️<br>Favoritos
+    </div>
+
+    <div class="genre" onclick="libraryFilter('terminados')">
+      ✅<br>Terminados
+    </div>
+
+    <div class="genre" onclick="libraryFilter('odiados')">
+      💀<br>He odiado
+    </div>
+
+    <div class="genre" onclick="libraryFilter('no')">
+      😭<br>No me ha gustado
+    </div>
+
+    <div class="genre" onclick="libraryFilter('bien')">
+      🙂<br>Está bien
+    </div>
+
   </div>
 
-  <div class="category">
-    <b>✅ Leídos</b>
-    <span>→</span>
+  <div id="libraryResults" class="book-grid" style="margin-top:30px"></div>
+
+</section>
+
+
+<!-- ================= BOOK DETAIL ================= -->
+
+<section id="detail" class="page">
+
+  <button class="secondary" onclick="go('search')">
+    ← Volver
+  </button>
+
+  <div id="bookDetail" style="margin-top:15px"></div>
+
+</section>
+
+
+<!-- ================= COMMUNITY ================= -->
+
+<section id="community" class="page">
+
+  <div class="hero">
+    <h1 style="font-size:42px">👥 Comunidad</h1>
+    <p>Comparte BOOKISH con otras personas lectoras.</p>
   </div>
 
-  <div class="category">
-    <b>💕 Favoritos</b>
-    <span>→</span>
+  <div class="community-box">
+
+    <h2>🔗 Tu enlace de amistad</h2>
+
+    <p class="small">
+      Puedes compartir este enlace para que alguien llegue a tu perfil.
+    </p>
+
+    <div class="link-box" id="friendLink"></div>
+
+    <br>
+
+    <button class="primary" onclick="copyFriendLink()">
+      Copiar enlace
+    </button>
+
   </div>
 
-  <div class="category">
-    <b>🥀 Abandonados</b>
-    <span>→</span>
+  <div class="community-box">
+
+    <h2>💌 Añadir amistad</h2>
+
+    <input
+      id="friendInput"
+      placeholder="Pega aquí un enlace de BOOKISH"
+      style="width:100%;padding:12px;border:1px solid var(--accent2);border-radius:12px;background:var(--bg);color:var(--text)"
+    >
+
+    <br><br>
+
+    <button class="primary" onclick="addFriend()">
+      Añadir
+    </button>
+
   </div>
 
-  <div class="card">
+  <div class="community-box">
 
-    <h2>Mis libros</h2>
+    <h2>👭 Mis amistades</h2>
 
-    <div id="libraryList"></div>
+    <div id="friends"></div>
 
   </div>
 
 </section>
 
 
-<!-- PERFIL -->
+<!-- ================= FORUM ================= -->
+
+<section id="forum" class="page">
+
+  <div class="hero">
+    <h1 style="font-size:42px">💬 Foro BOOKISH</h1>
+    <p>Habla de libros, sagas, personajes y teorías.</p>
+  </div>
+
+  <div class="community-box">
+
+    <input
+      id="forumTitle"
+      placeholder="Título de la conversación"
+      style="width:100%;padding:12px;border:1px solid var(--accent2);border-radius:12px;background:var(--bg);color:var(--text)"
+    >
+
+    <br><br>
+
+    <textarea
+      id="forumText"
+      placeholder="¿Qué quieres compartir?"
+    ></textarea>
+
+    <br><br>
+
+    <button class="primary" onclick="createPost()">
+      Publicar
+    </button>
+
+  </div>
+
+  <div id="forumPosts" class="community-box"></div>
+
+</section>
+
+
+<!-- ================= PROFILE ================= -->
 
 <section id="profile" class="page">
 
-  <h1>👤 Mi perfil</h1>
+  <div class="hero">
+    <h1 style="font-size:42px">👤 Mi perfil</h1>
+  </div>
 
-  <div class="card">
+  <div class="profile-card">
 
-    <h2>📚 Mi perfil lector</h2>
+    <div class="profile-avatar" id="avatar">
+      📚
+    </div>
 
-    <label>Nombre</label>
+    <div class="profile-name" id="profileName">
+      Lector/a BOOKISH
+    </div>
 
     <input
-      id="profileName"
+      id="nameInput"
       placeholder="Tu nombre"
+      style="width:100%;padding:12px;border:1px solid var(--accent2);border-radius:12px;background:var(--bg);color:var(--text)"
     >
 
-    <label>Biografía</label>
+    <br><br>
 
-    <textarea
-      id="profileBio"
-      placeholder="Cuéntanos algo..."
-    ></textarea>
-
-    <button
-      class="btn"
-      onclick="saveProfile()"
-    >
+    <button class="primary" onclick="saveProfile()">
       Guardar perfil
     </button>
 
-  </div>
+    <hr style="margin:30px 0;border:0;border-top:1px solid var(--accent2)">
 
-
-  <!-- TEMAS SOLO AQUÍ -->
-
-  <div class="card">
-
-    <h2>🎨 Mi estilo BOOKISH</h2>
+    <h2>🎨 Tema</h2>
 
     <p class="small">
-      Elige el ambiente de tu BOOKISH.
+      El tema solo se cambia desde tu perfil.
     </p>
 
-    <button
-      class="btn light"
-      onclick="theme('normal')"
-    >
-      ✨ Elegante
-    </button>
+    <div class="theme-options">
 
-    <button
-      class="btn light"
-      onclick="theme('coquette')"
-    >
-      🎀 Coquette
-    </button>
+      <button class="theme-btn" onclick="setTheme('coquette')">
+        🎀<br>Coquette
+      </button>
 
-    <button
-      class="btn light"
-      onclick="theme('fantasia')"
-    >
-      🧚🏻 Fantasía
-    </button>
+      <button class="theme-btn" onclick="setTheme('fantasy')">
+        🏰<br>Fantasía
+      </button>
 
-    <button
-      class="btn light"
-      onclick="theme('mar')"
-    >
-      🌊 Mar
-    </button>
+      <button class="theme-btn" onclick="setTheme('dark')">
+        🖤<br>Dark
+      </button>
 
-    <button
-      class="btn light"
-      onclick="theme('dark')"
-    >
-      🖤 Dark
-    </button>
+      <button class="theme-btn" onclick="setTheme('ocean')">
+        🌊<br>Mar
+      </button>
 
-    <p
-      id="currentTheme"
-      class="small"
-    ></p>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>📊 Mis estadísticas</h2>
-
-    <div class="horizontal">
-
-      <div class="mood">
-        📚<br><b>0</b><br>Libros
-      </div>
-
-      <div class="mood">
-        📄<br><b>0</b><br>Páginas
-      </div>
-
-      <div class="mood">
-        ⭐<br><b>0</b><br>Valoración
-      </div>
+      <button class="theme-btn" onclick="setTheme('elegant')">
+        ✨<br>Elegante
+      </button>
 
     </div>
 
-  </div>
+    <hr style="margin:30px 0;border:0;border-top:1px solid var(--accent2)">
 
-
-  <div class="card">
-
-    <h2>🏆 Mis logros</h2>
-
-    <div class="horizontal">
-
-      <div class="mood">
-        📖<br>Primera página
-      </div>
-
-      <div class="mood">
-        📚<br>Comepáginas
-      </div>
-
-      <div class="mood">
-        🔥<br>No puedo parar
-      </div>
-
-      <div class="mood">
-        😭<br>He llorado
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>👯 Mi comunidad</h2>
+    <h2>🎵 Melodía BOOKISH</h2>
 
     <p class="small">
-      Comparte tu perfil con tus amigos.
+      Puedes activar una pequeña melodía ambiental.
     </p>
 
-    <button
-      class="btn"
-      onclick="shareProfile()"
-    >
-      🔗 Compartir mi perfil
+    <button class="primary" onclick="toggleMusic()" id="musicButton">
+      ▶ Activar melodía
     </button>
 
-    <div
-      id="shareResult"
-      class="quote"
-      style="display:none"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<!-- AMIGOS -->
-
-<section id="friends" class="page">
-
-  <h1>👯 Comunidad</h1>
-
-  <p class="small">
-    Tus amigos lectores y clubs.
-  </p>
-
-  <div id="friendsList"></div>
-
-  <div class="card">
-
-    <h2>💬 Clubs de lectura</h2>
-
-    <p>
-      Crea un espacio para hablar de libros,
-      teorías y personajes.
-    </p>
-
-    <button
-      class="btn"
-      onclick="createClub()"
-    >
-      ➕ Crear club
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- MENÚ -->
-
-<section id="menu" class="page">
-
-  <h1>☰ Menú</h1>
-
-  <div class="category">
-    📊 Estadísticas
-    <span>→</span>
-  </div>
-
-  <div class="category">
-    🏆 Logros
-    <span>→</span>
-  </div>
-
-  <div class="category">
-    🎯 Retos
-    <span>→</span>
-  </div>
-
-  <div class="category">
-    💬 Clubs
-    <span>→</span>
   </div>
 
 </section>
 
 </main>
-
-
-<!-- NAVEGACIÓN -->
-
-<nav class="bottom">
-
-  <button onclick="go('home')">
-    <span>🏠</span>
-    Inicio
-  </button>
-
-  <button onclick="go('search')">
-    <span>🔎</span>
-    Buscar
-  </button>
-
-  <button onclick="go('library')">
-    <span>📚</span>
-    Biblioteca
-  </button>
-
-  <button onclick="go('friends')">
-    <span>👯</span>
-    Comunidad
-  </button>
-
-  <button onclick="go('profile')">
-    <span>👤</span>
-    Perfil
-  </button>
-
-</nav>
-
-
-<!-- MODAL LIBRO -->
-
-<div
-  id="bookModal"
-  class="modal"
->
-
-  <div class="modal-box">
-
-    <button
-      class="close"
-      onclick="closeBook()"
-    >
-      ✕
-    </button>
-
-    <div id="bookContent"></div>
-
-  </div>
-
 </div>
 
 
 <script>
 
-const books = [];
+/* =====================================================
+   BOOKISH
+   DATOS LOCALES
+===================================================== */
 
-/* =========================================
-   BOOKISH — BIBLIOTECA REAL
-   Open Library API
-   ========================================= */
+const STORAGE = {
+  library:"bookish_library_v4",
+  ratings:"bookish_ratings_v4",
+  reviews:"bookish_reviews_v4",
+  phrases:"bookish_phrases_v4",
+  friends:"bookish_friends_v4",
+  forum:"bookish_forum_v4",
+  profile:"bookish_profile_v4",
+  theme:"bookish_theme_v4"
+};
 
-const BOOKISH_API = "https://openlibrary.org/search.json";
-const BOOKISH_COVERS = "https://covers.openlibrary.org/b/id/";
-
-/* Convertimos los datos de Open Library
-   al formato que ya utiliza BOOKISH */
-function convertBook(b) {
-
-    const subjects = (b.subject || []).slice(0, 20);
-
-    let genre = "Otros";
-
-    const text = (
-        (b.title || "") + " " +
-        subjects.join(" ")
-    ).toLowerCase();
-
-    if (
-        text.includes("romance") ||
-        text.includes("love") ||
-        text.includes("romantic")
-    ) {
-        genre = "Romance";
-    }
-
-    else if (
-        text.includes("fantasy") ||
-        text.includes("fantasía") ||
-        text.includes("magic") ||
-        text.includes("fairy")
-    ) {
-        genre = "Fantasía";
-    }
-
-    else if (
-        text.includes("mystery") ||
-        text.includes("misterio") ||
-        text.includes("detective") ||
-        text.includes("crime") ||
-        text.includes("thriller")
-    ) {
-        genre = "Misterio";
-    }
-
-    else if (
-        text.includes("horror") ||
-        text.includes("dark") ||
-        text.includes("gothic")
-    ) {
-        genre = "Dark";
-    }
-
-    else if (
-        text.includes("history") ||
-        text.includes("historia")
-    ) {
-        genre = "Historia";
-    }
-
-    else if (
-        text.includes("science fiction") ||
-        text.includes("sci-fi") ||
-        text.includes("science fiction")
-    ) {
-        genre = "Ciencia ficción";
-    }
-
-    else if (
-        text.includes("young adult") ||
-        text.includes("juvenile")
-    ) {
-        genre = "Juvenil";
-    }
-
-    else if (
-        text.includes("adventure") ||
-        text.includes("aventura")
-    ) {
-        genre = "Aventura";
-    }
-
-    else if (
-        text.includes("poetry") ||
-        text.includes("poesía")
-    ) {
-        genre = "Poesía";
-    }
-
-    let emoji = "📖";
-
-    const emojis = {
-        "Romance": "💕",
-        "Fantasía": "🧚",
-        "Misterio": "🔎",
-        "Dark": "🌑",
-        "Historia": "🏛️",
-        "Ciencia ficción": "🚀",
-        "Juvenil": "✨",
-        "Aventura": "🗺️",
-        "Poesía": "🌹"
-    };
-
-    if (emojis[genre]) {
-        emoji = emojis[genre];
-    }
-
-    return {
-
-        title: b.title || "Sin título",
-
-        author:
-            b.author_name &&
-            b.author_name.length
-                ? b.author_name[0]
-                : "Autor desconocido",
-
-        genre: genre,
-
-        emoji: emoji,
-
-        bg: "#e9dce1",
-
-        rating:
-            b.ratings_average
-                ? Number(b.ratings_average.toFixed(1))
-                : 0,
-
-        year:
-            b.first_publish_year || "",
-
-        cover:
-            b.cover_i
-                ? BOOKISH_COVERS + b.cover_i + "-M.jpg"
-                : "",
-
-        id:
-            b.key || "",
-
-        subjects: subjects,
-
-        editions:
-            b.edition_count || 0,
-
-        language:
-            b.language && b.language.length
-                ? b.language[0]
-                : "",
-
-        isbn:
-            b.isbn && b.isbn.length
-                ? b.isbn[0]
-                : "",
-
-        openLibrary:
-            b.key
-                ? "https://openlibrary.org" + b.key
-                : "#"
-
-    };
+function read(key,fallback){
+  try{
+    return JSON.parse(localStorage.getItem(key)) ?? fallback;
+  }catch(e){
+    return fallback;
+  }
 }
 
-
-/* =========================================
-   BUSCAR LIBROS
-   ========================================= */
-
-async function searchBookishBooks(
-    query = "",
-    page = 1,
-    limit = 24,
-    sort = ""
-) {
-
-    try {
-
-        const params = new URLSearchParams();
-
-        params.set(
-            "q",
-            query || "*"
-        );
-
-        params.set(
-            "page",
-            page
-        );
-
-        params.set(
-            "limit",
-            limit
-        );
-
-        params.set(
-            "fields",
-            "key,title,author_name,first_publish_year,cover_i,ratings_average,subject,edition_count,isbn,language"
-        );
-
-        if (sort) {
-            params.set(
-                "sort",
-                sort
-            );
-        }
-
-        const response =
-            await fetch(
-                BOOKISH_API +
-                "?" +
-                params.toString()
-            );
-
-        if (!response.ok) {
-            throw new Error(
-                "No se pudo conectar con Open Library"
-            );
-        }
-
-        const data =
-            await response.json();
-
-        const results =
-            (data.docs || [])
-                .map(convertBook)
-                .filter(
-                    book =>
-                        book.title &&
-                        book.author
-                );
-
-        return {
-
-            books: results,
-
-            total:
-                data.numFound || 0,
-
-            page: page
-
-        };
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "BOOKISH API:",
-            error
-        );
-
-        return {
-
-            books: [],
-
-            total: 0,
-
-            page: page
-
-        };
-    }
+function write(key,value){
+  localStorage.setItem(key,JSON.stringify(value));
 }
 
-
-/* =========================================
-   CARGAR MUCHOS LIBROS AL INICIAR BOOKISH
-   ========================================= */
-
-async function loadBookishLibrary() {
-
-    const result =
-        await searchBookishBooks(
-            "",
-            1,
-            30
-        );
-
-    books.length = 0;
-
-    result.books.forEach(
-        book => books.push(book)
-    );
-
-    /* Intentamos actualizar las partes
-       existentes de BOOKISH */
-
-    if (typeof renderBooks === "function") {
-        renderBooks(books);
-    }
-
-    if (typeof renderLibrary === "function") {
-        renderLibrary(books);
-    }
-
-    if (typeof renderHome === "function") {
-        renderHome();
-    }
-
-    if (typeof renderAllBooks === "function") {
-        renderAllBooks(books);
-    }
-
-    document.dispatchEvent(
-        new CustomEvent(
-            "bookish:books-loaded",
-            {
-                detail: {
-                    books: books
-                }
-            }
-        )
-    );
-
-}
-
-
-/* =========================================
-   BUSCAR DESDE BOOKISH
-   ========================================= */
-
-window.bookishSearch =
-    async function(query, page = 1) {
-
-        const result =
-            await searchBookishBooks(
-                query,
-                page,
-                24
-            );
-
-        books.length = 0;
-
-        result.books.forEach(
-            book => books.push(book)
-        );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "bookish:search-results",
-                {
-                    detail: {
-                        books: result.books,
-
-                        total:
-                            result.total,
-
-                        page:
-                            result.page,
-
-                        query:
-                            query
-                    }
-                }
-            )
-        );
-
-        return result;
-    };
-
-
-/* =========================================
-   GÉNEROS
-   ========================================= */
-
-window.bookishGenre =
-    async function(genre, page = 1) {
-
-        const subjects = {
-
-            "Romance":
-                "romance",
-
-            "Fantasía":
-                "fantasy",
-
-            "Misterio":
-                "mystery",
-
-            "Dark":
-                "gothic horror",
-
-            "Ciencia ficción":
-                "science fiction",
-
-            "Aventura":
-                "adventure",
-
-            "Historia":
-                "history",
-
-            "Poesía":
-                "poetry",
-
-            "Juvenil":
-                "young adult"
-
-        };
-
-        const query =
-            subjects[genre] ||
-            genre;
-
-        return await window.bookishSearch(
-            "subject:" + query,
-            page
-        );
-    };
-
-
-/* =========================================
-   LIBROS NUEVOS
-   ========================================= */
-
-window.bookishNewBooks =
-    async function(page = 1) {
-
-        const result =
-            await searchBookishBooks(
-                "",
-                page,
-                24,
-                "new"
-            );
-
-        books.length = 0;
-
-        result.books.forEach(
-            book => books.push(book)
-        );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "bookish:new-books",
-                {
-                    detail: result
-                }
-            )
-        );
-
-        return result;
-    };
-
-
-/* =========================================
-   LIBROS ANTIGUOS / CLÁSICOS
-   ========================================= */
-
-window.bookishOldBooks =
-    async function(page = 1) {
-
-        const result =
-            await searchBookishBooks(
-                "",
-                page,
-                24,
-                "old"
-            );
-
-        books.length = 0;
-
-        result.books.forEach(
-            book => books.push(book)
-        );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "bookish:old-books",
-                {
-                    detail: result
-                }
-            )
-        );
-
-        return result;
-    };
-
-
-/* =========================================
-   ALEATORIO
-   ========================================= */
-
-window.bookishRandomBooks =
-    async function(page = 1) {
-
-        const result =
-            await searchBookishBooks(
-                "",
-                page,
-                24,
-                "random"
-            );
-
-        books.length = 0;
-
-        result.books.forEach(
-            book => books.push(book)
-        );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "bookish:random-books",
-                {
-                    detail: result
-                }
-            )
-        );
-
-        return result;
-    };
-
-
-/* =========================================
-   TENDENCIAS
-   ========================================= */
-
-/*
-   Open Library tiene una sección de tendencias
-   que cambia según los libros que la comunidad
-   está añadiendo a sus estanterías.
-
-   Usamos búsquedas actuales para que la sección
-   no sea siempre exactamente igual.
-*/
-
-window.bookishTrending =
-    async function() {
-
-        const queries = [
-
-            "romance",
-
-            "fantasy",
-
-            "mystery",
-
-            "young adult",
-
-            "thriller",
-
-            "fiction",
-
-            "romantic"
-
-        ];
-
-        const selected =
-            queries[
-                Math.floor(
-                    Math.random() *
-                    queries.length
-                )
-            ];
-
-        const result =
-            await searchBookishBooks(
-                selected,
-                1,
-                12,
-                "new"
-            );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "bookish:trending",
-                {
-                    detail: {
-                        books:
-                            result.books,
-
-                        category:
-                            selected
-                    }
-                }
-            )
-        );
-
-        return result;
-    };
-
-
-/* =========================================
-   ABRIR LIBRO
-   ========================================= */
-
-window.bookishOpenBook =
-    function(book) {
-
-        if (
-            book &&
-            book.openLibrary
-        ) {
-
-            window.open(
-                book.openLibrary,
-                "_blank"
-            );
-
-        }
-
-    };
-
-
-/* =========================================
-   INICIO
-   ========================================= */
-
-if (
-    document.readyState ===
-    "loading"
-) {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function() {
-
-            loadBookishLibrary();
-
-        }
-    );
-
-}
-
-else {
-
-    loadBookishLibrary();
-
-}
- 
-
-{
- title:"Una historia de amor",
- author:"Mía Rose",
- genre:"Romance",
- emoji:"🌹",
- bg:"#a04d68",
- 
-
-
-let library=
-JSON.parse(
-localStorage.getItem("bookish_library")||"[]"
-);
-
-let ratings=
-JSON.parse(
-localStorage.getItem("bookish_ratings")||"{}"
-);
-
-let phrases=
-JSON.parse(
-localStorage.getItem("bookish_phrases")||"{}"
-);
-
-let reviews=
-JSON.parse(
-localStorage.getItem("bookish_reviews")||"{}"
-);
-
+let library=read(STORAGE.library,{});
+let ratings=read(STORAGE.ratings,{});
+let reviews=read(STORAGE.reviews,{});
+let phrases=read(STORAGE.phrases,{});
+let friends=read(STORAGE.friends,[]);
+let forum=read(STORAGE.forum,[]);
+let profile=read(STORAGE.profile,{
+  name:"Lector/a BOOKISH",
+  avatar:"📚"
+});
+
+let currentPage=1;
+let currentQuery="";
+let currentGenre="";
+let lastResults=[];
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
 
 function go(id){
 
- document
- .querySelectorAll(".page")
- .forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
 
- document
- .getElementById(id)
- .classList.add("active");
+  const target=document.getElementById(id);
 
- window.scrollTo(0,0);
+  if(target){
+    target.classList.add("active");
+  }
 
- if(id==="search")
- renderBooks();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
- if(id==="library")
- renderLibrary();
+  if(id==="library"){
+    renderLibrary("todos");
+  }
 
+  if(id==="community"){
+    renderFriends();
+  }
+
+  if(id==="forum"){
+    renderForum();
+  }
+
+  if(id==="profile"){
+    loadProfile();
+  }
 }
 
 
-function searchGenre(g){
+/* =====================================================
+   API OPEN LIBRARY
+===================================================== */
 
- go("search");
+const API="https://openlibrary.org/search.json";
 
- document
- .getElementById("searchInput")
- .value=g;
+async function apiSearch(query,options={}){
 
- renderBooks();
+  const params=new URLSearchParams();
 
+  params.set("q",query);
+
+  params.set(
+    "fields",
+    "key,title,author_name,first_publish_year,cover_i,edition_count,subject,ratings_average,ratings_count"
+  );
+
+  params.set("limit",options.limit || 24);
+
+  params.set("page",options.page || 1);
+
+  if(options.sort){
+    params.set("sort",options.sort);
+  }
+
+  const response=await fetch(API+"?"+params.toString());
+
+  if(!response.ok){
+    throw new Error("No se pudieron cargar los libros");
+  }
+
+  return response.json();
 }
 
 
-function stars(n){
-
- return "★".repeat(
- Math.round(n)
- )+
- "☆".repeat(
- 5-Math.round(n)
- );
-
-}
-
-
-function card(b){
-
- return `
-
- <div
-  class="book"
-  onclick="openBook('${escapeText(b.title)}')"
- >
-
-  <div
-   class="book-cover"
-   style="background:${b.bg}"
-  >
-   ${b.emoji}
-  </div>
-
-  <h3>${escapeText(b.title)}</h3>
-
-  <div class="small">
-   ${escapeText(b.author)}
-  </div>
-
-  <div class="stars">
-   ${stars(b.rating)}
-  </div>
-
-  <div class="small">
-   ${b.rating}/5 · ${escapeText(b.genre)}
-  </div>
-
- </div>
-
- `;
-
-}
-
-
-function renderTrending(){
-
- document
- .getElementById("trending")
- .innerHTML=
- books.map(card).join("");
-
-}
-
-
-function renderBooks(){
-
- const q=
- document
- .getElementById("searchInput")
- .value
- .toLowerCase();
-
- const found=
- books.filter(b=>
- (
- b.title+
- " "+
- b.author+
- " "+
- b.genre
- )
- .toLowerCase()
- .includes(q)
- );
-
- document
- .getElementById("searchResults")
- .innerHTML=
-
- found.length
-
- ?
-
- `<div class="book-grid">
- ${found.map(card).join("")}
- </div>`
-
- :
-
- `<div class="empty">
- No hemos encontrado ese libro 📚
- </div>`;
-
-}
-
-
-function escapeText(text){
-
- return String(text)
- .replaceAll("'","&#39;")
- .replaceAll('"',"&quot;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;");
-
-}
-
-
-function getRating(title){
-
- return ratings[title]||{
-  stars:0,
-  status:"Quiero leer",
-  metrics:{},
-  review:""
- };
-
-}
-
-
-function openBook(title,tab="info"){
-
- const b=
- books.find(x=>x.title===title);
-
- if(!b)return;
-
- const r=getRating(title);
-
- document
- .getElementById("bookContent")
- .innerHTML=`
-
- <div
-  class="book-cover"
-  style="
-   background:${b.bg};
-   width:150px;
-   margin:auto
-  "
- >
-  ${b.emoji}
- </div>
-
- <h1 style="text-align:center">
-  ${escapeText(b.title)}
- </h1>
-
- <p
-  class="small"
-  style="text-align:center"
- >
-  ${escapeText(b.author)}
- </p>
-
-
- <div class="tabs">
-
-  <button
-   class="tab ${tab==="info"?"active":""}"
-   onclick="bookTab('info','${escapeText(title)}')"
-  >
-   📚 Info
-  </button>
-
-  <button
-   class="tab ${tab==="rating"?"active":""}"
-   onclick="bookTab('rating','${escapeText(title)}')"
-  >
-   ⭐ Valorar
-  </button>
-
-  <button
-   class="tab ${tab==="phrases"?"active":""}"
-   onclick="bookTab('phrases','${escapeText(title)}')"
-  >
-   💌 Frases
-  </button>
-
-  <button
-   class="tab ${tab==="reviews"?"active":""}"
-   onclick="bookTab('reviews','${escapeText(title)}')"
-  >
-   💬 Reseñas
-  </button>
-
-  <button
-   class="tab ${tab==="photos"?"active":""}"
-   onclick="bookTab('photos','${escapeText(title)}')"
-  >
-   📸 Fotos
-  </button>
-
- </div>
-
-
- <div id="bookPanels">
-
-  ${infoPanel(b)}
-
-  ${ratingPanel(b,r)}
-
-  ${phrasesPanel(b.title)}
-
-  ${reviewsPanel(b.title)}
-
-  ${photosPanel()}
-
- </div>
-
- `;
-
- document
- .getElementById("bookModal")
- .classList.add("show");
-
- bookTab(tab,title);
-
-}
-
-
-function infoPanel(b){
-
- return `
-
- <div
-  id="panel-info"
-  class="panel"
- >
-
-  <div class="card">
-
-   <h2>📖 Sobre el libro</h2>
-
-   <p class="small">
-    ${escapeText(b.genre)}
-   </p>
-
-   <div class="quote">
-    La información real del libro
-    aparecerá aquí cuando conectemos
-    el catálogo.
-   </div>
-
-   <h3>🎵 Melodía</h3>
-
-   <button
-    class="btn light"
-    onclick="melody(this)"
-   >
-    ▶️ Reproducir melodía
-   </button>
-
-  </div>
-
-  <button
-   class="btn"
-   onclick="addBook('${escapeText(b.title)}')"
-  >
-   📚 Añadir a biblioteca
-  </button>
-
- </div>
-
- `;
-
-}
-
-
-const metrics=[
- ["romance","💕 Romance"],
- ["spicy","🌶️ Spicy"],
- ["slow","🐌 Slow burn"],
- ["chemistry","🫶 Química"],
- ["tension","⚡ Tensión"],
- ["tears","😭 Lágrimas"],
- ["pain","💔 Daño emocional"],
- ["humor","😂 Humor"],
- ["fantasy","🧚 Fantasía"]
-];
-
-
-function ratingPanel(b,r){
-
- return `
-
- <div
-  id="panel-rating"
-  class="panel"
- >
-
-  <h2>⭐ Tu valoración</h2>
-
-  <div class="card">
-
-   <h3>¿Qué nota le das?</h3>
-
-   <div class="star-picker">
-
-    ${[1,2,3,4,5].map(i=>`
-
-     <button
-      class="${i<=r.stars?"active":""}"
-      onclick="
-       setStars(
-        '${escapeText(b.title)}',
-        ${i}
-       )
-      "
-     >
-      ★
-     </button>
-
-    `).join("")}
-
-   </div>
-
-
-   <h3>📚 Estado</h3>
-
-   <div class="status">
-
-    ${[
-    "Quiero leer",
-    "Leyendo",
-    "Leído",
-    "Favorito",
-    "Abandonado"
-    ].map(s=>`
-
-     <button
-      class="${r.status===s?"active":""}"
-      onclick="
-       setStatus(
-        '${escapeText(b.title)}',
-        '${s}'
-       )
-      "
-     >
-      ${s}
-     </button>
-
-    `).join("")}
-
-   </div>
-
-  </div>
-
-
-  <div class="card">
-
-   <h3>🎭 Tropes y sensaciones</h3>
-
-   ${metrics.map(m=>`
-
-    <div class="rating-row">
-
-     <span>${m[1]}</span>
-
-     <input
-      type="range"
-      min="0"
-      max="5"
-      value="${r.metrics[m[0]]||0}"
-      oninput="
-       setMetric(
-        '${escapeText(b.title)}',
-        '${m[0]}',
-        this.value
-       )
-      "
-     >
-
-     <b>
-      ${r.metrics[m[0]]||0}
-     </b>
-
-    </div>
-
-   `).join("")}
-
-  </div>
-
-
-  <div class="card">
-
-   <h3>📝 Tu reseña</h3>
-
-   <textarea
-    id="myReview"
-    placeholder="Escribe tu opinión..."
-   >${escapeText(r.review||"")}</textarea>
-
-   <button
-    class="btn"
-    onclick="
-     saveReview(
-      '${escapeText(b.title)}'
-     )
-    "
-   >
-    Publicar mi reseña
-   </button>
-
-  </div>
-
- </div>
-
- `;
-
-}
-
-
-/* FRASES DE LOS USUARIOS */
-
-function phrasesPanel(title){
-
- const list=phrases[title]||[];
-
- return `
-
- <div
-  id="panel-phrases"
-  class="panel"
- >
-
-  <h2>💌 Frases favoritas</h2>
-
-  <p class="small">
-   Las frases las escriben los lectores.
-   BOOKISH no las inventa.
-  </p>
-
-
-  <div class="card">
-
-   <textarea
-    id="newPhrase"
-    placeholder="Escribe aquí una frase que te haya encantado..."
-   ></textarea>
-
-   <label>
-    <input
-     type="checkbox"
-     id="phraseSpoiler"
-    >
-    Contiene spoiler
-   </label>
-
-   <button
-    class="btn"
-    onclick="
-     addPhrase(
-      '${escapeText(title)}'
-     )
-    "
-   >
-    💌 Publicar frase
-   </button>
-
-  </div>
-
-
-  <div id="phraseList">
-
-   ${
-    list.length
-    ?
-    list.map((p,i)=>`
-
-     <div class="user-item">
-
-      <div class="user-name">
-       📚 ${escapeText(p.user)}
-      </div>
-
-      <p>
-       “${escapeText(p.text)}”
-      </p>
-
-      ${
-       p.spoiler
-       ?
-       `<small>⚠️ Contiene spoiler</small>`
-       :
-       ""
-      }
-
-      <br><br>
-
-      <button
-       class="like"
-       onclick="
-        likePhrase(
-         '${escapeText(title)}',
-         ${i}
-        )
-       "
+/* =====================================================
+   PORTADAS
+===================================================== */
+
+function cover(book){
+
+  if(book.cover_i){
+
+    return `
+      <img
+        class="cover"
+        src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg"
+        alt="${escapeHTML(book.title || "Libro")}"
+        loading="lazy"
       >
-       ❤️ ${p.likes||0}
-      </button>
-
-     </div>
-
-    `).join("")
-
-    :
-
-    `<div class="empty">
-      Todavía nadie ha añadido una frase.
-      ¡Sé la primera! 💌
-    </div>`
-   }
-
-  </div>
-
- </div>
-
- `;
-
-}
-
-
-function addPhrase(title){
-
- const input=
- document.getElementById("newPhrase");
-
- const text=input.value.trim();
-
- if(!text){
-
-  alert("Escribe una frase primero 💌");
-
-  return;
-
- }
-
- if(!phrases[title])
-  phrases[title]=[];
-
- phrases[title].push({
-
-  user:
-   localStorage.getItem("bookish_name")||
-   "Lector/a BOOKISH",
-
-  text:text,
-
-  spoiler:
-   document
-   .getElementById("phraseSpoiler")
-   .checked,
-
-  likes:0
-
- });
-
- localStorage.setItem(
-  "bookish_phrases",
-  JSON.stringify(phrases)
- );
-
- openBook(title,"phrases");
-
-}
-
-
-function likePhrase(title,index){
-
- phrases[title][index].likes++;
-
- localStorage.setItem(
-  "bookish_phrases",
-  JSON.stringify(phrases)
- );
-
- openBook(title,"phrases");
-
-}
-
-
-/* RESEÑAS */
-
-function reviewsPanel(title){
-
- const list=
- reviews[title]||[];
-
- return `
-
- <div
-  id="panel-reviews"
-  class="panel"
- >
-
-  <h2>💬 Reseñas</h2>
-
-  <p class="small">
-   Las reseñas las escriben los lectores.
-  </p>
-
-
-  ${
-   list.length
-
-   ?
-
-   list.map(r=>`
-
-    <div class="user-item">
-
-     <b>
-      👤 ${escapeText(r.user)}
-     </b>
-
-     <div class="stars">
-      ${stars(r.stars)}
-     </div>
-
-     <p>
-      ${escapeText(r.text)}
-     </p>
-
-    </div>
-
-   `).join("")
-
-   :
-
-   `<div class="empty">
-    Todavía no hay reseñas.
-   </div>`
+    `;
 
   }
 
- </div>
-
- `;
-
+  return `
+    <div class="cover-placeholder">
+      📖<br>
+      ${escapeHTML(book.title || "Libro")}
+    </div>
+  `;
 }
 
 
-function saveReview(title){
+/* =====================================================
+   TARJETA
+===================================================== */
 
- const text=
- document
- .getElementById("myReview")
- .value
- .trim();
+function card(book){
 
- if(!text){
+  const author=(book.author_name || ["Autor desconocido"])[0];
 
-  alert("Escribe algo antes de publicar 📝");
+  const year=book.first_publish_year
+    ? " · "+book.first_publish_year
+    : "";
 
-  return;
+  const rating=book.ratings_average
+    ? "⭐ "+Number(book.ratings_average).toFixed(1)
+    : "Sin valoración";
 
- }
+  return `
+    <article
+      class="book-card"
+      onclick='openBook(${JSON.stringify(book).replace(/'/g,"&#39;")})'
+    >
 
- const r=getRating(title);
+      ${cover(book)}
 
- r.review=text;
+      <div class="book-info">
 
- ratings[title]=r;
+        <h3>${escapeHTML(book.title || "Sin título")}</h3>
 
- localStorage.setItem(
-  "bookish_ratings",
-  JSON.stringify(ratings)
- );
+        <p>${escapeHTML(author)}</p>
 
+        <p>${year}</p>
 
- if(!reviews[title])
-  reviews[title]=[];
+        <p class="stars">${rating}</p>
 
- reviews[title].push({
+      </div>
 
-  user:
-   localStorage.getItem("bookish_name")||
-   "Lector/a BOOKISH",
-
-  text:text,
-
-  stars:r.stars||0
-
- });
-
- localStorage.setItem(
-  "bookish_reviews",
-  JSON.stringify(reviews)
- );
-
- openBook(title,"reviews");
-
+    </article>
+  `;
 }
 
 
-/* FOTOS */
+/* =====================================================
+   INICIO / TENDENCIAS
+===================================================== */
 
-function photosPanel(){
+async function loadTrending(){
 
- return `
+  const box=document.getElementById("trending");
 
- <div
-  id="panel-photos"
-  class="panel"
- >
+  box.innerHTML=`<div class="loading">Buscando novedades 📚...</div>`;
 
-  <h2>📸 Fotos y fanart</h2>
+  try{
 
-  <div class="card">
+    /*
+      Open Library permite ordenar por "new".
+      Cambiamos la consulta diariamente para que
+      la sección no dependa siempre de los mismos libros.
+    */
 
-   <p class="small">
-    Aquí podrán aparecer fotos, fanart
-    y contenido compartido por lectores.
-   </p>
+    const queries=[
+      "fiction",
+      "romance",
+      "fantasy",
+      "mystery",
+      "young adult",
+      "thriller",
+      "love"
+    ];
 
-   <input
-    type="file"
-    accept="image/*"
-    onchange="previewPhoto(event)"
-   >
+    const day=Math.floor(Date.now()/86400000);
 
-   <div id="photoPreview"></div>
+    const query=queries[day % queries.length];
 
-  </div>
+    const data=await apiSearch(query,{
+      sort:"new",
+      limit:12
+    });
 
- </div>
+    lastResults=data.docs || [];
 
- `;
+    box.innerHTML=lastResults.length
+      ? lastResults.map(card).join("")
+      : `<div class="empty">No encontramos novedades.</div>`;
 
+  }catch(error){
+
+    box.innerHTML=`
+      <div class="empty">
+        No se han podido cargar las novedades.<br>
+        Comprueba tu conexión a Internet.
+      </div>
+    `;
+  }
 }
 
 
-function previewPhoto(event){
+/* =====================================================
+   BUSCAR
+===================================================== */
 
- const file=
- event.target.files[0];
+async function searchBooks(){
 
- if(!file)return;
+  const input=document.getElementById("searchInput");
+  const homeInput=document.getElementById("homeSearch");
 
- const reader=
- new FileReader();
+  let query="";
 
- reader.onload=function(){
+  if(input && input.value.trim()){
+    query=input.value.trim();
+  }else if(homeInput && homeInput.value.trim()){
+    query=homeInput.value.trim();
+  }
 
-  document
-  .getElementById("photoPreview")
-  .innerHTML=`
+  if(!query)return;
 
-   <img
-    src="${reader.result}"
-    style="
-     width:100%;
-     max-height:400px;
-     object-fit:contain;
-     border-radius:18px
-    "
-   >
+  currentQuery=query;
+  currentGenre="";
+  currentPage=1;
 
-   <p class="small">
-    Vista previa de tu foto.
-   </p>
+  go("search");
 
+  await performSearch();
+}
+
+
+async function genreSearch(genre){
+
+  currentQuery="";
+  currentGenre=genre;
+  currentPage=1;
+
+  go("search");
+
+  await performSearch();
+}
+
+
+async function performSearch(){
+
+  const box=document.getElementById("results");
+
+  const title=document.getElementById("searchTitle");
+
+  box.innerHTML=`
+    <div class="loading">
+      🔎 Buscando libros...
+    </div>
   `;
 
- };
+  let query=currentQuery;
 
- reader.readAsDataURL(file);
+  if(currentGenre){
+    query="subject_key:"+currentGenre.replaceAll(" ","_");
+  }
+
+  title.innerHTML=`
+    <div class="section-title">
+      <h2>
+        ${currentGenre
+          ? "📚 "+prettyGenre(currentGenre)
+          : "🔎 Resultados para «"+escapeHTML(query)+"»"
+        }
+      </h2>
+    </div>
+  `;
+
+  try{
+
+    const data=await apiSearch(query,{
+      page:currentPage,
+      limit:24
+    });
+
+    lastResults=data.docs || [];
+
+    box.innerHTML=lastResults.length
+      ? lastResults.map(card).join("")
+      : `<div class="empty">No encontramos libros.</div>`;
+
+    document.getElementById("pageNumber").textContent=
+      "Página "+currentPage;
+
+  }catch(error){
+
+    box.innerHTML=`
+      <div class="empty">
+        Ha ocurrido un problema al buscar.<br>
+        Inténtalo otra vez.
+      </div>
+    `;
+  }
+}
+
+
+function nextPage(){
+
+  currentPage++;
+
+  performSearch();
 
 }
 
 
-/* TABS */
+function previousPage(){
 
-function bookTab(tab,title){
+  if(currentPage<=1)return;
 
- document
- .querySelectorAll(".tab")
- .forEach(x=>{
+  currentPage--;
 
-  x.classList.remove("active");
-
- });
-
- document
- .querySelectorAll(".panel")
- .forEach(x=>{
-
-  x.classList.remove("active");
-
- });
-
-
- const panel=
- document.getElementById(
-  "panel-"+tab
- );
-
- if(panel)
- panel.classList.add("active");
+  performSearch();
 
 }
 
 
-/* VALORACIÓN */
+/* =====================================================
+   GENEROS
+===================================================== */
 
-function setStars(title,n){
+function prettyGenre(g){
 
- const r=getRating(title);
+  const names={
+    romance:"Romance 💕",
+    fantasy:"Fantasía 🏰",
+    mystery:"Misterio 🔎",
+    thriller:"Thriller 🖤",
+    "science fiction":"Ciencia ficción 🚀",
+    "historical fiction":"Ficción histórica 🕯️",
+    "young adult":"Young Adult 🌙",
+    horror:"Terror 🥀",
+    poetry:"Poesía 🪶",
+    adventure:"Aventura 🗺️",
+    biography:"Biografía 📜",
+    classics:"Clásicos 📖",
+    maritime:"Mar 🌊",
+    crime:"Crimen 🕵️"
+  };
 
- r.stars=n;
-
- ratings[title]=r;
-
- localStorage.setItem(
-  "bookish_ratings",
-  JSON.stringify(ratings)
- );
-
- openBook(title,"rating");
-
+  return names[g] || g;
 }
 
 
-function setStatus(title,status){
+/* =====================================================
+   FICHA DEL LIBRO
+===================================================== */
 
- const r=getRating(title);
+function openBook(book){
 
- r.status=status;
+  go("detail");
 
- ratings[title]=r;
+  const box=document.getElementById("bookDetail");
 
- localStorage.setItem(
-  "bookish_ratings",
-  JSON.stringify(ratings)
- );
+  const author=(book.author_name || ["Autor desconocido"]).join(", ");
 
- openBook(title,"rating");
+  const id=book.key || book.title;
 
-}
+  const saved=library[id];
 
+  const currentRating=ratings[id] || {};
 
-function setMetric(title,key,value){
+  const bookReviews=reviews[id] || [];
 
- const r=getRating(title);
-
- r.metrics[key]=Number(value);
-
- ratings[title]=r;
-
- localStorage.setItem(
-  "bookish_ratings",
-  JSON.stringify(ratings)
- );
-
-}
-
-
-/* BIBLIOTECA */
-
-function addBook(title){
-
- if(!library.includes(title))
- library.push(title);
-
- localStorage.setItem(
-  "bookish_library",
-  JSON.stringify(library)
- );
-
- renderLibrary();
-
- alert(
-  "Libro añadido a tu biblioteca 📚"
- );
-
-}
-
-
-function renderLibrary(){
-
- const box=
- document.getElementById("libraryList");
-
- if(!library.length){
+  const bookPhrases=phrases[id] || [];
 
   box.innerHTML=`
 
-   <div class="empty">
-    Tu biblioteca está vacía 📚
-   </div>
+    <div class="detail">
 
+      <div class="detail-top">
+
+        <div>
+          ${cover(book).replace("class=\"cover\"","class=\"detail-cover\"")}
+        </div>
+
+        <div>
+
+          <h1>${escapeHTML(book.title || "Sin título")}</h1>
+
+          <h3>✍️ ${escapeHTML(author)}</h3>
+
+          <p>
+            ${book.first_publish_year
+              ? "Primera publicación: "+book.first_publish_year
+              : ""}
+          </p>
+
+          <p>
+            ${book.edition_count
+              ? book.edition_count+" ediciones registradas"
+              : ""}
+          </p>
+
+          ${
+            book.subject
+            ? book.subject
+                .slice(0,8)
+                .map(x=>`<span class="tag">${escapeHTML(x)}</span>`)
+                .join("")
+            : ""
+          }
+
+          <br><br>
+
+          <button class="primary" onclick="addToLibrary('${escapeAttr(id)}','quiero')">
+            💭 Quiero leer
+          </button>
+
+          <button class="secondary" onclick="addToLibrary('${escapeAttr(id)}','favoritos')">
+            ❤️ Favoritos
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="rating-box">
+
+        <h2>⭐ Tu valoración BOOKISH</h2>
+
+        <div class="rating-row">
+
+          <label>
+            ⭐ ¿Cuántas estrellas le das?
+          </label>
+
+          <input
+            id="starsInput"
+            type="range"
+            min="0"
+            max="5"
+            step=".5"
+            value="${currentRating.stars || 0}"
+          >
+
+          <strong id="starsValue">
+            ${currentRating.stars || 0} / 5
+          </strong>
+
+        </div>
+
+
+        <div class="rating-row">
+
+          <label>
+            💕 ¿Cuánto amor has sentido?
+          </label>
+
+          <input
+            id="loveInput"
+            type="range"
+            min="0"
+            max="10"
+            value="${currentRating.love || 0}"
+          >
+
+          <strong id="loveValue">
+            ${currentRating.love || 0} / 10
+          </strong>
+
+        </div>
+
+
+        <div class="rating-row">
+
+          <label>
+            😭 ¿Cuánto has llorado?
+          </label>
+
+          <input
+            id="cryInput"
+            type="range"
+            min="0"
+            max="10"
+            value="${currentRating.cry || 0}"
+          >
+
+          <strong id="cryValue">
+            ${currentRating.cry || 0} / 10
+          </strong>
+
+        </div>
+
+
+        <div class="rating-row">
+
+          <label>
+            🌶️ ¿Cuánto spicy tiene?
+          </label>
+
+          <input
+            id="spicyInput"
+            type="range"
+            min="0"
+            max="5"
+            value="${currentRating.spicy || 0}"
+          >
+
+          <strong id="spicyValue">
+            ${currentRating.spicy || 0} / 5
+          </strong>
+
+        </div>
+
+
+        <button
+          class="primary"
+          onclick='saveRating(${JSON.stringify(id)})'
+        >
+          Guardar valoración
+        </button>
+
+      </div>
+
+
+      <div class="rating-box">
+
+        <h2>💬 Tu reseña</h2>
+
+        <textarea
+          id="reviewInput"
+          placeholder="¿Qué te ha parecido?"
+        >${currentRating.review || ""}</textarea>
+
+        <br><br>
+
+        <button
+          class="primary"
+          onclick='saveReview(${JSON.stringify(id)})'
+        >
+          Publicar reseña
+        </button>
+
+      </div>
+
+
+      <div class="rating-box">
+
+        <h2>🪶 Frases favoritas</h2>
+
+        <textarea
+          id="phraseInput"
+          placeholder="Escribe aquí una frase que quieras guardar..."
+        ></textarea>
+
+        <br><br>
+
+        <button
+          class="primary"
+          onclick='savePhrase(${JSON.stringify(id)})'
+        >
+          Añadir frase
+        </button>
+
+        <div id="phrasesList" style="margin-top:20px">
+          ${
+            bookPhrases.length
+            ? bookPhrases.map(p=>`
+                <div class="community-box">
+                  “${escapeHTML(p)}”
+                </div>
+              `).join("")
+            : `<p class="small">Todavía no hay frases guardadas.</p>`
+          }
+        </div>
+
+      </div>
+
+
+      <div class="rating-box">
+
+        <h2>👥 Reseñas de la comunidad</h2>
+
+        ${
+          bookReviews.length
+          ? bookReviews.map(r=>`
+              <div class="community-box">
+                <strong>${escapeHTML(r.name)}</strong>
+                <p>${escapeHTML(r.text)}</p>
+              </div>
+            `).join("")
+          : `<p class="small">Todavía no hay reseñas de la comunidad.</p>`
+        }
+
+      </div>
+
+    </div>
   `;
 
-  return;
 
- }
+  ["stars","love","cry","spicy"].forEach(type=>{
 
- box.innerHTML=
- library.map(title=>{
+    const input=document.getElementById(type+"Input");
+    const value=document.getElementById(type+"Value");
 
-  const b=
-  books.find(x=>x.title===title);
+    if(input){
 
-  return `
+      input.addEventListener("input",()=>{
+        value.textContent=
+          input.value+" / "+(type==="stars" ? "5" : type==="spicy" ? "5" : "10");
+      });
 
-   <div
-    class="category"
-    onclick="
-     openBook(
-      '${escapeText(title)}'
-     )
-    "
-   >
+    }
 
-    <b>
-     ${b?.emoji||"📖"}
-     ${escapeText(title)}
-    </b>
-
-    <span>
-     →
-    </span>
-
-   </div>
-
-  `;
-
- }).join("");
+  });
 
 }
 
 
-/* PERFIL */
+/* =====================================================
+   VALORACIONES
+===================================================== */
+
+function saveRating(id){
+
+  ratings[id]={
+    stars:Number(document.getElementById("starsInput").value),
+    love:Number(document.getElementById("loveInput").value),
+    cry:Number(document.getElementById("cryInput").value),
+    spicy:Number(document.getElementById("spicyInput").value),
+    review:document.getElementById("reviewInput").value
+  };
+
+  write(STORAGE.ratings,ratings);
+
+  alert("⭐ Valoración guardada");
+
+}
+
+
+/* =====================================================
+   RESEÑAS
+===================================================== */
+
+function saveReview(id){
+
+  const text=document.getElementById("reviewInput").value.trim();
+
+  if(!text)return;
+
+  if(!reviews[id]){
+    reviews[id]=[];
+  }
+
+  reviews[id].push({
+    name:profile.name || "Lector/a BOOKISH",
+    text:text,
+    date:new Date().toLocaleDateString("es-ES")
+  });
+
+  write(STORAGE.reviews,reviews);
+
+  alert("💬 Reseña publicada");
+
+  /*
+    Volvemos a mostrar la ficha actualizada.
+    Buscamos el libro dentro de los resultados si existe.
+  */
+
+  const book=lastResults.find(x=>(x.key||x.title)===id);
+
+  if(book){
+    openBook(book);
+  }
+}
+
+
+/* =====================================================
+   FRASES
+===================================================== */
+
+function savePhrase(id){
+
+  const input=document.getElementById("phraseInput");
+
+  const text=input.value.trim();
+
+  if(!text)return;
+
+  if(!phrases[id]){
+    phrases[id]=[];
+  }
+
+  phrases[id].push(text);
+
+  write(STORAGE.phrases,phrases);
+
+  input.value="";
+
+  alert("🪶 Frase guardada");
+
+}
+
+
+/* =====================================================
+   BIBLIOTECA
+===================================================== */
+
+function addToLibrary(id,status){
+
+  library[id]=status;
+
+  write(STORAGE.library,library);
+
+  alert(
+    status==="quiero"
+    ? "💭 Añadido a Quiero leer"
+    : "❤️ Añadido a Favoritos"
+  );
+
+}
+
+
+function libraryFilter(status){
+
+  renderLibrary(status);
+
+}
+
+
+function renderLibrary(status){
+
+  const box=document.getElementById("libraryResults");
+
+  const ids=Object.keys(library)
+    .filter(id=>status==="todos" || library[id]===status);
+
+  if(!ids.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        Todavía no tienes libros en esta sección.
+        <br><br>
+        Busca libros y añádelos a tu biblioteca.
+      </div>
+    `;
+
+    return;
+  }
+
+  /*
+    Recuperamos los libros por sus IDs.
+  */
+
+  box.innerHTML=`
+    <div class="empty">
+      Tus libros están guardados en este dispositivo.
+      <br>
+      Para ver la ficha completa, vuelve a buscar el libro.
+    </div>
+  `;
+
+}
+
+
+/* =====================================================
+   PERFIL
+===================================================== */
+
+function loadProfile(){
+
+  document.getElementById("nameInput").value=
+    profile.name || "";
+
+  document.getElementById("profileName").textContent=
+    profile.name || "Lector/a BOOKISH";
+
+  document.getElementById("avatar").textContent=
+    profile.avatar || "📚";
+
+}
+
 
 function saveProfile(){
 
- const name=
- document
- .getElementById("profileName")
- .value
- .trim();
+  const name=document.getElementById("nameInput").value.trim();
 
- const bio=
- document
- .getElementById("profileBio")
- .value
- .trim();
-
- localStorage.setItem(
-  "bookish_name",
-  name||"Lector/a BOOKISH"
- );
-
- localStorage.setItem(
-  "bookish_bio",
-  bio
- );
-
- alert(
-  "Perfil guardado 💗"
- );
-
-}
-
-
-function shareProfile(){
-
- const name=
- localStorage.getItem("bookish_name")||
- "Lector/a BOOKISH";
-
- const link=
- location.href+
- "#perfil="+
- encodeURIComponent(name);
-
- const result=
- document
- .getElementById("shareResult");
-
- result.style.display="block";
-
- result.innerHTML=`
-
-  🔗 <b>Tu enlace:</b><br><br>
-
-  ${escapeText(link)}
-
-  <br><br>
-
-  <button
-   class="btn light"
-   onclick="
-    navigator.clipboard.writeText(
-     '${escapeText(link)}'
-    )
-   "
-  >
-   📋 Copiar
-  </button>
-
- `;
-
-}
-
-
-/* TEMAS */
-
-function theme(name){
-
- document.body.classList.remove(
-  "coquette",
-  "fantasia",
-  "mar",
-  "dark"
- );
-
- if(name!=="normal")
- document.body.classList.add(name);
-
- localStorage.setItem(
-  "bookish_theme",
-  name
- );
-
- const names={
-
-  normal:"✨ Elegante",
-
-  coquette:"🎀 Coquette",
-
-  fantasia:"🧚🏻 Fantasía",
-
-  mar:"🌊 Mar",
-
-  dark:"🖤 Dark"
-
- };
-
- document
- .getElementById("currentTheme")
- .textContent=
- "Tema actual: "+
- names[name];
-
-}
-
-
-/* CLUB */
-
-function createClub(){
-
- const name=
- prompt(
-  "¿Cómo quieres llamar a tu club?"
- );
-
- if(!name)return;
-
- alert(
-  "¡Club «"+
-  name+
-  "» creado! 💬📚"
- );
-
-}
-
-
-/* MELODÍA */
-
-let audio=null;
-let timer=null;
-
-function melody(button){
-
- if(timer){
-
-  clearInterval(timer);
-
-  timer=null;
-
-  if(audio){
-   audio.close();
-   audio=null;
+  if(name){
+    profile.name=name;
   }
 
-  button.textContent=
-   "▶️ Reproducir melodía";
+  write(STORAGE.profile,profile);
 
-  return;
+  loadProfile();
 
- }
-
- const AC=
- window.AudioContext||
- window.webkitAudioContext;
-
- if(!AC){
-
-  alert(
-   "Tu navegador no permite esta melodía."
-  );
-
-  return;
-
- }
-
- audio=new AC();
-
- const notes=[
-  261.63,
-  329.63,
-  392,
-  329.63,
-  293.66,
-  349.23,
-  440
- ];
-
- let i=0;
-
- function play(){
-
-  const osc=
-   audio.createOscillator();
-
-  const gain=
-   audio.createGain();
-
-  osc.frequency.value=
-   notes[i%notes.length];
-
-  osc.type="sine";
-
-  gain.gain.setValueAtTime(
-   .0001,
-   audio.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-   .04,
-   audio.currentTime+.03
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-   .0001,
-   audio.currentTime+.7
-  );
-
-  osc.connect(gain);
-
-  gain.connect(audio.destination);
-
-  osc.start();
-
-  osc.stop(
-   audio.currentTime+.75
-  );
-
-  i++;
-
- }
-
- play();
-
- timer=
- setInterval(play,850);
-
- button.textContent=
- "⏸️ Parar melodía";
+  alert("✨ Perfil guardado");
 
 }
 
 
-/* AÑADIR LIBRO */
+/* =====================================================
+   TEMAS
+===================================================== */
 
-function newBookForm(){
+function setTheme(theme){
 
- const title=
- prompt("Título del libro:");
+  document.body.className="theme-"+theme;
 
- if(!title)return;
+  write(STORAGE.theme,theme);
 
- const author=
- prompt("Autor/a:");
-
- if(!author)return;
-
- books.push({
-
-  title:title,
-
-  author:author,
-
-  genre:"Personalizado",
-
-  emoji:"📖",
-
-  bg:"#9b7180",
-
-  rating:0
-
- });
-
- renderBooks();
-
- alert(
-  "Libro añadido a BOOKISH 📚"
- );
+  updateDecor(theme);
 
 }
 
 
-/* INICIO */
+function updateDecor(theme){
 
-renderTrending();
+  const decor=document.getElementById("decor");
 
-renderLibrary();
+  const emojis={
+    coquette:["🎀","🎀","🌸","✨"],
+    fantasy:["✨","🦋","🏰","🌙"],
+    dark:["🌹","🕯️","🌑","🥀"],
+    ocean:["🐚","🪸","🌊","🐚"],
+    elegant:["✦","❦","✧","✦"]
+  };
 
-const savedTheme=
- localStorage
- .getItem("bookish_theme")||
- "normal";
+  decor.className=
+    "theme-decoration "+theme+"-decoration";
 
-theme(savedTheme);
+  decor.innerHTML=
+    emojis[theme]
+      .map(x=>`<span>${x}</span>`)
+      .join("");
 
-const savedName=
- localStorage.getItem("bookish_name");
+}
 
-if(savedName)
-document
-.getElementById("profileName")
-.value=savedName;
 
-const savedBio=
- localStorage.getItem("bookish_bio");
+/* =====================================================
+   AMISTADES
+===================================================== */
 
-if(savedBio)
-document
-.getElementById("profileBio")
-.value=savedBio;
+function getFriendLink(){
+
+  const data={
+    name:profile.name,
+    id:"BOOKISH-"+btoa(profile.name).replace(/=/g,"")
+  };
+
+  return location.href.split("#")[0]+"#friend="+encodeURIComponent(
+    data.id
+  );
+}
+
+
+function renderFriends(){
+
+  document.getElementById("friendLink").textContent=
+    getFriendLink();
+
+  const box=document.getElementById("friends");
+
+  if(!friends.length){
+
+    box.innerHTML=`
+      <p class="small">
+        Todavía no tienes amistades añadidas.
+      </p>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=friends.map(f=>`
+    <div class="community-box">
+      👤 ${escapeHTML(f)}
+    </div>
+  `).join("");
+
+}
+
+
+function copyFriendLink(){
+
+  const link=getFriendLink();
+
+  navigator.clipboard.writeText(link)
+    .then(()=>{
+      alert("🔗 Enlace copiado");
+    })
+    .catch(()=>{
+      prompt("Copia tu enlace:",link);
+    });
+
+}
+
+
+function addFriend(){
+
+  const input=document.getElementById("friendInput");
+
+  const value=input.value.trim();
+
+  if(!value)return;
+
+  friends.push(value);
+
+  write(STORAGE.friends,friends);
+
+  input.value="";
+
+  renderFriends();
+
+  alert("👭 Amistad añadida");
+
+}
+
+
+/* =====================================================
+   FORO
+===================================================== */
+
+function createPost(){
+
+  const title=document.getElementById("forumTitle").value.trim();
+
+  const text=document.getElementById("forumText").value.trim();
+
+  if(!title || !text){
+
+    alert("Escribe un título y un mensaje.");
+
+    return;
+  }
+
+  forum.unshift({
+
+    title:title,
+
+    text:text,
+
+    name:profile.name || "Lector/a BOOKISH",
+
+    date:new Date().toLocaleDateString("es-ES")
+
+  });
+
+  write(STORAGE.forum,forum);
+
+  document.getElementById("forumTitle").value="";
+
+  document.getElementById("forumText").value="";
+
+  renderForum();
+
+}
+
+
+function renderForum(){
+
+  const box=document.getElementById("forumPosts");
+
+  if(!forum.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        Todavía no hay conversaciones.
+        <br>
+        ¡Sé la primera persona en crear una!
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=forum.map(post=>`
+
+    <div class="forum-post">
+
+      <h3>💬 ${escapeHTML(post.title)}</h3>
+
+      <p>${escapeHTML(post.text)}</p>
+
+      <span class="small">
+        ${escapeHTML(post.name)} · ${post.date}
+      </span>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+/* =====================================================
+   MELODÍA
+===================================================== */
+
+let audioContext=null;
+let musicTimer=null;
+let musicPlaying=false;
+
+function toggleMusic(){
+
+  const button=document.getElementById("musicButton");
+
+  if(musicPlaying){
+
+    clearInterval(musicTimer);
+
+    musicPlaying=false;
+
+    button.textContent="▶ Activar melodía";
+
+    return;
+  }
+
+  audioContext=
+    audioContext ||
+    new (window.AudioContext || window.webkitAudioContext)();
+
+  const notes=[
+    261.63,
+    329.63,
+    392.00,
+    329.63,
+    293.66,
+    349.23,
+    440.00,
+    349.23
+  ];
+
+  let index=0;
+
+  function playNote(){
+
+    const oscillator=
+      audioContext.createOscillator();
+
+    const gain=
+      audioContext.createGain();
+
+    oscillator.frequency.value=
+      notes[index % notes.length];
+
+    oscillator.type="sine";
+
+    gain.gain.setValueAtTime(
+      .0001,
+      audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      .06,
+      audioContext.currentTime+.03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      .0001,
+      audioContext.currentTime+.65
+    );
+
+    oscillator.connect(gain);
+
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+      audioContext.currentTime+.7
+    );
+
+    index++;
+
+  }
+
+  playNote();
+
+  musicTimer=setInterval(playNote,750);
+
+  musicPlaying=true;
+
+  button.textContent="⏸ Parar melodía";
+
+}
+
+
+/* =====================================================
+   SEGURIDAD DEL TEXTO
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+  return String(value ?? "")
+    .replaceAll("'","&#039;")
+    .replaceAll('"',"&quot;");
+
+}
+
+
+/* =====================================================
+   CARGA INICIAL
+===================================================== */
+
+function initialise(){
+
+  const savedTheme=
+    localStorage.getItem(STORAGE.theme) ||
+    "coquette";
+
+  setTheme(savedTheme);
+
+  loadProfile();
+
+  loadTrending();
+
+  renderForum();
+
+  renderFriends();
+
+}
+
+
+/* =====================================================
+   ARRANCAR
+===================================================== */
+
+initialise();
 
 </script>
 
