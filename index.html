@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>BOOKISH 📚✨</title>
 
 <style>
 
 /* =========================================================
-   BOOKISH — ESTILOS PRINCIPALES
+   VARIABLES
 ========================================================= */
 
 :root{
+
   --fondo:#fff7fb;
   --tarjeta:#ffffff;
   --texto:#332832;
   --suave:#887783;
+
   --principal:#c4779d;
   --secundario:#f0cada;
+
   --borde:#ead7e1;
-  --sombra:0 8px 25px rgba(70,40,60,.10);
+
+  --sombra:
+    0 8px 25px rgba(70,40,60,.10);
+
 }
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -31,11 +49,20 @@ html{
 }
 
 body{
+
   margin:0;
-  font-family:Georgia,serif;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
   background:var(--fondo);
+
   color:var(--texto);
-  transition:.35s;
+
+  transition:.3s;
+
 }
 
 button,
@@ -53,116 +80,166 @@ button:active{
   transform:scale(.98);
 }
 
+img{
+  max-width:100%;
+}
+
+
 /* =========================================================
    DECORACIÓN
 ========================================================= */
 
 #decoracion{
+
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
+
   overflow:hidden;
+
   z-index:0;
+
 }
 
 .decor{
+
   position:absolute;
+
   opacity:.14;
+
   font-size:55px;
-  filter:blur(.2px);
+
 }
 
 .decor:nth-child(1){
-  top:8%;
-  left:3%;
+  top:10%;
+  left:4%;
 }
 
 .decor:nth-child(2){
-  top:28%;
+  top:32%;
   right:4%;
 }
 
 .decor:nth-child(3){
   bottom:20%;
-  left:6%;
+  left:7%;
 }
 
 .decor:nth-child(4){
-  bottom:6%;
-  right:9%;
+  bottom:7%;
+  right:10%;
 }
 
-.decor:nth-child(5){
-  top:55%;
-  right:18%;
-  font-size:38px;
-}
-
-.decor:nth-child(6){
-  top:15%;
-  right:22%;
-  font-size:35px;
-}
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 header{
+
   position:sticky;
+
   top:0;
-  z-index:50;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--borde);
+
+  z-index:100;
+
+  background:
+    rgba(255,255,255,.92);
+
+  backdrop-filter:
+    blur(14px);
+
+  border-bottom:
+    1px solid var(--borde);
+
 }
 
 .header{
+
   max-width:1250px;
+
   margin:auto;
-  padding:14px 16px;
+
+  padding:
+    13px 16px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:12px;
+
 }
 
 .logo{
+
   font-size:24px;
+
   font-weight:bold;
+
   cursor:pointer;
+
   white-space:nowrap;
+
 }
 
 nav{
+
   display:flex;
-  gap:4px;
+
   flex-wrap:wrap;
+
   justify-content:flex-end;
+
+  gap:4px;
+
 }
 
 nav button{
+
   border:0;
+
   background:transparent;
+
   color:var(--texto);
-  padding:8px 10px;
+
+  padding:
+    8px 10px;
+
   border-radius:10px;
+
 }
 
 nav button:hover{
-  background:var(--secundario);
+
+  background:
+    var(--secundario);
+
 }
+
 
 /* =========================================================
    MAIN
 ========================================================= */
 
 main{
+
   max-width:1250px;
+
   margin:auto;
-  padding:20px 16px 80px;
+
+  padding:
+    20px 16px 80px;
+
   position:relative;
+
   z-index:2;
+
 }
 
 .pagina{
@@ -170,11 +247,16 @@ main{
 }
 
 .pagina.activa{
+
   display:block;
-  animation:entrada .25s ease;
+
+  animation:
+    entrada .25s ease;
+
 }
 
 @keyframes entrada{
+
   from{
     opacity:0;
     transform:translateY(8px);
@@ -184,427 +266,809 @@ main{
     opacity:1;
     transform:none;
   }
+
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
+
   text-align:center;
-  padding:35px 10px;
+
+  padding:
+    35px 10px;
+
 }
 
 .hero h1{
-  font-size:clamp(38px,8vw,68px);
-  margin:8px 0;
+
+  font-size:
+    clamp(40px,8vw,70px);
+
+  margin:
+    8px 0;
+
 }
 
 .hero p{
+
   color:var(--suave);
+
   font-size:17px;
+
 }
+
 
 /* =========================================================
    BUSCADOR
 ========================================================= */
 
 .buscador{
+
   max-width:760px;
-  margin:25px auto;
+
+  margin:
+    25px auto;
+
   padding:6px;
+
   display:flex;
+
   background:var(--tarjeta);
-  border:1px solid var(--borde);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:20px;
+
   box-shadow:var(--sombra);
+
 }
 
 .buscador input{
+
   flex:1;
+
   min-width:0;
+
   border:0;
+
   outline:0;
+
   background:transparent;
+
   color:var(--texto);
+
   padding:13px;
+
 }
 
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
 .principal{
-  background:var(--principal);
+
+  background:
+    var(--principal);
+
   color:white;
+
   border:0;
+
   border-radius:13px;
-  padding:11px 17px;
+
+  padding:
+    11px 17px;
+
   font-weight:bold;
+
 }
 
 .secundario{
-  background:var(--secundario);
+
+  background:
+    var(--secundario);
+
   color:var(--texto);
+
   border:0;
+
   border-radius:12px;
-  padding:10px 14px;
+
+  padding:
+    10px 14px;
+
 }
 
+.peligro{
+
+  background:#ead0d7;
+
+  color:#6d3045;
+
+  border:0;
+
+  border-radius:12px;
+
+  padding:10px 14px;
+
+}
+
+
 /* =========================================================
-   SECCIONES
+   TÍTULOS
 ========================================================= */
 
 .titulo-seccion{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:10px;
-  margin:30px 0 15px;
+
+  margin:
+    32px 0 15px;
+
 }
 
 .titulo-seccion h2{
+
   margin:0;
+
 }
+
 
 /* =========================================================
-   LIBROS
+   FILAS DE LIBROS
 ========================================================= */
 
-.grid-libros{
+.fila-libros{
+
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(165px,1fr));
-  gap:17px;
-  position:relative;
+
+  grid-template-columns:
+    repeat(6,minmax(0,1fr));
+
+  gap:16px;
+
 }
 
+.grid-libros{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(165px,1fr));
+
+  gap:17px;
+
+}
+
+
+/* =========================================================
+   LIBRO
+========================================================= */
+
 .libro{
-  background:var(--tarjeta);
-  border:1px solid var(--borde);
+
+  background:
+    var(--tarjeta);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:18px;
+
   overflow:hidden;
-  box-shadow:var(--sombra);
+
+  box-shadow:
+    var(--sombra);
+
   cursor:pointer;
+
   transition:.2s;
+
   position:relative;
+
   z-index:3;
+
 }
 
 .libro:hover{
-  transform:translateY(-4px);
+
+  transform:
+    translateY(-5px);
+
 }
 
 .portada{
+
   width:100%;
+
   aspect-ratio:2/3;
+
   object-fit:cover;
+
   display:block;
-  background:var(--secundario);
+
+  background:
+    var(--secundario);
+
 }
 
 .sin-portada{
+
   width:100%;
+
   aspect-ratio:2/3;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   text-align:center;
+
   padding:15px;
-  background:linear-gradient(145deg,var(--principal),var(--secundario));
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--principal),
+      var(--secundario)
+    );
+
   color:white;
+
 }
 
 .info-libro{
+
   padding:11px;
+
 }
 
 .info-libro h3{
-  margin:0 0 5px;
+
+  margin:
+    0 0 5px;
+
   font-size:16px;
-  line-height:1.25;
+
+  line-height:1.2;
+
 }
 
 .info-libro p{
+
   margin:4px 0;
+
   color:var(--suave);
+
   font-size:13px;
+
 }
 
-.libro-badges{
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
-  margin-top:7px;
+.libro-anio{
+
+  font-size:12px;
+
 }
 
-.badge{
-  display:inline-block;
-  font-size:10px;
-  padding:4px 7px;
-  border-radius:20px;
-  background:var(--secundario);
-}
 
 /* =========================================================
-   GENEROS
+   SECCIONES DE GÉNERO
+========================================================= */
+
+.seccion-genero{
+
+  margin:
+    34px 0;
+
+}
+
+.seccion-genero h2{
+
+  margin-bottom:14px;
+
+}
+
+.scroll-libros{
+
+  display:grid;
+
+  grid-auto-flow:column;
+
+  grid-auto-columns:
+    minmax(165px,185px);
+
+  grid-template-rows:1fr;
+
+  gap:15px;
+
+  overflow-x:auto;
+
+  padding:
+    3px 3px 15px;
+
+  scrollbar-width:thin;
+
+}
+
+
+/* =========================================================
+   GÉNEROS
 ========================================================= */
 
 .generos{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(135px,1fr));
+
   gap:12px;
+
 }
 
 .genero{
-  background:var(--tarjeta);
-  border:1px solid var(--borde);
+
+  background:
+    var(--tarjeta);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:17px;
-  padding:23px 10px;
+
+  padding:
+    23px 10px;
+
   text-align:center;
-  box-shadow:var(--sombra);
+
+  box-shadow:
+    var(--sombra);
+
   cursor:pointer;
+
   transition:.2s;
+
+  font-size:16px;
+
 }
 
 .genero:hover{
-  transform:translateY(-3px);
+
+  transform:
+    translateY(-3px);
+
 }
+
 
 /* =========================================================
    TARJETAS
 ========================================================= */
 
 .tarjeta{
-  background:var(--tarjeta);
-  border:1px solid var(--borde);
+
+  background:
+    var(--tarjeta);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:20px;
+
   padding:20px;
-  box-shadow:var(--sombra);
+
+  box-shadow:
+    var(--sombra);
+
   margin-bottom:16px;
+
 }
 
+
+/* =========================================================
+   DETALLE
+========================================================= */
+
 .detalle{
-  background:var(--tarjeta);
-  border:1px solid var(--borde);
+
+  background:
+    var(--tarjeta);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:24px;
+
   padding:22px;
-  box-shadow:var(--sombra);
+
+  box-shadow:
+    var(--sombra);
+
 }
 
 .detalle-arriba{
+
   display:grid;
-  grid-template-columns:240px 1fr;
+
+  grid-template-columns:
+    230px 1fr;
+
   gap:28px;
+
 }
 
 .detalle-portada{
+
   width:100%;
-  max-width:240px;
-  border-radius:14px;
+
+  max-width:230px;
+
+  border-radius:15px;
+
   display:block;
+
   margin:auto;
+
 }
 
-.etiqueta{
-  display:inline-block;
-  background:var(--secundario);
-  padding:6px 10px;
-  border-radius:20px;
-  margin:4px;
-  font-size:13px;
-}
 
 /* =========================================================
-   VALORACIONES
+   ETIQUETAS
+========================================================= */
+
+.etiqueta{
+
+  display:inline-block;
+
+  background:
+    var(--secundario);
+
+  padding:
+    6px 10px;
+
+  border-radius:20px;
+
+  margin:4px;
+
+  font-size:13px;
+
+}
+
+
+/* =========================================================
+   VALORACIÓN
 ========================================================= */
 
 .valoracion{
+
   margin-top:20px;
-  padding:18px;
-  border:1px solid var(--borde);
+
+  padding:20px;
+
+  border:
+    1px solid var(--borde);
+
   border-radius:18px;
+
 }
 
 .valoracion h2{
+
   margin-top:0;
+
+}
+
+.valoracion h3{
+
+  margin-top:26px;
+
 }
 
 .fila-valoracion{
-  margin:18px 0;
+
+  margin:
+    18px 0;
+
 }
 
 .fila-valoracion label{
+
   display:block;
+
   margin-bottom:7px;
+
 }
 
 .fila-valoracion input[type=range]{
+
   width:100%;
+
 }
 
 .categorias-valoracion{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
   gap:10px;
+
 }
 
 .mini-valoracion{
-  background:var(--fondo);
+
+  background:
+    var(--fondo);
+
   border-radius:13px;
+
   padding:12px;
+
 }
 
 .mini-valoracion input[type=range]{
+
   width:100%;
+
+  margin-top:8px;
+
 }
 
 textarea{
+
   width:100%;
+
   min-height:100px;
-  border:1px solid var(--borde);
+
+  border:
+    1px solid var(--borde);
+
   border-radius:14px;
-  background:var(--fondo);
+
+  background:
+    var(--fondo);
+
   color:var(--texto);
+
   padding:12px;
+
   resize:vertical;
+
 }
 
 select{
+
   color:var(--texto);
+
 }
+
 
 /* =========================================================
    PERFIL
 ========================================================= */
 
 .perfil{
-  max-width:700px;
+
+  max-width:720px;
+
   margin:auto;
+
 }
 
 .avatar{
+
   width:110px;
+
   height:110px;
+
   border-radius:50%;
-  background:var(--secundario);
+
+  background:
+    var(--secundario);
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
-  font-size:48px;
-  margin:0 auto 12px;
+
+  font-size:50px;
+
+  margin:
+    0 auto 10px;
+
   overflow:hidden;
-  border:4px solid var(--tarjeta);
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+  border:
+    3px solid var(--principal);
+
 }
 
 .avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
 
-.avatar-botones{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
 }
 
 .nombre-perfil{
+
   text-align:center;
+
   font-size:25px;
+
   margin-bottom:20px;
+
 }
 
+.avatar-preview-text{
+
+  text-align:center;
+
+  color:var(--suave);
+
+  font-size:13px;
+
+}
+
+
+/* =========================================================
+   TEMAS
+========================================================= */
+
 .temas{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(120px,1fr));
+
   gap:10px;
+
 }
 
 .tema{
-  border:2px solid transparent;
-  background:var(--fondo);
+
+  border:
+    2px solid transparent;
+
+  background:
+    var(--fondo);
+
   color:var(--texto);
+
   border-radius:14px;
+
   padding:16px 8px;
+
 }
 
 .tema:hover{
-  border-color:var(--principal);
+
+  border-color:
+    var(--principal);
+
 }
+
 
 /* =========================================================
    COMUNIDAD
 ========================================================= */
 
 .comunidad-post{
-  padding:15px 0;
-  border-bottom:1px solid var(--borde);
+
+  padding:
+    15px 0;
+
+  border-bottom:
+    1px solid var(--borde);
+
 }
 
 .comunidad-post:last-child{
+
   border-bottom:0;
+
 }
 
 .pequeno{
+
   color:var(--suave);
+
   font-size:13px;
+
 }
 
 .enlace{
-  background:var(--fondo);
+
+  background:
+    var(--fondo);
+
   padding:12px;
+
   border-radius:12px;
+
   word-break:break-all;
+
 }
+
 
 /* =========================================================
    PAGINACIÓN
 ========================================================= */
 
-.cargando,
-.vacio{
-  text-align:center;
-  padding:35px;
-  color:var(--suave);
-  grid-column:1/-1;
-}
-
 .paginacion{
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
+
   gap:12px;
-  margin:28px 0;
+
+  margin:
+    28px 0;
+
 }
 
-hr{
-  border:0;
-  border-top:1px solid var(--borde);
-  margin:25px 0;
-}
 
 /* =========================================================
-   SELECTOR DE ORDEN
+   CARGANDO
 ========================================================= */
 
-.orden{
-  display:flex;
-  justify-content:flex-end;
-  margin:15px 0;
+.cargando,
+.vacio{
+
+  text-align:center;
+
+  padding:35px;
+
+  color:var(--suave);
+
 }
 
-.orden select{
-  border:1px solid var(--borde);
-  background:var(--tarjeta);
-  color:var(--texto);
-  padding:9px 12px;
-  border-radius:12px;
+
+/* =========================================================
+   HR
+========================================================= */
+
+hr{
+
+  border:0;
+
+  border-top:
+    1px solid var(--borde);
+
+  margin:
+    25px 0;
+
 }
+
 
 /* =========================================================
    TEMAS
 ========================================================= */
 
 body.coquette{
+
   --fondo:#fff1f7;
   --tarjeta:#fffafd;
   --texto:#4b3040;
@@ -612,9 +1076,11 @@ body.coquette{
   --principal:#d985ad;
   --secundario:#f3c9dc;
   --borde:#efd7e3;
+
 }
 
 body.fantasia{
+
   --fondo:#eeebfa;
   --tarjeta:#fbfaff;
   --texto:#352e4c;
@@ -622,9 +1088,11 @@ body.fantasia{
   --principal:#7664b8;
   --secundario:#d1c7ef;
   --borde:#ddd5f1;
+
 }
 
 body.dark{
+
   --fondo:#100b0f;
   --tarjeta:#1d1219;
   --texto:#f5e9ef;
@@ -632,9 +1100,11 @@ body.dark{
   --principal:#9e304d;
   --secundario:#4d1729;
   --borde:#522033;
+
 }
 
 body.mar{
+
   --fondo:#eaf8fa;
   --tarjeta:#ffffff;
   --texto:#24444c;
@@ -642,9 +1112,11 @@ body.mar{
   --principal:#338fa3;
   --secundario:#b9e5eb;
   --borde:#c9e7eb;
+
 }
 
 body.elegante{
+
   --fondo:#f5f1e9;
   --tarjeta:#fffdf8;
   --texto:#39342d;
@@ -652,82 +1124,162 @@ body.elegante{
   --principal:#a48755;
   --secundario:#ded0b4;
   --borde:#e3d9c7;
+
 }
 
+
 /* =========================================================
-   MOVIL
+   MÓVIL
 ========================================================= */
+
+@media(max-width:900px){
+
+  .fila-libros{
+
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+
+  }
+
+}
 
 @media(max-width:650px){
 
   .header{
+
     align-items:flex-start;
+
   }
 
   nav{
-    max-width:240px;
+
+    max-width:245px;
+
   }
 
   nav button{
+
     font-size:11px;
+
     padding:6px;
+
   }
 
   .detalle-arriba{
+
     grid-template-columns:1fr;
+
   }
 
   .detalle-portada{
-    max-width:200px;
+
+    max-width:210px;
+
   }
 
   .grid-libros{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
     gap:12px;
+
+  }
+
+  .fila-libros{
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
   }
 
   .buscador{
+
     border-radius:15px;
+
   }
 
   .hero{
-    padding:25px 5px;
-  }
 
-  .titulo-seccion{
-    align-items:flex-start;
+    padding:
+      25px 5px;
+
   }
 
 }
 
+
 /* =========================================================
-   TABLET / ESCRITORIO
+   MÓVIL PEQUEÑO
 ========================================================= */
 
-@media(min-width:1000px){
+@media(max-width:400px){
 
-  .grid-libros{
-    grid-template-columns:repeat(6,1fr);
+  .logo{
+
+    font-size:19px;
+
   }
+
+  nav button{
+
+    font-size:10px;
+
+    padding:5px;
+
+  }
+
+}
+
+
+/* =========================================================
+   CARRUSEL
+========================================================= */
+
+.scroll-libros::-webkit-scrollbar{
+
+  height:6px;
+
+}
+
+.scroll-libros::-webkit-scrollbar-thumb{
+
+  background:
+    var(--secundario);
+
+  border-radius:20px;
 
 }
 
 </style>
+
 </head>
 
 
 <body class="coquette">
 
-<div id="decoracion"></div>
+
+<div id="decoracion">
+
+  <span class="decor">🎀</span>
+  <span class="decor">🎀</span>
+  <span class="decor">🌸</span>
+  <span class="decor">✨</span>
+
+</div>
 
 
 <header>
 
   <div class="header">
 
-    <div class="logo" onclick="mostrar('inicio')">
+    <div
+      class="logo"
+      onclick="mostrar('inicio')"
+    >
       BOOKISH 📚✨
     </div>
+
 
     <nav>
 
@@ -767,13 +1319,17 @@ body.elegante{
 
 <!-- ======================================================
      INICIO
-======================================================= -->
+====================================================== -->
 
-<section id="inicio" class="pagina activa">
+<section
+  id="inicio"
+  class="pagina activa"
+>
+
 
   <div class="hero">
 
-    <div style="font-size:45px">
+    <div style="font-size:48px">
       📚✨
     </div>
 
@@ -785,17 +1341,20 @@ body.elegante{
       Tu casa entre libros.
     </p>
 
+
     <div class="buscador">
 
       <input
         id="busquedaInicio"
-        placeholder="Busca un libro, autor, saga, ISBN..."
-        onkeydown="if(event.key==='Enter')buscarDesdeInicio()"
+        placeholder="Busca un libro, autor, saga o ISBN..."
+        onkeydown="
+          if(event.key==='Enter') buscar()
+        "
       >
 
       <button
         class="principal"
-        onclick="buscarDesdeInicio()"
+        onclick="buscar()"
       >
         🔎 Buscar
       </button>
@@ -805,15 +1364,17 @@ body.elegante{
   </div>
 
 
+  <!-- NOVEDADES -->
+
   <div class="titulo-seccion">
 
     <h2>
-      🆕 Libros nuevos
+      🆕 Novedades
     </h2>
 
     <button
       class="secundario"
-      onclick="cargarNovedades(true)"
+      onclick="cargarNovedades()"
     >
       Actualizar
     </button>
@@ -823,36 +1384,413 @@ body.elegante{
 
   <div
     id="novedades"
-    class="grid-libros"
+    class="scroll-libros"
   >
 
     <div class="cargando">
-      🆕 Buscando novedades...
+      Cargando novedades...
     </div>
 
   </div>
 
 
-  <div class="titulo-seccion">
+  <!-- ROMANCE -->
 
-    <h2>
-      💕 Romantasy
-    </h2>
+  <div class="seccion-genero">
 
-  </div>
+    <div class="titulo-seccion">
 
+      <h2>
+        💕 Romance
+      </h2>
 
-  <div
-    id="romantasyInicio"
-    class="grid-libros"
-  >
+      <button
+        class="secundario"
+        onclick="genero('romance')"
+      >
+        Ver todos
+      </button>
 
-    <div class="cargando">
-      🏰 Buscando romantasy...
+    </div>
+
+    <div
+      id="genero-romance"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
     </div>
 
   </div>
 
+
+  <!-- FANTASÍA -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🏰 Fantasía
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('fantasy')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-fantasy"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ROMANTASY -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🥀 Romantasy
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('romantasy')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-romantasy"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- VAMPIROS -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🧛 Vampiros y paranormal
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('vampire paranormal')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-vampiros"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- THRILLER -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🔎 Misterio y Thriller
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('thriller mystery')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-thriller"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TERROR -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        👻 Terror
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('horror')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-terror"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CIENCIA FICCIÓN -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🚀 Ciencia ficción
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('science fiction')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-scifi"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- YOUNG ADULT -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🌙 Young Adult
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('young adult')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-ya"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- HISTÓRICA -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🕯️ Histórica
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('historical fiction')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-historica"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- AVENTURA -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🗺️ Aventura
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('adventure')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-aventura"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CLÁSICOS -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        📖 Grandes clásicos
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('classics')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-clasicos"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- POESÍA -->
+
+  <div class="seccion-genero">
+
+    <div class="titulo-seccion">
+
+      <h2>
+        🪶 Poesía
+      </h2>
+
+      <button
+        class="secundario"
+        onclick="genero('poetry')"
+      >
+        Ver todos
+      </button>
+
+    </div>
+
+    <div
+      id="genero-poesia"
+      class="scroll-libros"
+    >
+
+      <div class="cargando">
+        Cargando...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EXPLORAR -->
 
   <div class="titulo-seccion">
 
@@ -875,15 +1813,23 @@ body.elegante{
 
     <div
       class="genero"
-      onclick="genero('romantasy')"
+      onclick="genero('fantasy')"
     >
       🏰<br>
+      Fantasía
+    </div>
+
+    <div
+      class="genero"
+      onclick="genero('romantasy')"
+    >
+      🥀<br>
       Romantasy
     </div>
 
     <div
       class="genero"
-      onclick="genero('vampires romance')"
+      onclick="genero('vampire paranormal')"
     >
       🧛<br>
       Vampiros
@@ -891,66 +1837,18 @@ body.elegante{
 
     <div
       class="genero"
-      onclick="genero('fae fantasy romance')"
-    >
-      🧚<br>
-      Hadas / Fae
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('witches fantasy romance')"
-    >
-      🔮<br>
-      Brujas
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('werewolf romance')"
-    >
-      🐺<br>
-      Hombres lobo
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('fantasy romance')"
-    >
-      🪄<br>
-      Fantasía romántica
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('dark fantasy romance')"
-    >
-      🥀<br>
-      Dark Romantasy
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('mystery')"
+      onclick="genero('thriller mystery')"
     >
       🔎<br>
-      Misterio
-    </div>
-
-    <div
-      class="genero"
-      onclick="genero('thriller')"
-    >
-      🖤<br>
       Thriller
     </div>
 
     <div
       class="genero"
-      onclick="genero('young adult')"
+      onclick="genero('horror')"
     >
-      🌙<br>
-      Young Adult
+      👻<br>
+      Terror
     </div>
 
     <div
@@ -963,10 +1861,10 @@ body.elegante{
 
     <div
       class="genero"
-      onclick="genero('horror')"
+      onclick="genero('young adult')"
     >
-      💀<br>
-      Terror
+      🌙<br>
+      Young Adult
     </div>
 
     <div
@@ -1003,27 +1901,37 @@ body.elegante{
 
   </div>
 
+
 </section>
 
 
 <!-- ======================================================
      BUSCAR
-======================================================= -->
+====================================================== -->
 
-<section id="buscar" class="pagina">
+<section
+  id="buscar"
+  class="pagina"
+>
 
   <div class="hero">
 
     <h1 style="font-size:42px">
-      🔎 Buscar libros
+      🔎 Buscar
     </h1>
+
+    <p>
+      Encuentra libros, autores, sagas o ISBN.
+    </p>
 
     <div class="buscador">
 
       <input
         id="campoBusqueda"
         placeholder="Título, autor, saga, ISBN..."
-        onkeydown="if(event.key==='Enter')buscar()"
+        onkeydown="
+          if(event.key==='Enter') buscar()
+        "
       >
 
       <button
@@ -1039,31 +1947,6 @@ body.elegante{
 
 
   <div id="tituloResultados"></div>
-
-
-  <div class="orden">
-
-    <select
-      id="ordenResultados"
-      onchange="cambiarOrden()"
-    >
-
-      <option value="relevance">
-        ⭐ Más relevantes
-      </option>
-
-      <option value="newest">
-        🆕 Más nuevos
-      </option>
-
-      <option value="popular">
-        ❤️ Más conocidos
-      </option>
-
-    </select>
-
-  </div>
-
 
   <div
     id="resultados"
@@ -1094,37 +1977,17 @@ body.elegante{
   </div>
 
 
-  <div
-    id="anadirDesdeBusqueda"
-    class="tarjeta"
-    style="text-align:center"
-  >
-
-    <h2>
-      📚 ¿No encuentras tu libro?
-    </h2>
-
-    <p>
-      Puedes añadirlo manualmente a BOOKISH.
-    </p>
-
-    <button
-      class="principal"
-      onclick="abrirFormularioLibro()"
-    >
-      ➕ Añadir libro
-    </button>
-
-  </div>
-
 </section>
 
 
 <!-- ======================================================
      BIBLIOTECA
-======================================================= -->
+====================================================== -->
 
-<section id="biblioteca" class="pagina">
+<section
+  id="biblioteca"
+  class="pagina"
+>
 
   <div class="hero">
 
@@ -1214,21 +2077,26 @@ body.elegante{
     style="margin-top:25px"
   ></div>
 
+
 </section>
 
 
 <!-- ======================================================
-     DETALLE
-======================================================= -->
+     DETALLE LIBRO
+====================================================== -->
 
-<section id="detalle" class="pagina">
+<section
+  id="detalle"
+  class="pagina"
+>
 
   <button
     class="secundario"
-    onclick="volverDeDetalle()"
+    onclick="mostrar('buscar')"
   >
     ← Volver
   </button>
+
 
   <div
     id="contenidoDetalle"
@@ -1240,9 +2108,12 @@ body.elegante{
 
 <!-- ======================================================
      COMUNIDAD
-======================================================= -->
+====================================================== -->
 
-<section id="comunidad" class="pagina">
+<section
+  id="comunidad"
+  class="pagina"
+>
 
   <div class="hero">
 
@@ -1293,7 +2164,14 @@ body.elegante{
     <input
       id="enlaceAmigo"
       placeholder="Pega aquí el enlace de tu amigo"
-      style="width:100%;padding:12px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
+      style="
+        width:100%;
+        padding:12px;
+        border:1px solid var(--borde);
+        border-radius:12px;
+        background:var(--fondo);
+        color:var(--texto)
+      "
     >
 
     <br><br>
@@ -1318,14 +2196,18 @@ body.elegante{
 
   </div>
 
+
 </section>
 
 
 <!-- ======================================================
      FORO
-======================================================= -->
+====================================================== -->
 
-<section id="foro" class="pagina">
+<section
+  id="foro"
+  class="pagina"
+>
 
   <div class="hero">
 
@@ -1345,7 +2227,14 @@ body.elegante{
     <input
       id="tituloForo"
       placeholder="Título de la conversación"
-      style="width:100%;padding:12px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
+      style="
+        width:100%;
+        padding:12px;
+        border:1px solid var(--borde);
+        border-radius:12px;
+        background:var(--fondo);
+        color:var(--texto)
+      "
     >
 
     <br><br>
@@ -1382,9 +2271,12 @@ body.elegante{
 
 <!-- ======================================================
      PERFIL
-======================================================= -->
+====================================================== -->
 
-<section id="perfil" class="pagina">
+<section
+  id="perfil"
+  class="pagina"
+>
 
   <div class="hero">
 
@@ -1408,34 +2300,6 @@ body.elegante{
     </div>
 
 
-    <div class="avatar-botones">
-
-      <label
-        for="fotoAvatar"
-        class="principal"
-        style="display:inline-block"
-      >
-        🖼️ Añadir foto
-      </label>
-
-      <input
-        type="file"
-        id="fotoAvatar"
-        accept="image/*"
-        style="display:none"
-        onchange="cambiarAvatar(event)"
-      >
-
-      <button
-        class="secundario"
-        onclick="quitarAvatar()"
-      >
-        🗑️ Quitar foto
-      </button>
-
-    </div>
-
-
     <div
       class="nombre-perfil"
       id="nombrePerfil"
@@ -1447,10 +2311,49 @@ body.elegante{
     <input
       id="nombreInput"
       placeholder="Tu nombre"
-      style="width:100%;padding:12px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
+      style="
+        width:100%;
+        padding:12px;
+        border:1px solid var(--borde);
+        border-radius:12px;
+        background:var(--fondo);
+        color:var(--texto)
+      "
     >
 
+
     <br><br>
+
+
+    <!-- FOTO -->
+
+    <label
+      for="fotoAvatar"
+      class="secundario"
+      style="
+        display:block;
+        text-align:center;
+        cursor:pointer
+      "
+    >
+      🖼️ Elegir foto de perfil
+    </label>
+
+    <input
+      id="fotoAvatar"
+      type="file"
+      accept="image/*"
+      style="display:none"
+      onchange="cambiarAvatar(event)"
+    >
+
+    <p class="avatar-preview-text">
+      Puedes subir una imagen desde tu móvil.
+    </p>
+
+
+    <br>
+
 
     <button
       class="principal"
@@ -1463,12 +2366,14 @@ body.elegante{
     <hr>
 
 
+    <!-- TEMAS -->
+
     <h2>
       🎨 Cambiar tema
     </h2>
 
     <p class="pequeno">
-      Los temas solo aparecen aquí, dentro de tu perfil.
+      Los temas solo aparecen dentro de tu perfil.
     </p>
 
 
@@ -1516,144 +2421,49 @@ body.elegante{
 
     </div>
 
+
   </div>
 
 </section>
 
 
-<!-- ======================================================
-     MODAL AÑADIR LIBRO
-======================================================= -->
-
-<div
-  id="modalLibro"
-  style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:100;
-    padding:20px;
-    overflow:auto;
-  "
->
-
-  <div
-    class="tarjeta"
-    style="max-width:650px;margin:40px auto"
-  >
-
-    <h2>
-      ➕ Añadir libro
-    </h2>
-
-    <p class="pequeno">
-      Si no aparece en la búsqueda, puedes crear la ficha.
-    </p>
-
-
-    <input
-      id="manualTitulo"
-      placeholder="Título"
-      style="width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
-    >
-
-
-    <input
-      id="manualAutor"
-      placeholder="Autor/a"
-      style="width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
-    >
-
-
-    <input
-      id="manualAnio"
-      type="number"
-      placeholder="Año de publicación"
-      style="width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
-    >
-
-
-    <input
-      id="manualPortada"
-      placeholder="Enlace de portada (opcional)"
-      style="width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
-    >
-
-
-    <input
-      id="manualGenero"
-      placeholder="Género"
-      style="width:100%;padding:12px;margin-bottom:10px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
-    >
-
-
-    <textarea
-      id="manualSinopsis"
-      placeholder="Sinopsis (opcional)"
-    ></textarea>
-
-
-    <br><br>
-
-
-    <button
-      class="principal"
-      onclick="guardarLibroManual()"
-    >
-      📚 Crear libro
-    </button>
-
-
-    <button
-      class="secundario"
-      onclick="cerrarFormularioLibro()"
-    >
-      Cancelar
-    </button>
-
-  </div>
-
-</div>
+</main>
 
 
 <script>
 
 /* =========================================================
-   BOOKISH — JAVASCRIPT
-========================================================= */
-
-
-/* =========================================================
-   CLAVES LOCALSTORAGE
+   STORAGE
 ========================================================= */
 
 const CLAVES={
 
-  biblioteca:"bookish_biblioteca_v4",
+  biblioteca:
+    "bookish_biblioteca",
 
-  valoraciones:"bookish_valoraciones_v4",
+  valoraciones:
+    "bookish_valoraciones",
 
-  resenas:"bookish_resenas_v4",
+  resenas:
+    "bookish_resenas",
 
-  frases:"bookish_frases_v4",
+  frases:
+    "bookish_frases",
 
-  amigos:"bookish_amigos_v4",
+  amigos:
+    "bookish_amigos",
 
-  foro:"bookish_foro_v4",
+  foro:
+    "bookish_foro",
 
-  perfil:"bookish_perfil_v4",
+  perfil:
+    "bookish_perfil",
 
-  tema:"bookish_tema_v4",
-
-  manuales:"bookish_manuales_v4"
+  tema:
+    "bookish_tema"
 
 };
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
 
 function leer(clave,defecto){
 
@@ -1662,13 +2472,11 @@ function leer(clave,defecto){
     const dato=
       localStorage.getItem(clave);
 
-    if(dato===null){
-      return defecto;
-    }
+    return dato
+      ? JSON.parse(dato)
+      : defecto;
 
-    return JSON.parse(dato);
-
-  }catch(e){
+  }catch{
 
     return defecto;
 
@@ -1679,21 +2487,10 @@ function leer(clave,defecto){
 
 function guardar(clave,dato){
 
-  try{
-
-    localStorage.setItem(
-      clave,
-      JSON.stringify(dato)
-    );
-
-  }catch(e){
-
-    console.warn(
-      "No se pudo guardar:",
-      e
-    );
-
-  }
+  localStorage.setItem(
+    clave,
+    JSON.stringify(dato)
+  );
 
 }
 
@@ -1725,20 +2522,10 @@ let perfil=
     CLAVES.perfil,
     {
       nombre:"Lector/a BOOKISH",
-      avatar:""
+      avatar:"📚"
     }
   );
 
-let manuales=
-  leer(
-    CLAVES.manuales,
-    []
-  );
-
-
-/* =========================================================
-   VARIABLES DE BÚSQUEDA
-========================================================= */
 
 let consulta="";
 
@@ -1746,112 +2533,104 @@ let generoActual="";
 
 let pagina=1;
 
-let ordenActual="relevance";
-
 let ultimoLibro=null;
-
-let ultimaPagina="inicio";
-
-
-/* =========================================================
-   NAVEGACIÓN
-========================================================= */
-
-function mostrar(id){
-
-  document
-    .querySelectorAll(".pagina")
-    .forEach(
-      x=>x.classList.remove("activa")
-    );
-
-
-  const elemento=
-    document.getElementById(id);
-
-
-  if(elemento){
-
-    elemento.classList.add("activa");
-
-  }
-
-
-  if(id!=="detalle"){
-
-    ultimaPagina=id;
-
-  }
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-
-  if(id==="perfil"){
-
-    cargarPerfil();
-
-  }
-
-
-  if(id==="comunidad"){
-
-    cargarAmigos();
-
-  }
-
-
-  if(id==="foro"){
-
-    cargarForo();
-
-  }
-
-
-  if(id==="biblioteca"){
-
-    mostrarBiblioteca("todos");
-
-  }
-
-}
-
-
-function volverDeDetalle(){
-
-  mostrar(
-    ultimaPagina==="detalle"
-      ? "buscar"
-      : ultimaPagina
-  );
-
-}
 
 
 /* =========================================================
    API GOOGLE BOOKS
 ========================================================= */
 
-const GOOGLE_BOOKS=
+const API_GOOGLE=
   "https://www.googleapis.com/books/v1/volumes";
 
 
 /* =========================================================
-   API OPEN LIBRARY
+   BÚSQUEDA GOOGLE BOOKS
 ========================================================= */
 
-const OPEN_LIBRARY=
-  "https://openlibrary.org/search.json";
+async function buscarGoogle(
+  q,
+  start=0,
+  orden="relevance"
+){
+
+  const parametros=
+    new URLSearchParams();
+
+  parametros.set(
+    "q",
+    q
+  );
+
+  parametros.set(
+    "startIndex",
+    start
+  );
+
+  parametros.set(
+    "maxResults",
+    "40"
+  );
+
+  parametros.set(
+    "orderBy",
+    orden
+  );
+
+  parametros.set(
+    "printType",
+    "books"
+  );
+
+  parametros.set(
+    "langRestrict",
+    "es"
+  );
+
+
+  const respuesta=
+    await fetch(
+      API_GOOGLE+
+      "?"+
+      parametros.toString()
+    );
+
+
+  if(!respuesta.ok){
+
+    throw new Error(
+      "No se pudo conectar con Google Books"
+    );
+
+  }
+
+
+  return await respuesta.json();
+
+}
 
 
 /* =========================================================
-   NORMALIZAR GOOGLE BOOKS
+   ESCAPAR TEXTO
 ========================================================= */
 
-function normalizarGoogle(item){
+function seguro(texto){
+
+  return String(texto ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   CONVERTIR LIBRO GOOGLE
+========================================================= */
+
+function convertirLibro(item){
 
   const info=
     item.volumeInfo || {};
@@ -1859,78 +2638,70 @@ function normalizarGoogle(item){
 
   return {
 
-    id:
-      "google_"+(
-        item.id ||
-        Math.random()
-      ),
-
     key:
-      "google:"+(
-        item.id ||
-        info.title ||
-        Math.random()
-      ),
+      item.id,
 
     title:
       info.title ||
       "Sin título",
+
+    subtitle:
+      info.subtitle ||
+      "",
 
     author_name:
       info.authors ||
       ["Autor desconocido"],
 
     first_publish_year:
-      extraerAnio(info.publishedDate),
-
-    publishedDate:
-      info.publishedDate ||
-      "",
+      info.publishedDate
+      ? Number(
+          String(
+            info.publishedDate
+          ).slice(0,4)
+        )
+      : null,
 
     cover_i:
-      null,
-
-    portada:
       info.imageLinks?.thumbnail ||
       info.imageLinks?.smallThumbnail ||
       "",
-
-    edition_count:
-      null,
-
-    ratings_average:
-      info.averageRating ||
-      0,
-
-    ratings_count:
-      info.ratingsCount ||
-      0,
 
     description:
       info.description ||
       "",
 
-    categories:
-      info.categories ||
-      [],
-
     subject:
       info.categories ||
       [],
+
+    ratings_average:
+      info.averageRating ||
+      null,
+
+    ratings_count:
+      info.ratingsCount ||
+      0,
+
+    pageCount:
+      info.pageCount ||
+      null,
 
     publisher:
       info.publisher ||
       "",
 
     isbn:
-      extraerISBN(info),
+      (
+        info.industryIdentifiers ||
+        []
+      )
+      .map(x=>x.identifier)
+      .join(", "),
 
     language:
       info.language ||
       "",
-
-    source:
-      "Google Books",
 
     preview:
       info.previewLink ||
@@ -1946,1080 +2717,78 @@ function normalizarGoogle(item){
 
 
 /* =========================================================
-   NORMALIZAR OPEN LIBRARY
-========================================================= */
-
-function normalizarOpenLibrary(libro){
-
-  return {
-
-    id:
-      "open_"+(
-        libro.key ||
-        libro.title ||
-        Math.random()
-      ),
-
-    key:
-      "open:"+(
-        libro.key ||
-        libro.title ||
-        Math.random()
-      ),
-
-    title:
-      libro.title ||
-      "Sin título",
-
-    author_name:
-      libro.author_name ||
-      ["Autor desconocido"],
-
-    first_publish_year:
-      libro.first_publish_year ||
-      "",
-
-    publishedDate:
-      libro.first_publish_year ||
-      "",
-
-    cover_i:
-      libro.cover_i ||
-      null,
-
-    portada:
-      libro.cover_i
-      ? "https://covers.openlibrary.org/b/id/"+
-        libro.cover_i+
-        "-L.jpg"
-      : "",
-
-    edition_count:
-      libro.edition_count ||
-      0,
-
-    ratings_average:
-      libro.ratings_average ||
-      0,
-
-    ratings_count:
-      libro.ratings_count ||
-      0,
-
-    description:
-      "",
-
-    categories:
-      libro.subject ||
-      [],
-
-    subject:
-      libro.subject ||
-      [],
-
-    publisher:
-      libro.publisher?.[0] ||
-      "",
-
-    isbn:
-      libro.isbn?.[0] ||
-      "",
-
-    language:
-      detectarIdiomaOpen(libro),
-
-    source:
-      "Open Library",
-
-    preview:
-      "",
-
-    infoLink:
-      "https://openlibrary.org"+
-      (libro.key || "")
-
-  };
-
-}
-
-
-/* =========================================================
-   EXTRAER AÑO
-========================================================= */
-
-function extraerAnio(fecha){
-
-  if(!fecha){
-    return "";
-  }
-
-  const encontrado=
-    String(fecha).match(/\d{4}/);
-
-  return encontrado
-    ? Number(encontrado[0])
-    : "";
-
-}
-
-
-/* =========================================================
-   EXTRAER ISBN
-========================================================= */
-
-function extraerISBN(info){
-
-  const identificadores=
-    info.industryIdentifiers || [];
-
-  const isbn13=
-    identificadores.find(
-      x=>x.type==="ISBN_13"
-    );
-
-  const isbn10=
-    identificadores.find(
-      x=>x.type==="ISBN_10"
-    );
-
-  return (
-    isbn13?.identifier ||
-    isbn10?.identifier ||
-    ""
-  );
-
-}
-
-
-/* =========================================================
-   IDIOMA OPEN LIBRARY
-========================================================= */
-
-function detectarIdiomaOpen(libro){
-
-  if(
-    Array.isArray(libro.language)
-  ){
-
-    if(
-      libro.language.includes("spa")
-    ){
-
-      return "es";
-
-    }
-
-  }
-
-  return "";
-
-}
-
-
-/* =========================================================
-   GOOGLE BOOKS SEARCH
-========================================================= */
-
-async function buscarGoogle(
-  q,
-  paginaActual=1,
-  orden="relevance",
-  idioma=""
-){
-
-  const parametros=
-    new URLSearchParams();
-
-
-  parametros.set(
-    "q",
-    q
-  );
-
-
-  parametros.set(
-    "maxResults",
-    "40"
-  );
-
-
-  parametros.set(
-    "startIndex",
-    String(
-      (paginaActual-1)*40
-    )
-  );
-
-
-  parametros.set(
-    "orderBy",
-    orden==="newest"
-      ? "newest"
-      : "relevance"
-  );
-
-
-  parametros.set(
-    "printType",
-    "books"
-  );
-
-
-  if(idioma){
-
-    parametros.set(
-      "langRestrict",
-      idioma
-    );
-
-  }
-
-
-  const respuesta=
-    await fetch(
-      GOOGLE_BOOKS+
-      "?"+
-      parametros.toString()
-    );
-
-
-  if(!respuesta.ok){
-
-    throw new Error(
-      "Google Books error"
-    );
-
-  }
-
-
-  const datos=
-    await respuesta.json();
-
-
-  return {
-
-    total:
-      datos.totalItems ||
-      0,
-
-    libros:
-      (datos.items || [])
-        .map(normalizarGoogle)
-
-  };
-
-}
-
-
-/* =========================================================
-   OPEN LIBRARY SEARCH
-========================================================= */
-
-async function buscarOpenLibrary(
-  q,
-  paginaActual=1,
-  orden="relevance"
-){
-
-  const parametros=
-    new URLSearchParams();
-
-
-  parametros.set(
-    "q",
-    q
-  );
-
-
-  parametros.set(
-    "page",
-    String(paginaActual)
-  );
-
-
-  parametros.set(
-    "limit",
-    "40"
-  );
-
-
-  parametros.set(
-    "fields",
-    [
-      "key",
-      "title",
-      "author_name",
-      "first_publish_year",
-      "cover_i",
-      "edition_count",
-      "subject",
-      "ratings_average",
-      "ratings_count",
-      "publisher",
-      "isbn",
-      "language"
-    ].join(",")
-  );
-
-
-  if(orden==="newest"){
-
-    parametros.set(
-      "sort",
-      "new"
-    );
-
-  }else{
-
-    parametros.set(
-      "sort",
-      "relevance"
-    );
-
-  }
-
-
-  parametros.set(
-    "lang",
-    "es"
-  );
-
-
-  const respuesta=
-    await fetch(
-      OPEN_LIBRARY+
-      "?"+
-      parametros.toString()
-    );
-
-
-  if(!respuesta.ok){
-
-    throw new Error(
-      "Open Library error"
-    );
-
-  }
-
-
-  const datos=
-    await respuesta.json();
-
-
-  return {
-
-    total:
-      datos.num_found ||
-      0,
-
-    libros:
-      (datos.docs || [])
-        .map(normalizarOpenLibrary)
-
-  };
-
-}
-
-
-/* =========================================================
-   BUSQUEDA COMBINADA
-========================================================= */
-
-async function buscarLibrosCombinado(
-  q,
-  paginaActual=1,
-  orden="relevance"
-){
-
-  const consultas=
-    crearConsultasInteligentes(q);
-
-
-  const resultados=
-    [];
-
-
-  /*
-    Primera búsqueda:
-    Google Books en español
-  */
-
-  try{
-
-    const google=
-      await buscarGoogle(
-        consultas[0],
-        paginaActual,
-        orden,
-        "es"
-      );
-
-
-    resultados.push(
-      ...google.libros
-    );
-
-  }catch(e){
-
-    console.warn(
-      "Google ES falló",
-      e
-    );
-
-  }
-
-
-  /*
-    Segunda búsqueda:
-    Google Books sin limitar idioma.
-    Esto ayuda con títulos que se publican
-    originalmente en inglés.
-  */
-
-  try{
-
-    const google2=
-      await buscarGoogle(
-        consultas[0],
-        paginaActual,
-        orden,
-        ""
-      );
-
-
-    resultados.push(
-      ...google2.libros
-    );
-
-  }catch(e){
-
-    console.warn(
-      "Google global falló",
-      e
-    );
-
-  }
-
-
-  /*
-    Tercera fuente:
-    Open Library
-  */
-
-  try{
-
-    const open=
-      await buscarOpenLibrary(
-        consultas[0],
-        paginaActual,
-        orden
-      );
-
-
-    resultados.push(
-      ...open.libros
-    );
-
-  }catch(e){
-
-    console.warn(
-      "Open Library falló",
-      e
-    );
-
-  }
-
-
-  /*
-    Consultas adicionales para
-    búsquedas especiales.
-  */
-
-  if(
-    consultas.length>1 &&
-    esBusquedaEspecial(q)
-  ){
-
-    for(
-      const consultaExtra of consultas.slice(1,3)
-    ){
-
-      try{
-
-        const extra=
-          await buscarGoogle(
-            consultaExtra,
-            1,
-            orden,
-            ""
-          );
-
-
-        resultados.push(
-          ...extra.libros
-        );
-
-      }catch(e){
-
-        console.warn(
-          "Consulta extra falló"
-        );
-
-      }
-
-    }
-
-  }
-
-
-  const unicos=
-    quitarDuplicados(
-      resultados
-    );
-
-
-  const ordenados=
-    ordenarLibros(
-      unicos,
-      q,
-      orden
-    );
-
-
-  return ordenados;
-
-}
-
-
-/* =========================================================
-   CREAR CONSULTAS INTELIGENTES
-========================================================= */
-
-function crearConsultasInteligentes(q){
-
-  const limpio=
-    q
-      .toLowerCase()
-      .trim();
-
-
-  const consultas=[
-    q
-  ];
-
-
-  const mapa={
-
-    "romantasy":[
-      "romantasy fantasy romance",
-      "romance fantasy fae"
-    ],
-
-    "fantasia romantica":[
-      "fantasy romance",
-      "romance fantasy"
-    ],
-
-    "fantasía romántica":[
-      "fantasy romance",
-      "romance fantasy"
-    ],
-
-    "vampiros":[
-      "vampire romance",
-      "vampires fantasy romance"
-    ],
-
-    "vampiro":[
-      "vampire romance",
-      "vampires fantasy romance"
-    ],
-
-    "hadas":[
-      "fae romance",
-      "fairy fantasy romance"
-    ],
-
-    "hadas / fae":[
-      "fae romance",
-      "fairy fantasy romance"
-    ],
-
-    "fae":[
-      "fae romance fantasy",
-      "faeries romance"
-    ],
-
-    "brujas":[
-      "witch romance fantasy",
-      "witches fantasy"
-    ],
-
-    "hombres lobo":[
-      "werewolf romance",
-      "werewolves fantasy romance"
-    ],
-
-    "dragones":[
-      "dragon fantasy romance",
-      "dragons romantasy"
-    ],
-
-    "dark romantasy":[
-      "dark fantasy romance",
-      "dark romantasy"
-    ],
-
-    "paranormal romance":[
-      "paranormal romance",
-      "supernatural romance"
-    ]
-
-  };
-
-
-  if(mapa[limpio]){
-
-    consultas.push(
-      ...mapa[limpio]
-    );
-
-  }
-
-
-  return [
-    ...new Set(consultas)
-  ];
-
-}
-
-
-/* =========================================================
-   DETECTAR BUSQUEDA ESPECIAL
-========================================================= */
-
-function esBusquedaEspecial(q){
-
-  const palabras=[
-
-    "romantasy",
-    "fantasía romántica",
-    "fantasia romantica",
-    "vampiro",
-    "vampiros",
-    "hada",
-    "hadas",
-    "fae",
-    "bruja",
-    "brujas",
-    "hombre lobo",
-    "hombres lobo",
-    "dragón",
-    "dragones",
-    "dark romantasy",
-    "paranormal"
-
-  ];
-
-
-  const texto=
-    q.toLowerCase();
-
-
-  return palabras.some(
-    x=>texto.includes(x)
-  );
-
-}
-
-
-/* =========================================================
-   NORMALIZAR TEXTO PARA DUPLICADOS
-========================================================= */
-
-function normalizarTexto(texto){
-
-  return String(texto || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"")
-    .replace(/[^\w\s]/g,"")
-    .replace(/\s+/g," ")
-    .trim();
-
-}
-
-
-/* =========================================================
-   QUITAR DUPLICADOS
-========================================================= */
-
-function quitarDuplicados(libros){
-
-  const mapa=
-    new Map();
-
-
-  libros.forEach(libro=>{
-
-    const titulo=
-      normalizarTexto(
-        libro.title
-      );
-
-
-    const autor=
-      normalizarTexto(
-        libro.author_name?.[0] ||
-        ""
-      );
-
-
-    const isbn=
-      String(
-        libro.isbn ||
-        ""
-      )
-      .replace(/[-\s]/g,"");
-
-
-    const clave=
-      isbn
-      ? "isbn:"+isbn
-      : titulo+"|"+autor;
-
-
-    if(!mapa.has(clave)){
-
-      mapa.set(
-        clave,
-        libro
-      );
-
-    }else{
-
-      /*
-        Conservamos la ficha que tenga
-        mejor portada / datos.
-      */
-
-      const anterior=
-        mapa.get(clave);
-
-
-      if(
-        !anterior.portada &&
-        libro.portada
-      ){
-
-        mapa.set(
-          clave,
-          libro
-        );
-
-      }
-
-    }
-
-  });
-
-
-  return [...mapa.values()];
-
-}
-
-
-/* =========================================================
-   ORDENAR LIBROS
-========================================================= */
-
-function ordenarLibros(
-  libros,
-  q,
-  orden
-){
-
-  const consulta=
-    normalizarTexto(q);
-
-
-  return libros.sort(
-    (a,b)=>{
-
-      if(orden==="newest"){
-
-        return (
-          Number(b.first_publish_year || 0)
-          -
-          Number(a.first_publish_year || 0)
-        );
-
-      }
-
-
-      if(orden==="popular"){
-
-        return (
-          Number(b.ratings_count || 0)
-          -
-          Number(a.ratings_count || 0)
-        );
-
-      }
-
-
-      /*
-        RELEVANCIA
-      */
-
-      const scoreA=
-        puntuacionLibro(
-          a,
-          consulta
-        );
-
-
-      const scoreB=
-        puntuacionLibro(
-          b,
-          consulta
-        );
-
-
-      return scoreB-scoreA;
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   PUNTUACIÓN DE RELEVANCIA
-========================================================= */
-
-function puntuacionLibro(
-  libro,
-  consulta
-){
-
-  let puntos=0;
-
-
-  const titulo=
-    normalizarTexto(
-      libro.title
-    );
-
-
-  const autor=
-    normalizarTexto(
-      libro.author_name?.join(" ") ||
-      ""
-    );
-
-
-  const categorias=
-    normalizarTexto(
-      (
-        libro.categories ||
-        []
-      ).join(" ")
-    );
-
-
-  if(
-    titulo===consulta
-  ){
-
-    puntos+=1000;
-
-  }
-
-
-  if(
-    titulo.includes(consulta)
-  ){
-
-    puntos+=500;
-
-  }
-
-
-  if(
-    autor.includes(consulta)
-  ){
-
-    puntos+=350;
-
-  }
-
-
-  if(
-    categorias.includes(consulta)
-  ){
-
-    puntos+=250;
-
-  }
-
-
-  /*
-    Los libros con muchas valoraciones
-    tienen un pequeño empujón para que
-    no salgan solamente obras desconocidas.
-  */
-
-  puntos+=Math.min(
-    100,
-    Math.log10(
-      Number(libro.ratings_count || 0)+1
-    )*25
-  );
-
-
-  /*
-    Portada disponible.
-  */
-
-  if(libro.portada){
-
-    puntos+=15;
-
-  }
-
-
-  /*
-    Libro relativamente reciente.
-  */
-
-  const anio=
-    Number(
-      libro.first_publish_year ||
-      0
-    );
-
-
-  const actual=
-    new Date().getFullYear();
-
-
-  if(
-    anio>=actual-3
-  ){
-
-    puntos+=25;
-
-  }
-
-
-  return puntos;
-
-}
-
-
-/* =========================================================
-   ESCAPAR HTML
-========================================================= */
-
-function seguro(texto){
-
-  return String(
-    texto ?? ""
-  )
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
-
-}
-
-
-/* =========================================================
    PORTADA
 ========================================================= */
 
 function portada(libro){
 
-  if(libro.portada){
-
-    return `
-      <img
-        class="portada"
-        src="${seguro(libro.portada)}"
-        alt="${seguro(libro.title)}"
-        loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-      >
-
-      <div
-        class="sin-portada"
-        style="display:none"
-      >
-        📖<br>
-        ${seguro(libro.title)}
-      </div>
-    `;
-
-  }
-
-
   if(libro.cover_i){
 
+    let url=
+      libro.cover_i;
+
+    url=
+      url.replace(
+        "http://",
+        "https://"
+      );
+
+    url=
+      url.replace(
+        "&edge=curl",
+        ""
+      );
+
+
     return `
+
       <img
         class="portada"
-        src="https://covers.openlibrary.org/b/id/${libro.cover_i}-M.jpg"
+        src="${seguro(url)}"
         alt="${seguro(libro.title)}"
         loading="lazy"
       >
+
     `;
 
   }
 
 
   return `
+
     <div class="sin-portada">
-      📖<br>
-      ${seguro(libro.title)}
+
+      📖
+
+      <br>
+
+      ${seguro(
+        libro.title ||
+        "Sin portada"
+      )}
+
     </div>
+
   `;
 
 }
 
 
 /* =========================================================
-   TARJETA LIBRO
+   TARJETA
 ========================================================= */
 
 function tarjetaLibro(libro){
 
   const autor=
-    libro.author_name?.join(", ") ||
+    libro.author_name?.join(", ")
+    ||
     "Autor desconocido";
 
 
-  const anio=
+  const año=
     libro.first_publish_year
-      ? String(
-          libro.first_publish_year
-        )
+      ? libro.first_publish_year
       : "";
 
 
@@ -3032,42 +2801,8 @@ function tarjetaLibro(libro){
       : "";
 
 
-  const popular=
-    Number(
-      libro.ratings_count || 0
-    );
-
-
-  const tags=[];
-
-
-  if(
-    Number(
-      libro.first_publish_year
-    )>=
-    new Date().getFullYear()-2
-  ){
-
-    tags.push(
-      "🆕 Nuevo"
-    );
-
-  }
-
-
-  if(
-    popular>1000
-  ){
-
-    tags.push(
-      "❤️ Popular"
-    );
-
-  }
-
-
-  const indice=
-    escaparAtributo(
+  const datos=
+    encodeURIComponent(
       JSON.stringify(libro)
     );
 
@@ -3076,7 +2811,9 @@ function tarjetaLibro(libro){
 
     <article
       class="libro"
-      onclick='abrirLibroSeguro(${indice})'
+      onclick="
+        abrirLibroCodificado('${datos}')
+      "
     >
 
       ${portada(libro)}
@@ -3092,31 +2829,24 @@ function tarjetaLibro(libro){
         </p>
 
         ${
-          anio
-          ? `<p>📅 ${anio}</p>`
+          año
+          ? `
+            <p class="libro-anio">
+              ${año}
+            </p>
+          `
           : ""
         }
 
         ${
           nota
-          ? `<p>${nota}</p>`
+          ? `
+            <p>
+              ${nota}
+            </p>
+          `
           : ""
         }
-
-        <div class="libro-badges">
-
-          ${
-            tags
-              .map(
-                x=>
-                `<span class="badge">
-                  ${x}
-                </span>`
-              )
-              .join("")
-          }
-
-        </div>
 
       </div>
 
@@ -3128,49 +2858,17 @@ function tarjetaLibro(libro){
 
 
 /* =========================================================
-   ESCAPAR ATRIBUTO
+   ABRIR LIBRO CODIFICADO
 ========================================================= */
 
-function escaparAtributo(texto){
-
-  return String(texto)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-/* =========================================================
-   ABRIR LIBRO SEGURO
-========================================================= */
-
-function abrirLibroSeguro(texto){
+function abrirLibroCodificado(codigo){
 
   try{
 
-    const limpio=
-      texto
-        .replaceAll(
-          "&amp;",
-          "&"
-        )
-        .replaceAll(
-          "&#039;",
-          "'"
-        );
-
-
     const libro=
       JSON.parse(
-        limpio
+        decodeURIComponent(codigo)
       );
-
 
     abrirLibro(libro);
 
@@ -3187,9 +2885,7 @@ function abrirLibroSeguro(texto){
    NOVEDADES
 ========================================================= */
 
-async function cargarNovedades(
-  forzar=false
-){
+async function cargarNovedades(){
 
   const contenedor=
     document.getElementById(
@@ -3197,112 +2893,74 @@ async function cargarNovedades(
     );
 
 
-  contenedor.innerHTML=`
-
-    <div class="cargando">
-      🆕 Buscando libros nuevos...
-    </div>
-
-  `;
+  contenedor.innerHTML=
+    `
+      <div class="cargando">
+        🆕 Buscando novedades...
+      </div>
+    `;
 
 
   try{
 
+    const año=
+      new Date().getFullYear();
+
+
     const consultas=[
 
-      "fiction",
+      "new fiction",
 
-      "romance",
+      "new romance",
 
-      "fantasy romance",
+      "new fantasy",
 
-      "young adult",
+      "new young adult",
 
-      "mystery"
+      "new thriller",
+
+      "new fantasy romance"
 
     ];
 
 
-    const indice=
-      Math.floor(
-        Date.now()/86400000
-      ) %
-      consultas.length;
-
-
     const consulta=
-      consultas[indice];
+      consultas[
+        Math.floor(
+          Date.now()/86400000
+        )
+        %
+        consultas.length
+      ];
 
 
-    let libros=
-      await buscarLibrosCombinado(
+    const datos=
+      await buscarGoogle(
         consulta,
-        1,
+        0,
         "newest"
       );
 
 
-    const actual=
-      new Date().getFullYear();
-
-
-    libros=
-      libros.filter(
-        libro=>{
-
-          const anio=
-            Number(
-              libro.first_publish_year ||
-              0
-            );
-
-
-          return (
-            !anio ||
-            anio>=actual-2
-          );
-
-        }
-      );
-
-
-    /*
-      Mezclamos un poco el punto de
-      partida para que no aparezca
-      exactamente siempre la misma
-      selección.
-    */
-
-    if(libros.length>18){
-
-      const desplazamiento=
-        Math.floor(
-          Date.now()/86400000
-        ) %
-        Math.min(
-          10,
-          libros.length-18
-        );
-
-
-      libros=
-        libros.slice(
-          desplazamiento,
-          desplazamiento+18
-        );
-
-    }
+    const libros=
+      (datos.items || [])
+      .map(convertirLibro)
+      .filter(
+        libro=>
+          libro.title &&
+          libro.first_publish_year
+      )
+      .slice(0,14);
 
 
     if(!libros.length){
 
-      contenedor.innerHTML=`
-
-        <div class="vacio">
-          No hemos encontrado novedades.
-        </div>
-
-      `;
+      contenedor.innerHTML=
+        `
+          <div class="vacio">
+            No hay novedades disponibles.
+          </div>
+        `;
 
       return;
 
@@ -3311,30 +2969,22 @@ async function cargarNovedades(
 
     contenedor.innerHTML=
       libros
-        .slice(0,12)
-        .map(tarjetaLibro)
-        .join("");
+      .map(tarjetaLibro)
+      .join("");
 
 
   }catch(e){
 
     console.error(e);
 
-
-    contenedor.innerHTML=`
-
-      <div class="vacio">
-
-        No se han podido cargar
-        las novedades.
-
-        <br><br>
-
-        Comprueba tu conexión a Internet.
-
-      </div>
-
-    `;
+    contenedor.innerHTML=
+      `
+        <div class="vacio">
+          No se pudieron cargar las novedades.
+          <br><br>
+          Comprueba tu conexión.
+        </div>
+      `;
 
   }
 
@@ -3342,101 +2992,201 @@ async function cargarNovedades(
 
 
 /* =========================================================
-   ROMANTASY INICIO
+   CARGAR SECCIONES DE INICIO
 ========================================================= */
 
-async function cargarRomantasyInicio(){
+const SECCIONES=[
+
+  {
+    id:"genero-romance",
+    query:"romance"
+  },
+
+  {
+    id:"genero-fantasy",
+    query:"fantasy"
+  },
+
+  {
+    id:"genero-romantasy",
+    query:"romantasy fantasy romance"
+  },
+
+  {
+    id:"genero-vampiros",
+    query:"vampire paranormal"
+  },
+
+  {
+    id:"genero-thriller",
+    query:"thriller mystery"
+  },
+
+  {
+    id:"genero-terror",
+    query:"horror"
+  },
+
+  {
+    id:"genero-scifi",
+    query:"science fiction"
+  },
+
+  {
+    id:"genero-ya",
+    query:"young adult"
+  },
+
+  {
+    id:"genero-historica",
+    query:"historical fiction"
+  },
+
+  {
+    id:"genero-aventura",
+    query:"adventure"
+  },
+
+  {
+    id:"genero-clasicos",
+    query:"classics literature"
+  },
+
+  {
+    id:"genero-poesia",
+    query:"poetry"
+  }
+
+];
+
+
+async function cargarSecciones(){
+
+  await Promise.all(
+
+    SECCIONES.map(
+      seccion=>
+        cargarSeccion(
+          seccion.id,
+          seccion.query
+        )
+    )
+
+  );
+
+}
+
+
+/* =========================================================
+   CARGAR SECCIÓN
+========================================================= */
+
+async function cargarSeccion(
+  id,
+  query
+){
 
   const contenedor=
-    document.getElementById(
-      "romantasyInicio"
-    );
+    document.getElementById(id);
+
+
+  if(!contenedor)return;
+
+
+  contenedor.innerHTML=
+    `
+      <div class="cargando">
+        📚 Cargando libros...
+      </div>
+    `;
 
 
   try{
 
-    let libros=
-      await buscarLibrosCombinado(
-        "romantasy",
-        1,
+    /*
+      Relevance primero para que no
+      sean únicamente novedades.
+    */
+
+    const datos=
+      await buscarGoogle(
+        query,
+        0,
         "relevance"
       );
 
 
-    if(
-      libros.length<8
-    ){
-
-      const extra=
-        await buscarLibrosCombinado(
-          "fantasy romance",
-          1,
-          "relevance"
-        );
+    let libros=
+      (datos.items || [])
+      .map(convertirLibro)
+      .filter(
+        libro=>
+          libro.title &&
+          libro.author_name
+      );
 
 
-      libros=
-        quitarDuplicados([
-          ...libros,
-          ...extra
-        ]);
+    /*
+      Evitamos repetir exactamente
+      el mismo libro.
+    */
+
+    const vistos=
+      new Set();
+
+
+    libros=
+      libros.filter(
+        libro=>{
+
+          if(vistos.has(libro.key)){
+            return false;
+          }
+
+          vistos.add(libro.key);
+
+          return true;
+
+        }
+      );
+
+
+    libros=
+      libros.slice(0,18);
+
+
+    if(!libros.length){
+
+      contenedor.innerHTML=
+        `
+          <div class="vacio">
+            No encontramos libros.
+          </div>
+        `;
+
+      return;
 
     }
 
 
     contenedor.innerHTML=
       libros
-        .slice(0,12)
-        .map(tarjetaLibro)
-        .join("");
+      .map(tarjetaLibro)
+      .join("");
 
 
   }catch(e){
 
-    contenedor.innerHTML=`
+    console.error(e);
 
-      <div class="vacio">
-        No se ha podido cargar
-        la selección de romantasy.
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* =========================================================
-   BUSCAR DESDE INICIO
-========================================================= */
-
-function buscarDesdeInicio(){
-
-  const valor=
-    document
-      .getElementById(
-        "busquedaInicio"
-      )
-      ?.value
-      .trim();
-
-
-  if(!valor){
-
-    return;
+    contenedor.innerHTML=
+      `
+        <div class="vacio">
+          No se pudieron cargar estos libros.
+        </div>
+      `;
 
   }
-
-
-  document
-    .getElementById(
-      "campoBusqueda"
-    )
-    .value=valor;
-
-
-  buscar();
 
 }
 
@@ -3469,11 +3219,7 @@ async function buscar(){
   }
 
 
-  if(!valor){
-
-    return;
-
-  }
+  if(!valor)return;
 
 
   consulta=
@@ -3483,18 +3229,8 @@ async function buscar(){
 
   pagina=1;
 
-  ordenActual=
-    document
-      .getElementById(
-        "ordenResultados"
-      )
-      ?.value ||
-    "relevance";
 
-
-  mostrar(
-    "buscar"
-  );
+  mostrar("buscar");
 
 
   cargarResultados();
@@ -3503,7 +3239,7 @@ async function buscar(){
 
 
 /* =========================================================
-   GENERO
+   GÉNERO
 ========================================================= */
 
 async function genero(nombre){
@@ -3515,27 +3251,8 @@ async function genero(nombre){
 
   pagina=1;
 
-  ordenActual=
-    "relevance";
 
-
-  const select=
-    document.getElementById(
-      "ordenResultados"
-    );
-
-
-  if(select){
-
-    select.value=
-      "relevance";
-
-  }
-
-
-  mostrar(
-    "buscar"
-  );
+  mostrar("buscar");
 
 
   cargarResultados();
@@ -3544,7 +3261,7 @@ async function genero(nombre){
 
 
 /* =========================================================
-   CARGAR RESULTADOS
+   RESULTADOS
 ========================================================= */
 
 async function cargarResultados(){
@@ -3555,27 +3272,32 @@ async function cargarResultados(){
     );
 
 
-  resultados.innerHTML=`
-
-    <div class="cargando">
-      🔎 Buscando libros...
-      <br><br>
-      Estamos mirando varias fuentes 📚
-    </div>
-
-  `;
+  resultados.innerHTML=
+    `
+      <div class="cargando">
+        🔎 Buscando libros...
+      </div>
+    `;
 
 
   let q=
-    generoActual ||
     consulta;
+
+
+  if(generoActual){
+
+    q=
+      generoActual;
+
+  }
 
 
   document
     .getElementById(
       "tituloResultados"
     )
-    .innerHTML=`
+    .innerHTML=
+    `
 
       <div class="titulo-seccion">
 
@@ -3584,8 +3306,10 @@ async function cargarResultados(){
           ${
             generoActual
             ? "📚 "+
-              nombreGenero(
-                generoActual
+              seguro(
+                nombreGenero(
+                  generoActual
+                )
               )
 
             : "🔎 Resultados para «"+
@@ -3597,131 +3321,51 @@ async function cargarResultados(){
 
       </div>
 
-  `;
+    `;
 
 
   try{
 
-    let libros=
-      await buscarLibrosCombinado(
+    const datos=
+      await buscarGoogle(
         q,
-        pagina,
-        ordenActual
+        (pagina-1)*40,
+        "relevance"
       );
 
 
-    /*
-      Si es una búsqueda muy específica
-      y no hemos encontrado suficiente,
-      probamos una consulta alternativa.
-    */
-
-    if(
-      libros.length<6 &&
-      esBusquedaEspecial(q)
-    ){
-
-      const alternativas=
-        crearConsultasInteligentes(q)
-          .slice(1);
-
-
-      for(
-        const alternativa
-        of alternativas
-      ){
-
-        const extra=
-          await buscarLibrosCombinado(
-            alternativa,
-            1,
-            ordenActual
-          );
-
-
-        libros=
-          quitarDuplicados([
-            ...libros,
-            ...extra
-          ]);
-
-      }
-
-
-      libros=
-        ordenarLibros(
-          libros,
-          q,
-          ordenActual
-        );
-
-    }
+    let libros=
+      (datos.items || [])
+      .map(convertirLibro);
 
 
     /*
-      Añadir libros creados por usuarios
-      que coincidan con la búsqueda.
+      Si el usuario está buscando
+      un título concreto, relevancia.
     */
-
-    const manualesCoincidentes=
-      manuales.filter(
-        libro=>
-          normalizarTexto(
-            libro.title
-          )
-          .includes(
-            normalizarTexto(q)
-          )
-          ||
-          normalizarTexto(
-            libro.author_name?.join(" ")
-          )
-          .includes(
-            normalizarTexto(q)
-          )
-      );
-
-
-    libros=
-      quitarDuplicados([
-        ...manualesCoincidentes,
-        ...libros
-      ]);
-
 
     if(!libros.length){
 
-      resultados.innerHTML=`
+      resultados.innerHTML=
+        `
+          <div class="vacio">
 
-        <div class="vacio">
+            No hemos encontrado libros.
 
-          😭 No hemos encontrado
-          ese libro.
+            <br><br>
 
-          <br><br>
+            Prueba con el título,
+            autor o ISBN.
 
-          Pero puedes añadirlo tú.
-
-          <br><br>
-
-          <button
-            class="principal"
-            onclick="abrirFormularioLibro()"
-          >
-            ➕ Añadir libro
-          </button>
-
-        </div>
-
-      `;
+          </div>
+        `;
 
     }else{
 
       resultados.innerHTML=
         libros
-          .slice(0,40)
-          .map(tarjetaLibro)
-          .join("");
+        .map(tarjetaLibro)
+        .join("");
 
     }
 
@@ -3731,52 +3375,22 @@ async function cargarResultados(){
         "numeroPagina"
       )
       .textContent=
-      "Página "+
-      pagina;
+        "Página "+pagina;
 
 
   }catch(e){
 
     console.error(e);
 
-
-    resultados.innerHTML=`
-
-      <div class="vacio">
-
-        ⚠️ No se ha podido realizar
-        la búsqueda.
-
-        <br><br>
-
-        Comprueba que tienes Internet.
-
-      </div>
-
-    `;
+    resultados.innerHTML=
+      `
+        <div class="vacio">
+          No se ha podido realizar
+          la búsqueda.
+        </div>
+      `;
 
   }
-
-}
-
-
-/* =========================================================
-   CAMBIAR ORDEN
-========================================================= */
-
-function cambiarOrden(){
-
-  ordenActual=
-    document
-      .getElementById(
-        "ordenResultados"
-      )
-      .value;
-
-
-  pagina=1;
-
-  cargarResultados();
 
 }
 
@@ -3796,12 +3410,7 @@ function paginaSiguiente(){
 
 function paginaAnterior(){
 
-  if(pagina<=1){
-
-    return;
-
-  }
-
+  if(pagina<=1)return;
 
   pagina--;
 
@@ -3811,49 +3420,36 @@ function paginaAnterior(){
 
 
 /* =========================================================
-   NOMBRES DE GÉNEROS
+   NOMBRE GÉNERO
 ========================================================= */
 
 function nombreGenero(nombre){
 
   const nombres={
 
-    romance:"Romance 💕",
+    romance:
+      "Romance 💕",
 
-    romantasy:"Romantasy 🏰",
+    fantasy:
+      "Fantasía 🏰",
 
-    "vampires romance":
-      "Vampiros 🧛",
+    romantasy:
+      "Romantasy 🥀",
 
-    "fae fantasy romance":
-      "Hadas / Fae 🧚",
+    "vampire paranormal":
+      "Vampiros y paranormal 🧛",
 
-    "witches fantasy romance":
-      "Brujas 🔮",
+    "thriller mystery":
+      "Misterio y Thriller 🔎",
 
-    "werewolf romance":
-      "Hombres lobo 🐺",
-
-    "fantasy romance":
-      "Fantasía romántica 🪄",
-
-    "dark fantasy romance":
-      "Dark Romantasy 🥀",
-
-    mystery:
-      "Misterio 🔎",
-
-    thriller:
-      "Thriller 🖤",
-
-    "young adult":
-      "Young Adult 🌙",
+    horror:
+      "Terror 👻",
 
     "science fiction":
       "Ciencia ficción 🚀",
 
-    horror:
-      "Terror 💀",
+    "young adult":
+      "Young Adult 🌙",
 
     "historical fiction":
       "Histórica 🕯️",
@@ -3861,11 +3457,11 @@ function nombreGenero(nombre){
     adventure:
       "Aventura 🗺️",
 
-    poetry:
-      "Poesía 🪶",
-
     classics:
-      "Clásicos 📖"
+      "Clásicos 📖",
+
+    poetry:
+      "Poesía 🪶"
 
   };
 
@@ -3886,20 +3482,17 @@ function abrirLibro(libro){
     libro;
 
 
-  mostrar(
-    "detalle"
-  );
+  mostrar("detalle");
 
 
   const id=
     libro.key ||
-    libro.id ||
     libro.title;
 
 
   const valor=
-    valoraciones[id] ||
-    {};
+    valoraciones[id]
+    || {};
 
 
   const autor=
@@ -3909,41 +3502,35 @@ function abrirLibro(libro){
 
 
   const etiquetas=
-    [
-      ...(libro.subject || []),
-      ...(libro.categories || [])
-    ]
-    .filter(Boolean)
-    .slice(0,12)
-    .map(
-      x=>
-      `<span class="etiqueta">
-        ${seguro(x)}
-      </span>`
-    )
-    .join("");
+    libro.subject
+      ? libro.subject
+          .slice(0,10)
+          .map(
+            x=>
+              `
+                <span class="etiqueta">
+                  ${seguro(x)}
+                </span>
+              `
+          )
+          .join("")
+      : "";
 
 
   const listaResenas=
-    resenas[id] ||
-    [];
+    resenas[id] || [];
 
 
   const listaFrases=
-    frases[id] ||
-    [];
-
-
-  const estaBiblioteca=
-    biblioteca[id] ||
-    null;
+    frases[id] || [];
 
 
   document
     .getElementById(
       "contenidoDetalle"
     )
-    .innerHTML=`
+    .innerHTML=
+    `
 
       <div class="detalle">
 
@@ -3954,35 +3541,33 @@ function abrirLibro(libro){
           <div>
 
             ${
-              libro.portada
-
-              ?
-
-              `<img
-                class="detalle-portada"
-                src="${seguro(libro.portada)}"
-                alt="${seguro(libro.title)}"
-              >`
-
-              :
-
               libro.cover_i
 
               ?
 
-              `<img
-                class="detalle-portada"
-                src="https://covers.openlibrary.org/b/id/${libro.cover_i}-L.jpg"
-                alt="${seguro(libro.title)}"
-              >`
+              `
+                <img
+                  class="detalle-portada"
+                  src="${seguro(
+                    libro.cover_i
+                  )}"
+                  alt="${seguro(
+                    libro.title
+                  )}"
+                >
+              `
 
               :
 
-              `<div class="sin-portada">
-                📖
-                <br>
-                ${seguro(libro.title)}
-              </div>`
+              `
+                <div class="sin-portada">
+                  📖
+                  <br>
+                  ${seguro(
+                    libro.title
+                  )}
+                </div>
+              `
             }
 
           </div>
@@ -3991,8 +3576,25 @@ function abrirLibro(libro){
           <div>
 
             <h1>
-              ${seguro(libro.title)}
+              ${seguro(
+                libro.title
+              )}
             </h1>
+
+
+            ${
+              libro.subtitle
+              ?
+              `
+                <p>
+                  ${seguro(
+                    libro.subtitle
+                  )}
+                </p>
+              `
+              :
+              ""
+            }
 
 
             <h3>
@@ -4003,75 +3605,63 @@ function abrirLibro(libro){
 
             ${
               libro.first_publish_year
-
               ?
-
-              `<p>
-                📅 Primera publicación:
-                ${libro.first_publish_year}
-              </p>`
-
+              `
+                <p>
+                  📅
+                  Publicado:
+                  ${libro.first_publish_year}
+                </p>
+              `
               :
-
               ""
             }
 
 
             ${
               libro.publisher
-
               ?
-
-              `<p>
-                🏛️
-                ${seguro(libro.publisher)}
-              </p>`
-
+              `
+                <p>
+                  🏢
+                  ${seguro(
+                    libro.publisher
+                  )}
+                </p>
+              `
               :
-
               ""
             }
 
 
             ${
-              libro.isbn
-
+              libro.pageCount
               ?
-
-              `<p>
-                ISBN:
-                ${seguro(libro.isbn)}
-              </p>`
-
+              `
+                <p>
+                  📄
+                  ${libro.pageCount}
+                  páginas
+                </p>
+              `
               :
-
               ""
             }
 
 
             ${
               libro.ratings_average
-
               ?
-
-              `<p>
-                ⭐
-                ${Number(
-                  libro.ratings_average
-                ).toFixed(1)}
-
-                ${
-                  libro.ratings_count
-                  ? " · "+
-                    libro.ratings_count+
-                    " valoraciones"
-                  : ""
-                }
-
-              </p>`
-
+              `
+                <p>
+                  ⭐
+                  ${Number(
+                    libro.ratings_average
+                  ).toFixed(1)}
+                  / 5
+                </p>
+              `
               :
-
               ""
             }
 
@@ -4084,144 +3674,73 @@ function abrirLibro(libro){
             <br>
 
 
-            <div
-              style="display:flex;gap:8px;flex-wrap:wrap"
+            <button
+              class="principal"
+              onclick="
+                anadirBiblioteca('quiero')
+              "
             >
-
-              <button
-                class="principal"
-                onclick="anadirBiblioteca('quiero')"
-              >
-                💭 Quiero leer
-              </button>
+              💭 Quiero leer
+            </button>
 
 
-              <button
-                class="secundario"
-                onclick="anadirBiblioteca('favoritos')"
-              >
-                ❤️ Favoritos
-              </button>
+            <button
+              class="secundario"
+              onclick="
+                anadirBiblioteca('favoritos')
+              "
+            >
+              ❤️ Favoritos
+            </button>
+
+
+            <button
+              class="secundario"
+              onclick="
+                anadirBiblioteca('leyendo')
+              "
+            >
+              📖 Leyendo
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- DESCRIPCIÓN -->
+
+        ${
+          libro.description
+          ?
+          `
+            <div class="valoracion">
+
+              <h2>
+                📖 Sinopsis
+              </h2>
+
+              <p>
+                ${seguro(
+                  quitarHTML(
+                    libro.description
+                  )
+                )}
+              </p>
 
             </div>
+          `
+          :
+          ""
+        }
 
 
-            ${
-              estaBiblioteca
-
-              ?
-
-              `<p class="pequeno">
-                📚 Está en:
-                ${nombreLista(
-                  estaBiblioteca.tipo
-                )}
-              </p>`
-
-              :
-
-              ""
-            }
-
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             SINOPSIS
-        ================================================== -->
+        <!-- VALORACIÓN -->
 
         <div class="valoracion">
 
-          <h2>
-            📖 Sinopsis
-          </h2>
-
-
-          <p>
-
-            ${
-              libro.description
-              ?
-              limpiarDescripcion(
-                libro.description
-              )
-              :
-              "No hay una sinopsis disponible para esta edición."
-            }
-
-          </p>
-
-        </div>
-
-
-        <!-- =================================================
-             CAMBIAR ESTADO
-        ================================================== -->
-
-        <div class="valoracion">
-
-          <h2>
-            📚 Añadir a mi biblioteca
-          </h2>
-
-
-          <div
-            class="categorias-valoracion"
-          >
-
-            ${botonEstado(
-              "quiero",
-              "💭 Quiero leer"
-            )}
-
-            ${botonEstado(
-              "leyendo",
-              "📖 Leyendo"
-            )}
-
-            ${botonEstado(
-              "terminados",
-              "✅ Terminado"
-            )}
-
-            ${botonEstado(
-              "favoritos",
-              "❤️ Favorito"
-            )}
-
-            ${botonEstado(
-              "odiados",
-              "💀 He odiado"
-            )}
-
-            ${botonEstado(
-              "no",
-              "😭 No me ha gustado"
-            )}
-
-            ${botonEstado(
-              "bien",
-              "🙂 Está bien"
-            )}
-
-            ${botonEstado(
-              "despues",
-              "⏳ Después"
-            )}
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             VALORACIÓN COMPLETA
-        ================================================== -->
-
-        <div class="valoracion">
 
           <h2>
             ⭐ Mi valoración BOOKISH
@@ -4234,7 +3753,9 @@ function abrirLibro(libro){
 
               ⭐ Valoración general:
 
-              <strong id="vEstrellas">
+              <strong
+                id="vEstrellas"
+              >
                 ${valor.estrellas || 0}/5
               </strong>
 
@@ -4248,7 +3769,13 @@ function abrirLibro(libro){
               max="5"
               step=".5"
               value="${valor.estrellas || 0}"
-              oninput="actualizarValor('estrellas','vEstrellas',5)"
+              oninput="
+                actualizarValor(
+                  'estrellas',
+                  'vEstrellas',
+                  5
+                )
+              "
             >
 
           </div>
@@ -4259,35 +3786,29 @@ function abrirLibro(libro){
           </h3>
 
 
-          <div
-            class="categorias-valoracion"
-          >
+          <div class="categorias-valoracion">
 
-            ${slider(
+
+            ${campoRango(
               "romance",
               "❤️ Cantidad de romance",
-              valor.romance,
+              valor,
               10
             )}
 
-            ${slider(
+
+            ${campoRango(
               "mariposas",
               "🦋 Mariposas",
-              valor.mariposas,
+              valor,
               10
             )}
 
-            ${slider(
+
+            ${campoRango(
               "sufrimiento",
               "💔 Sufrimiento amoroso",
-              valor.sufrimiento,
-              10
-            )}
-
-            ${slider(
-              "quimica",
-              "💋 Química entre personajes",
-              valor.quimica,
+              valor,
               10
             )}
 
@@ -4299,21 +3820,26 @@ function abrirLibro(libro){
           </h3>
 
 
-          <div
-            class="categorias-valoracion"
-          >
+          <div class="categorias-valoracion">
 
-            ${slider(
+            ${campoRango(
               "spicy",
               "🌶️ Nivel spicy",
-              valor.spicy,
+              valor,
               5
             )}
 
-            ${slider(
+            ${campoRango(
               "tension",
               "🔥 Tensión",
-              valor.tension,
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "quimica",
+              "💋 Química",
+              valor,
               10
             )}
 
@@ -4325,56 +3851,62 @@ function abrirLibro(libro){
           </h3>
 
 
-          <div
-            class="categorias-valoracion"
-          >
+          <div class="categorias-valoracion">
 
-            ${slider(
+
+            ${campoRango(
               "llanto",
               "😭 Lágrimas",
-              valor.llanto,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "miedo",
               "😱 Miedo",
-              valor.miedo,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "enfado",
               "😡 Enfado",
-              valor.enfado,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "emocion",
               "🥹 Emoción",
-              valor.emocion,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "sorpresa",
               "🤯 Sorpresa",
-              valor.sorpresa,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "destruccion",
               "🫠 Me destruyó",
-              valor.destruccion,
+              valor,
               10
             )}
 
-            ${slider(
-              "risa",
-              "😂 Me hizo reír",
-              valor.risa,
+            ${campoRango(
+              "ansiedad",
+              "😵 Ansiedad",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "felicidad",
+              "🥰 Felicidad",
+              valor,
               10
             )}
 
@@ -4386,150 +3918,62 @@ function abrirLibro(libro){
           </h3>
 
 
-          <div
-            class="categorias-valoracion"
-          >
+          <div class="categorias-valoracion">
 
-            ${slider(
+
+            ${campoRango(
               "originalidad",
               "✨ Originalidad",
-              valor.originalidad,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "trama",
               "🧩 Trama",
-              valor.trama,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "personajes",
               "🎭 Personajes",
-              valor.personajes,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "mundo",
               "🗺️ Worldbuilding",
-              valor.mundo,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "escritura",
               "📝 Escritura",
-              valor.escritura,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "ritmo",
               "⏳ Ritmo",
-              valor.ritmo,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "giros",
               "🔀 Giros",
-              valor.giros,
+              valor,
               10
             )}
 
-            ${slider(
+            ${campoRango(
               "final",
               "🎬 Final",
-              valor.final,
-              10
-            )}
-
-          </div>
-
-
-          <h3>
-            🧙 Fantasía / Mundo
-          </h3>
-
-
-          <div
-            class="categorias-valoracion"
-          >
-
-            ${slider(
-              "magia",
-              "✨ Magia",
-              valor.magia,
-              10
-            )}
-
-            ${slider(
-              "criaturas",
-              "🐉 Criaturas",
-              valor.criaturas,
-              10
-            )}
-
-            ${slider(
-              "worldbuilding2",
-              "🏰 Mundo fantástico",
-              valor.worldbuilding2,
-              10
-            )}
-
-            ${slider(
-              "oscuridad",
-              "🌑 Oscuridad",
-              valor.oscuridad,
-              10
-            )}
-
-          </div>
-
-
-          <h3>
-            📚 Experiencia de lectura
-          </h3>
-
-
-          <div
-            class="categorias-valoracion"
-          >
-
-            ${slider(
-              "cozy",
-              "🛋️ Cozy",
-              valor.cozy,
-              10
-            )}
-
-            ${slider(
-              "diversion",
-              "😂 Diversión",
-              valor.diversion,
-              10
-            )}
-
-            ${slider(
-              "complejidad",
-              "🧠 Complejidad",
-              valor.complejidad,
-              10
-            )}
-
-            ${slider(
-              "adiccion",
-              "🔥 Adicción",
-              valor.adiccion,
-              10
-            )}
-
-            ${slider(
-              "rapidez",
-              "⚡ No podía parar",
-              valor.rapidez,
+              valor,
               10
             )}
 
@@ -4543,23 +3987,74 @@ function abrirLibro(libro){
 
           <textarea
             id="personajeFavorito"
-            placeholder="¿Cuál ha sido tu personaje favorito y por qué?"
+            placeholder="
+              ¿Cuál ha sido tu personaje favorito
+              y por qué?
+            "
           >${seguro(
-            valor.personajeFavorito || ""
+            valor.personajeFavorito ||
+            ""
           )}</textarea>
 
 
           <h3>
-            💕 Pareja
+            📚 Experiencia de lectura
           </h3>
 
 
-          <textarea
-            id="parejaFavorita"
-            placeholder="¿Cuál ha sido tu pareja favorita?"
-          >${seguro(
-            valor.parejaFavorita || ""
-          )}</textarea>
+          <div class="categorias-valoracion">
+
+
+            ${campoRango(
+              "cozy",
+              "🛋️ Cozy",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "oscuro",
+              "🌑 Oscuridad",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "magia",
+              "✨ Magia",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "diversion",
+              "😂 Diversión",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "complejidad",
+              "🧠 Complejidad",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "adiccion",
+              "🔥 Adicción",
+              valor,
+              10
+            )}
+
+            ${campoRango(
+              "nostalgia",
+              "🥹 Nostalgia",
+              valor,
+              10
+            )}
+
+          </div>
 
 
           <h3>
@@ -4569,7 +4064,14 @@ function abrirLibro(libro){
 
           <select
             id="releer"
-            style="width:100%;padding:12px;border:1px solid var(--borde);border-radius:12px;background:var(--fondo);color:var(--texto)"
+            style="
+              width:100%;
+              padding:12px;
+              border:1px solid var(--borde);
+              border-radius:12px;
+              background:var(--fondo);
+              color:var(--texto)
+            "
           >
 
             <option value="">
@@ -4577,30 +4079,36 @@ function abrirLibro(libro){
             </option>
 
             <option
-              value="Sí"
-              ${valor.releer==="Sí"?"selected":""}
+              ${
+                valor.releer==="Sí"
+                ? "selected"
+                : ""
+              }
             >
               Sí
             </option>
 
             <option
-              value="Quizás"
-              ${valor.releer==="Quizás"?"selected":""}
+              ${
+                valor.releer==="Quizás"
+                ? "selected"
+                : ""
+              }
             >
               Quizás
             </option>
 
             <option
-              value="Nunca"
-              ${valor.releer==="Nunca"?"selected":""}
+              ${
+                valor.releer==="Nunca"
+                ? "selected"
+                : ""
+              }
             >
               Nunca jamás 💀
             </option>
 
           </select>
-
-
-          <br><br>
 
 
           <h3>
@@ -4612,61 +4120,42 @@ function abrirLibro(libro){
             class="categorias-valoracion"
           >
 
-            ${[
-              "slow burn",
-              "enemies to lovers",
-              "friends to lovers",
-              "found family",
-              "grumpy x sunshine",
-              "dark romance",
-              "dark fantasy",
-              "romantasy",
-              "vampiros",
-              "hadas / fae",
-              "brujas",
-              "hombres lobo",
-              "dragones",
-              "paranormal",
-              "fantasía oscura",
-              "plot twist",
-              "final feliz",
-              "final triste",
-              "lloré muchísimo",
-              "me destruyó",
-              "comfort book",
-              "book boyfriend",
-              "book girlfriend",
-              "red flags",
-              "green flags",
-              "obsesión"
-            ]
-            .map(
-              etiqueta=>`
+            ${ETIQUETAS.map(
+              etiqueta=>
 
-                <label
-                  class="mini-valoracion"
-                >
+                `
 
-                  <input
-                    type="checkbox"
-                    class="check-etiqueta"
-                    value="${seguro(etiqueta)}"
-                    ${
-                      valor.etiquetas?.includes(
-                        etiqueta
-                      )
-                      ? "checked"
-                      : ""
-                    }
+                  <label
+                    class="mini-valoracion"
                   >
 
-                  ${seguro(etiqueta)}
+                    <input
+                      type="checkbox"
+                      class="check-etiqueta"
+                      value="${seguro(
+                        etiqueta
+                      )}"
 
-                </label>
+                      ${
+                        valor.etiquetas
+                        ?.includes(
+                          etiqueta
+                        )
+                        ?
+                        "checked"
+                        :
+                        ""
+                      }
+                    >
 
-              `
-            )
-            .join("")}
+                    ${seguro(
+                      etiqueta
+                    )}
+
+                  </label>
+
+                `
+            ).join("")}
 
           </div>
 
@@ -4676,19 +4165,21 @@ function abrirLibro(libro){
 
           <button
             class="principal"
-            onclick="guardarValoracion()"
+            onclick="
+              guardarValoracion()
+            "
           >
             ⭐ Guardar valoración
           </button>
 
+
         </div>
 
 
-        <!-- =================================================
-             RESEÑA
-        ================================================== -->
+        <!-- RESEÑAS -->
 
         <div class="valoracion">
+
 
           <h2>
             💬 Tu reseña
@@ -4697,7 +4188,9 @@ function abrirLibro(libro){
 
           <textarea
             id="resenaInput"
-            placeholder="Escribe lo que piensas del libro..."
+            placeholder="
+              Escribe lo que piensas del libro...
+            "
           ></textarea>
 
 
@@ -4706,16 +4199,16 @@ function abrirLibro(libro){
 
           <button
             class="principal"
-            onclick="guardarResena()"
+            onclick="
+              guardarResena()
+            "
           >
             Publicar reseña
           </button>
 
 
-          <div
-            id="resenasLibro"
-            style="margin-top:20px"
-          >
+          <div id="resenasLibro">
+
 
             ${
               listaResenas.length
@@ -4724,63 +4217,70 @@ function abrirLibro(libro){
 
               listaResenas
                 .map(
-                  r=>`
+                  r=>
 
-                    <div class="tarjeta">
+                    `
 
-                      <strong>
-                        ${seguro(r.nombre)}
-                      </strong>
+                      <div class="tarjeta">
 
-                      <span class="pequeno">
-                        ·
-                        ${seguro(
-                          r.fecha || ""
-                        )}
-                      </span>
+                        <strong>
+                          ${seguro(
+                            r.nombre
+                          )}
+                        </strong>
 
-                      <p>
-                        ${seguro(r.texto)}
-                      </p>
+                        <p>
+                          ${seguro(
+                            r.texto
+                          )}
+                        </p>
 
-                    </div>
+                        <span
+                          class="pequeno"
+                        >
+                          ${seguro(
+                            r.fecha
+                          )}
+                        </span>
 
-                  `
+                      </div>
+
+                    `
                 )
                 .join("")
 
               :
 
-              `<p class="pequeno">
-                Todavía no hay reseñas.
-              </p>`
+              `
+                <p class="pequeno">
+                  Todavía no hay reseñas.
+                </p>
+              `
 
             }
 
+
           </div>
+
 
         </div>
 
 
-        <!-- =================================================
-             FRASES
-        ================================================== -->
+        <!-- FRASES -->
 
         <div class="valoracion">
+
 
           <h2>
             🪶 Frases favoritas
           </h2>
 
 
-          <p class="pequeno">
-            Las frases las escribe quien quiera.
-          </p>
-
-
           <textarea
             id="fraseInput"
-            placeholder="Escribe una frase que quieras guardar..."
+            placeholder="
+              Escribe una frase que quieras guardar...
+            "
           ></textarea>
 
 
@@ -4789,15 +4289,16 @@ function abrirLibro(libro){
 
           <button
             class="principal"
-            onclick="guardarFrase()"
+            onclick="
+              guardarFrase()
+            "
           >
             🪶 Añadir frase
           </button>
 
 
-          <div
-            style="margin-top:20px"
-          >
+          <div>
+
 
             ${
               listaFrases.length
@@ -4806,65 +4307,33 @@ function abrirLibro(libro){
 
               listaFrases
                 .map(
-                  f=>`
+                  f=>
 
-                    <div class="tarjeta">
-                      “${seguro(f)}”
-                    </div>
+                    `
 
-                  `
+                      <div class="tarjeta">
+
+                        “${seguro(f)}”
+
+                      </div>
+
+                    `
                 )
                 .join("")
 
               :
 
-              `<p class="pequeno">
-                Todavía no hay frases.
-              </p>`
+              `
+                <p class="pequeno">
+                  Todavía no hay frases.
+                </p>
+              `
 
             }
 
+
           </div>
 
-        </div>
-
-
-        <!-- =================================================
-             FUENTE
-        ================================================== -->
-
-        <div class="valoracion">
-
-          <p class="pequeno">
-
-            📚 Fuente de información:
-            ${seguro(
-              libro.source ||
-              "BOOKISH"
-            )}
-
-          </p>
-
-
-          ${
-            libro.infoLink
-
-            ?
-
-            `<a
-              href="${seguro(libro.infoLink)}"
-              target="_blank"
-              rel="noopener"
-              style="color:var(--principal)"
-            >
-              Ver ficha original
-            </a>`
-
-            :
-
-            ""
-
-          }
 
         </div>
 
@@ -4877,34 +4346,38 @@ function abrirLibro(libro){
 
 
 /* =========================================================
-   SLIDER HTML
+   CAMPOS DE VALORACIÓN
 ========================================================= */
 
-function slider(
+function campoRango(
   id,
-  texto,
+  nombre,
   valor,
   max
 ){
 
   return `
 
-    <div class="mini-valoracion">
+    <div
+      class="mini-valoracion"
+    >
 
-      <label>
-        ${texto}
-      </label>
+      ${nombre}
 
       <input
         id="${id}"
         type="range"
         min="0"
         max="${max}"
-        value="${Number(valor || 0)}"
+        value="${
+          valor[id] || 0
+        }"
       >
 
-      <small class="pequeno">
-        0 - ${max}
+      <small>
+        ${
+          valor[id] || 0
+        }/${max}
       </small>
 
     </div>
@@ -4915,61 +4388,86 @@ function slider(
 
 
 /* =========================================================
-   BOTÓN ESTADO
+   ETIQUETAS
 ========================================================= */
 
-function botonEstado(
-  tipo,
-  texto
-){
+const ETIQUETAS=[
 
-  return `
+  "slow burn",
 
-    <button
-      class="tema"
-      onclick="anadirBiblioteca('${tipo}')"
-    >
-      ${texto}
-    </button>
+  "enemies to lovers",
 
-  `;
+  "friends to lovers",
 
-}
+  "found family",
+
+  "grumpy x sunshine",
+
+  "dark romance",
+
+  "romantasy",
+
+  "vampiros",
+
+  "fantasía oscura",
+
+  "plot twist",
+
+  "final feliz",
+
+  "final triste",
+
+  "lloré muchísimo",
+
+  "me destruyó",
+
+  "comfort book",
+
+  "forbidden love",
+
+  "fake dating",
+
+  "forced proximity",
+
+  "one bed",
+
+  "second chance",
+
+  "childhood friends",
+
+  "morally grey",
+
+  "chosen one",
+
+  "princesa",
+
+  "príncipe",
+
+  "villano",
+
+  "academia",
+
+  "magia",
+
+  "dragones",
+
+  "brujas",
+
+  "viajes en el tiempo",
+
+  "familia encontrada",
+
+  "distopía",
+
+  "misterio",
+
+  "terror psicológico"
+
+];
 
 
 /* =========================================================
-   LIMPIAR DESCRIPCIÓN
-========================================================= */
-
-function limpiarDescripcion(texto){
-
-  if(typeof texto==="string"){
-
-    return seguro(texto);
-
-  }
-
-
-  if(
-    texto &&
-    typeof texto==="object"
-  ){
-
-    return seguro(
-      texto.value ||
-      ""
-    );
-
-  }
-
-
-  return "";
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR VALORES
+   ACTUALIZAR VALOR
 ========================================================= */
 
 function actualizarValor(
@@ -4982,7 +4480,6 @@ function actualizarValor(
     document.getElementById(
       input
     );
-
 
   const destino=
     document.getElementById(
@@ -5011,16 +4508,11 @@ function actualizarValor(
 
 function guardarValoracion(){
 
-  if(!ultimoLibro){
-
-    return;
-
-  }
+  if(!ultimoLibro)return;
 
 
   const id=
     ultimoLibro.key ||
-    ultimoLibro.id ||
     ultimoLibro.title;
 
 
@@ -5031,10 +4523,10 @@ function guardarValoracion(){
     "romance",
     "mariposas",
     "sufrimiento",
-    "quimica",
 
     "spicy",
     "tension",
+    "quimica",
 
     "llanto",
     "miedo",
@@ -5042,7 +4534,8 @@ function guardarValoracion(){
     "emocion",
     "sorpresa",
     "destruccion",
-    "risa",
+    "ansiedad",
+    "felicidad",
 
     "originalidad",
     "trama",
@@ -5053,16 +4546,13 @@ function guardarValoracion(){
     "giros",
     "final",
 
-    "magia",
-    "criaturas",
-    "worldbuilding2",
-    "oscuridad",
-
     "cozy",
+    "oscuro",
+    "magia",
     "diversion",
     "complejidad",
     "adiccion",
-    "rapidez"
+    "nostalgia"
 
   ];
 
@@ -5074,9 +4564,7 @@ function guardarValoracion(){
     x=>{
 
       const elemento=
-        document.getElementById(
-          x
-        );
+        document.getElementById(x);
 
 
       if(elemento){
@@ -5097,17 +4585,7 @@ function guardarValoracion(){
       .getElementById(
         "personajeFavorito"
       )
-      ?.value ||
-    "";
-
-
-  datos.parejaFavorita=
-    document
-      .getElementById(
-        "parejaFavorita"
-      )
-      ?.value ||
-    "";
+      .value;
 
 
   datos.releer=
@@ -5115,16 +4593,14 @@ function guardarValoracion(){
       .getElementById(
         "releer"
       )
-      ?.value ||
-    "";
+      .value;
 
 
   datos.etiquetas=
     [
-      ...document
-        .querySelectorAll(
-          ".check-etiqueta:checked"
-        )
+      ...document.querySelectorAll(
+        ".check-etiqueta:checked"
+      )
     ]
     .map(
       x=>x.value
@@ -5154,39 +4630,23 @@ function guardarValoracion(){
 
 function guardarResena(){
 
-  if(!ultimoLibro){
-
-    return;
-
-  }
-
-
-  const elemento=
-    document.getElementById(
-      "resenaInput"
-    );
+  if(!ultimoLibro)return;
 
 
   const texto=
-    elemento
-      ?.value
+    document
+      .getElementById(
+        "resenaInput"
+      )
+      .value
       .trim();
 
 
-  if(!texto){
-
-    alert(
-      "Escribe algo antes de publicar."
-    );
-
-    return;
-
-  }
+  if(!texto)return;
 
 
   const id=
     ultimoLibro.key ||
-    ultimoLibro.id ||
     ultimoLibro.title;
 
 
@@ -5238,11 +4698,7 @@ function guardarResena(){
 
 function guardarFrase(){
 
-  if(!ultimoLibro){
-
-    return;
-
-  }
+  if(!ultimoLibro)return;
 
 
   const texto=
@@ -5250,20 +4706,15 @@ function guardarFrase(){
       .getElementById(
         "fraseInput"
       )
-      ?.value
+      .value
       .trim();
 
 
-  if(!texto){
-
-    return;
-
-  }
+  if(!texto)return;
 
 
   const id=
     ultimoLibro.key ||
-    ultimoLibro.id ||
     ultimoLibro.title;
 
 
@@ -5305,16 +4756,11 @@ function anadirBiblioteca(
   tipo
 ){
 
-  if(!ultimoLibro){
-
-    return;
-
-  }
+  if(!ultimoLibro)return;
 
 
   const id=
     ultimoLibro.key ||
-    ultimoLibro.id ||
     ultimoLibro.title;
 
 
@@ -5336,49 +4782,26 @@ function anadirBiblioteca(
 
 
   alert(
-    "📚 Añadido a "+
-    nombreLista(tipo)
+
+    tipo==="favoritos"
+
+      ?
+
+      "❤️ Añadido a favoritos"
+
+      :
+
+      tipo==="leyendo"
+
+      ?
+
+      "📖 Añadido a leyendo"
+
+      :
+
+      "📚 Añadido a tu biblioteca"
+
   );
-
-
-  abrirLibro(
-    ultimoLibro
-  );
-
-}
-
-
-/* =========================================================
-   NOMBRE LISTA
-========================================================= */
-
-function nombreLista(
-  tipo
-){
-
-  const nombres={
-
-    quiero:"Quiero leer",
-
-    leyendo:"Leyendo",
-
-    favoritos:"Favoritos",
-
-    terminados:"Terminados",
-
-    odiados:"He odiado",
-
-    no:"No me ha gustado",
-
-    bien:"Está bien",
-
-    despues:"Después"
-
-  };
-
-
-  return nombres[tipo] ||
-    tipo;
 
 }
 
@@ -5413,20 +4836,21 @@ function mostrarBiblioteca(
 
   if(!libros.length){
 
-    contenedor.innerHTML=`
+    contenedor.innerHTML=
+      `
 
-      <div class="vacio">
+        <div class="vacio">
 
-        No tienes libros aquí todavía.
+          No tienes libros aquí todavía.
 
-        <br><br>
+          <br><br>
 
-        Busca un libro y añádelo 📚
+          Busca un libro y añádelo
+          a esta lista.
 
-      </div>
+        </div>
 
-    `;
-
+      `;
 
     return;
 
@@ -5447,74 +4871,48 @@ function mostrarBiblioteca(
 
 function cargarPerfil(){
 
-  const nombreInput=
-    document.getElementById(
+  document
+    .getElementById(
       "nombreInput"
-    );
+    )
+    .value=
+      perfil.nombre || "";
 
 
-  if(nombreInput){
-
-    nombreInput.value=
-      perfil.nombre ||
-      "";
-
-  }
-
-
-  const nombre=
-    document.getElementById(
+  document
+    .getElementById(
       "nombrePerfil"
-    );
-
-
-  if(nombre){
-
-    nombre.textContent=
+    )
+    .textContent=
       perfil.nombre ||
       "Lector/a BOOKISH";
 
-  }
 
-
-  mostrarAvatar();
-
-}
-
-
-/* =========================================================
-   MOSTRAR AVATAR
-========================================================= */
-
-function mostrarAvatar(){
-
-  const contenedor=
+  const avatar=
     document.getElementById(
       "avatar"
     );
 
 
-  if(!contenedor){
+  if(
+    perfil.avatar &&
+    perfil.avatar.startsWith(
+      "data:image"
+    )
+  ){
 
-    return;
-
-  }
-
-
-  if(perfil.avatar){
-
-    contenedor.innerHTML=`
-
-      <img
-        src="${seguro(perfil.avatar)}"
-        alt="Avatar"
-      >
-
-    `;
+    avatar.innerHTML=
+      `
+        <img
+          src="${perfil.avatar}"
+          alt="Avatar"
+        >
+      `;
 
   }else{
 
-    contenedor.textContent=
+    avatar.textContent=
+      perfil.avatar ||
       "📚";
 
   }
@@ -5527,20 +4925,14 @@ function mostrarAvatar(){
 ========================================================= */
 
 function cambiarAvatar(
-  evento
+  event
 ){
 
   const archivo=
-    evento
-      .target
-      .files?.[0];
+    event.target.files?.[0];
 
 
-  if(!archivo){
-
-    return;
-
-  }
+  if(!archivo)return;
 
 
   if(
@@ -5550,18 +4942,13 @@ function cambiarAvatar(
   ){
 
     alert(
-      "Elige una imagen."
+      "Selecciona una imagen."
     );
 
     return;
 
   }
 
-
-  /*
-    Reducimos la imagen antes de guardarla
-    para evitar llenar el almacenamiento.
-  */
 
   const lector=
     new FileReader();
@@ -5570,132 +4957,23 @@ function cambiarAvatar(
   lector.onload=
     function(){
 
-      const imagen=
-        new Image();
-
-
-      imagen.onload=
-        function(){
-
-          const maximo=500;
-
-          let ancho=
-            imagen.width;
-
-          let alto=
-            imagen.height;
-
-
-          if(ancho>maximo){
-
-            alto=
-              alto*
-              maximo/
-              ancho;
-
-            ancho=
-              maximo;
-
-          }
-
-
-          if(alto>maximo){
-
-            ancho=
-              ancho*
-              maximo/
-              alto;
-
-            alto=
-              maximo;
-
-          }
-
-
-          const canvas=
-            document.createElement(
-              "canvas"
-            );
-
-
-          canvas.width=
-            ancho;
-
-          canvas.height=
-            alto;
-
-
-          const ctx=
-            canvas.getContext(
-              "2d"
-            );
-
-
-          ctx.drawImage(
-            imagen,
-            0,
-            0,
-            ancho,
-            alto
-          );
-
-
-          perfil.avatar=
-            canvas.toDataURL(
-              "image/jpeg",
-              .82
-            );
-
-
-          guardar(
-            CLAVES.perfil,
-            perfil
-          );
-
-
-          mostrarAvatar();
-
-
-          alert(
-            "🖼️ Avatar actualizado"
-          );
-
-        };
-
-
-      imagen.src=
+      perfil.avatar=
         lector.result;
+
+
+      guardar(
+        CLAVES.perfil,
+        perfil
+      );
+
+
+      cargarPerfil();
 
     };
 
 
   lector.readAsDataURL(
     archivo
-  );
-
-}
-
-
-/* =========================================================
-   QUITAR AVATAR
-========================================================= */
-
-function quitarAvatar(){
-
-  perfil.avatar="";
-
-
-  guardar(
-    CLAVES.perfil,
-    perfil
-  );
-
-
-  mostrarAvatar();
-
-
-  alert(
-    "🗑️ Foto eliminada"
   );
 
 }
@@ -5712,7 +4990,7 @@ function guardarPerfil(){
       .getElementById(
         "nombreInput"
       )
-      ?.value
+      .value
       .trim();
 
 
@@ -5760,50 +5038,45 @@ function tema(
 
   const decoraciones={
 
-    coquette:[
-      "🎀",
-      "🎀",
-      "🌸",
-      "✨",
-      "💗",
-      "🩰"
-    ],
+    coquette:
+      [
+        "🎀",
+        "🎀",
+        "🌸",
+        "✨"
+      ],
 
-    fantasia:[
-      "✨",
-      "🦋",
-      "🏰",
-      "🌙",
-      "🧚",
-      "🐉"
-    ],
+    fantasia:
+      [
+        "✨",
+        "🦋",
+        "🏰",
+        "🌙"
+      ],
 
-    dark:[
-      "🌹",
-      "🕯️",
-      "🌑",
-      "🥀",
-      "🖤",
-      "🩸"
-    ],
+    dark:
+      [
+        "🌹",
+        "🕯️",
+        "🌑",
+        "🥀"
+      ],
 
-    mar:[
-      "🐚",
-      "🪸",
-      "🌊",
-      "🐚",
-      "🧜‍♀️",
-      "🫧"
-    ],
+    mar:
+      [
+        "🐚",
+        "🪸",
+        "🌊",
+        "🐚"
+      ],
 
-    elegante:[
-      "✦",
-      "❦",
-      "✧",
-      "✦",
-      "♢",
-      "❧"
-    ]
+    elegante:
+      [
+        "✦",
+        "❦",
+        "✧",
+        "✦"
+      ]
 
   };
 
@@ -5813,16 +5086,18 @@ function tema(
       "decoracion"
     )
     .innerHTML=
-      decoraciones[
-        nombre
-      ]
-      .map(
-        x=>
-        `<span class="decor">
-          ${x}
-        </span>`
-      )
-      .join("");
+      decoraciones[nombre]
+        .map(
+          x=>
+            `
+              <span
+                class="decor"
+              >
+                ${x}
+              </span>
+            `
+        )
+        .join("");
 
 }
 
@@ -5856,10 +5131,6 @@ function enlacePerfil(){
 }
 
 
-/* =========================================================
-   CARGAR AMIGOS
-========================================================= */
-
 function cargarAmigos(){
 
   const enlace=
@@ -5882,22 +5153,17 @@ function cargarAmigos(){
     );
 
 
-  if(!lista){
-
-    return;
-
-  }
+  if(!lista)return;
 
 
   if(!amigos.length){
 
-    lista.innerHTML=`
-
-      <p class="pequeno">
-        Todavía no tienes amistades.
-      </p>
-
-    `;
+    lista.innerHTML=
+      `
+        <p class="pequeno">
+          Todavía no tienes amistades.
+        </p>
+      `;
 
     return;
 
@@ -5907,16 +5173,15 @@ function cargarAmigos(){
   lista.innerHTML=
     amigos
       .map(
-        x=>`
-
-          <div class="comunidad-post">
-
-            👤
-            ${seguro(x)}
-
-          </div>
-
-        `
+        x=>
+          `
+            <div
+              class="comunidad-post"
+            >
+              👤
+              ${seguro(x)}
+            </div>
+          `
       )
       .join("");
 
@@ -5982,16 +5247,10 @@ function anadirAmigo(){
 
 
   const valor=
-    input
-      ?.value
-      .trim();
+    input.value.trim();
 
 
-  if(!valor){
-
-    return;
-
-  }
+  if(!valor)return;
 
 
   amigos.push(
@@ -6029,7 +5288,7 @@ function publicarForo(){
       .getElementById(
         "tituloForo"
       )
-      ?.value
+      .value
       .trim();
 
 
@@ -6038,7 +5297,7 @@ function publicarForo(){
       .getElementById(
         "textoForo"
       )
-      ?.value
+      .value
       .trim();
 
 
@@ -6113,28 +5372,23 @@ function cargarForo(){
     );
 
 
-  if(!contenedor){
-
-    return;
-
-  }
+  if(!contenedor)return;
 
 
   if(!publicaciones.length){
 
-    contenedor.innerHTML=`
+    contenedor.innerHTML=
+      `
+        <p class="pequeno">
 
-      <p class="pequeno">
+          Todavía no hay conversaciones.
 
-        Todavía no hay conversaciones.
+          <br>
 
-        <br>
+          ¡Crea la primera!
 
-        ¡Crea la primera!
-
-      </p>
-
-    `;
+        </p>
+      `;
 
     return;
 
@@ -6144,34 +5398,41 @@ function cargarForo(){
   contenedor.innerHTML=
     publicaciones
       .map(
-        p=>`
+        p=>
+          `
 
-          <div
-            class="comunidad-post"
-          >
+            <div
+              class="comunidad-post"
+            >
 
-            <h3>
-              💬
-              ${seguro(p.titulo)}
-            </h3>
+              <h3>
+                💬
+                ${seguro(
+                  p.titulo
+                )}
+              </h3>
 
-            <p>
-              ${seguro(p.texto)}
-            </p>
+              <p>
+                ${seguro(
+                  p.texto
+                )}
+              </p>
 
-            <span class="pequeno">
+              <span
+                class="pequeno"
+              >
+                ${seguro(
+                  p.nombre
+                )}
+                ·
+                ${seguro(
+                  p.fecha
+                )}
+              </span>
 
-              ${seguro(p.nombre)}
+            </div>
 
-              ·
-
-              ${seguro(p.fecha)}
-
-            </span>
-
-          </div>
-
-        `
+          `
       )
       .join("");
 
@@ -6179,195 +5440,122 @@ function cargarForo(){
 
 
 /* =========================================================
-   AÑADIR LIBRO MANUAL
+   QUITAR HTML DE DESCRIPCIONES
 ========================================================= */
 
-function abrirFormularioLibro(){
+function quitarHTML(
+  texto
+){
 
-  document
-    .getElementById(
-      "modalLibro"
-    )
-    .style.display=
-      "block";
-
-}
+  const temporal=
+    document.createElement(
+      "div"
+    );
 
 
-function cerrarFormularioLibro(){
+  temporal.innerHTML=
+    texto;
 
-  document
-    .getElementById(
-      "modalLibro"
-    )
-    .style.display=
-      "none";
+
+  return temporal
+    .textContent
+    ||
+    temporal.innerText
+    ||
+    "";
 
 }
 
 
 /* =========================================================
-   GUARDAR LIBRO MANUAL
+   NAVEGACIÓN
 ========================================================= */
 
-function guardarLibroManual(){
+function mostrar(
+  id
+){
 
-  const titulo=
-    document
-      .getElementById(
-        "manualTitulo"
-      )
-      .value
-      .trim();
-
-
-  const autor=
-    document
-      .getElementById(
-        "manualAutor"
-      )
-      .value
-      .trim();
-
-
-  if(!titulo){
-
-    alert(
-      "Necesitas poner el título."
+  document
+    .querySelectorAll(
+      ".pagina"
+    )
+    .forEach(
+      x=>
+        x.classList.remove(
+          "activa"
+        )
     );
 
-    return;
+
+  const paginaElement=
+    document.getElementById(
+      id
+    );
+
+
+  if(paginaElement){
+
+    paginaElement
+      .classList.add(
+        "activa"
+      );
 
   }
 
 
-  const id=
-    "manual:"+
-    Date.now();
-
-
-  const libro={
-
-    id:id,
-
-    key:id,
-
-    title:
-      titulo,
-
-    author_name:[
-      autor ||
-      "Autor desconocido"
-    ],
-
-    first_publish_year:
-      document
-        .getElementById(
-          "manualAnio"
-        )
-        .value
-        .trim(),
-
-    portada:
-      document
-        .getElementById(
-          "manualPortada"
-        )
-        .value
-        .trim(),
-
-    categories:[
-      document
-        .getElementById(
-          "manualGenero"
-        )
-        .value
-        .trim()
-    ]
-    .filter(Boolean),
-
-    subject:[],
-
-    description:
-      document
-        .getElementById(
-          "manualSinopsis"
-        )
-        .value
-        .trim(),
-
-    source:
-      "Añadido por usuario",
-
-    ratings_average:0,
-
-    ratings_count:0
-
-  };
-
-
-  manuales.push(
-    libro
-  );
-
-
-  guardar(
-    CLAVES.manuales,
-    manuales
-  );
-
-
-  cerrarFormularioLibro();
-
-
-  /*
-    Limpiar formulario
-  */
-
-  [
-    "manualTitulo",
-    "manualAutor",
-    "manualAnio",
-    "manualPortada",
-    "manualGenero",
-    "manualSinopsis"
-  ]
-  .forEach(
-    id=>{
-      const el=
-        document.getElementById(
-          id
-        );
-
-      if(el){
-        el.value="";
-      }
+  window.scrollTo(
+    {
+      top:0,
+      behavior:"smooth"
     }
   );
 
 
-  /*
-    Abrir directamente
-    el libro creado.
-  */
+  if(
+    id==="perfil"
+  ){
 
-  abrirLibro(
-    libro
-  );
+    cargarPerfil();
+
+  }
 
 
-  alert(
-    "📚 Libro añadido a BOOKISH"
-  );
+  if(
+    id==="comunidad"
+  ){
+
+    cargarAmigos();
+
+  }
+
+
+  if(
+    id==="foro"
+  ){
+
+    cargarForo();
+
+  }
+
+
+  if(
+    id==="biblioteca"
+  ){
+
+    mostrarBiblioteca(
+      "todos"
+    );
+
+  }
 
 }
 
 
 /* =========================================================
-   INICIO
+   INICIAR
 ========================================================= */
 
-function iniciar(){
+async function iniciar(){
 
   const temaGuardado=
     localStorage.getItem(
@@ -6384,24 +5572,25 @@ function iniciar(){
 
   cargarPerfil();
 
-
   cargarAmigos();
-
 
   cargarForo();
 
 
+  /*
+    Cargamos las novedades
+    y las categorías.
+  */
+
   cargarNovedades();
 
-
-  cargarRomantasyInicio();
-
+  cargarSecciones();
 
 }
 
 
 /* =========================================================
-   INICIAR BOOKISH
+   ARRANCAR
 ========================================================= */
 
 iniciar();
@@ -6409,5 +5598,7 @@ iniciar();
 
 </script>
 
+
 </body>
-  </html>
+
+   </html>
